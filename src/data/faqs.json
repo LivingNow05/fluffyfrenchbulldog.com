@@ -1,0 +1,60 @@
+{
+  "general": [
+    {
+      "q": "¿Qué es exactamente un Bulldog Francés Fluffy?",
+      "a": "El Bulldog Francés Fluffy es una variedad de Bulldog Francés de raza pura que posee la mutación genética recesiva del pelo largo (genes Lh1 y Lh2). Físicamente mantiene la estructura fuerte, musculosa y cara achatada del Bulldog Francés tradicional, pero con un manto exuberante, sedoso y afelpado especialmente en las orejas, cabeza y cuello."
+    },
+    {
+      "q": "¿Los ejemplares tienen registro de pedigree oficial (AKC / FCI)?",
+      "a": "Sí. Todos los reproductores y cachorros de Dinastía Bulldog Fluffy poseen certificación de pedigree emitido o registrable ante organismos canófilos de prestigio internacional como AKC (American Kennel Club), FCI (Fédération Cynologique Internationale) y ACCC. Se entrega el certificado de pureza y árbol genealógico."
+    },
+    {
+      "q": "¿Cómo garantizan la salud genética del cachorro?",
+      "a": "Realizamos paneles de ADN certificados a todos nuestros padres reproductores para garantizar que estén libres de enfermedades hereditarias comunes en la raza, como Cataratas Juveniles Hereditarias (HC), Mielopatía Degenerativa (DM), Cistinuria y displasia grave. Entregamos contrato con garantía médica por escrito."
+    },
+    {
+      "q": "¿Cómo funcionan los envíos nacionales e internacionales?",
+      "a": "Contamos con servicio de Pet Nanny (niñera aérea personalizada) que viaja en cabina con el cachorro desde Colombia hasta el aeropuerto de tu ciudad (Bogotá, Medellín, Cali, CDMX, Guadalajara, Monterrey, Miami, Madrid, Lima, etc.), garantizando que el bebé viaje en ambiente climatizado y sin estrés."
+    },
+    {
+      "q": "¿Cuál es la diferencia entre un Fluffy Visual y un Portador Fluffy?",
+      "a": "Un Fluffy Visual posee dos copias del gen de pelo largo (Lh/Lh), por lo que muestra el pelaje largo y afelpado a simple vista. Un Portador Fluffy tiene una sola copia del gen (Lh/n), luciendo pelaje corto tradicional pero capaz de transmitir la genética Fluffy a sus descendientes si se cruza con otro portador o visual."
+    }
+  ],
+  "variedades": {
+    "fluffy-blue": [
+      {
+        "q": "¿El pelaje del Fluffy Blue requiere cuidados especiales de aseo?",
+        "a": "No requiere cortes ni peinados complejos. Basta con un cepillado suave 2 a 3 veces por semana con un cepillo de cerdas suaves para eliminar el pelo muerto y mantener el brillo sedoso natural."
+      },
+      {
+        "q": "¿Qué diferencia al Fluffy Blue de un Bulldog común?",
+        "a": "Además del pelo largo abullonado, su coloración azul cobalto proviene de la dilución d/d, dándoles un aspecto majestuoso único y ojos con destellos grises o miel."
+      }
+    ],
+    "fluffy-visual-isabella": [
+      {
+        "q": "¿Por qué el Fluffy Visual Isabella es la variante más cotizada?",
+        "a": "Porque requiere combinar dos copias de la dilución azul (d/d) y dos copias del gen chocolate testable (b/b o bC/bC), además de dos copias del gen Fluffy (Lh/Lh). Lograr esta alineación genética de forma saludable exige generaciones de selección experta."
+      }
+    ],
+    "fluffy-lilac": [
+      {
+        "q": "¿De qué color son los ojos de un Fluffy Lilac?",
+        "a": "Nacen con ojos azul celeste intenso que evolucionan hacia tonos verde menta o avellana claro al madurar."
+      }
+    ],
+    "fluffy-fluffy-cocoa": [
+      {
+        "q": "¿El color Cocoa se aclara con la edad?",
+        "a": "El manto Cocoa mantiene un todo marrón chocolate rico y cálido durante toda su vida, intensificando el brillo del pelo al alcanzar los 12 meses."
+      }
+    ],
+    "fluffy-merle": [
+      {
+        "q": "¿Es seguro comprar un Bulldog Francés Fluffy Merlé?",
+        "a": "En Dinastía Bulldog Fluffy sí, porque practicamos la crianza ética: jamás cruzamos dos ejemplares Merlé entre sí. Nuestros cachorros Merlé provienen de cruces seguros Merlé x Sólido, asegurando audición y visión 100% sanas."
+      }
+    ]
+  }
+}

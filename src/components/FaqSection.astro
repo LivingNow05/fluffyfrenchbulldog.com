@@ -1,0 +1,32 @@
+---
+export interface Props {
+  faqs: { q: string; a: string }[];
+  titulo?: string;
+}
+
+const { faqs, titulo = 'Preguntas frecuentes sobre el Bulldog Francés Fluffy' } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+
+<section class="faq reveal">
+  <h2>❓ {titulo}</h2>
+  {faqs.map((f) => (
+    <details>
+      <summary>💬 {f.q}</summary>
+      <p>{f.a}</p>
+    </details>
+  ))}
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

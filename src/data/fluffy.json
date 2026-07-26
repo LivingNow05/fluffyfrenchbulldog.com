@@ -1,0 +1,247 @@
+{
+  "site": {
+    "brand": "Dinastía Bulldog Fluffy",
+    "domain": "https://bulldogfluffy.com.co",
+    "descripcion": "Criadero especializado en Bulldog Francés Fluffy de linaje exótico con registro AKC, FCI y ACCC. Salud genética garantizada, prueba de ADN y entrega personalizada.",
+    "whatsapp": "+573128375043",
+    "ciudad": "Colombia & Envíos Internacionales",
+    "afiliaciones": [
+      "AKC",
+      "FCI",
+      "ACCC",
+      "Pedigree Internacional"
+    ],
+    "preciosVerificados": "julio 2026"
+  },
+  "variedades": [
+    {
+      "slug": "fluffy-blue",
+      "nombre": "Bulldog Francés Fluffy Blue",
+      "nombreCorto": "Fluffy Blue",
+      "titulo": "Bulldog Francés Fluffy Blue: Precio y Características 2026",
+      "resumen": "El Fluffy Blue es una de las variedades exóticas más cautivadoras. Su pelaje afelpado gris azulado cobalto combinado con sus profundos ojos grises o dorados lo convierten en una joya genética inimitable.",
+      "variantes": [
+        {
+          "tipo": "Fluffy Blue Portador (lh1/lh2)",
+          "registro": "Con Pedigree AKC / FCI",
+          "precioCOP": 8500000,
+          "precioMXN": 42000,
+          "precioUSD": 2300
+        },
+        {
+          "tipo": "Fluffy Blue Visual Estándar",
+          "registro": "Con Pedigree AKC / FCI",
+          "precioCOP": 12000000,
+          "precioMXN": 55000,
+          "precioUSD": 3000
+        },
+        {
+          "tipo": "Fluffy Blue Visual con Derechos de Cría",
+          "registro": "Con Pedigree Certificado Internacional",
+          "precioCOP": 18000000,
+          "precioMXN": 85000,
+          "precioUSD": 4600
+        }
+      ],
+      "caracteristicas": {
+        "peso": "9 – 13 kg",
+        "esperanzaVida": "11 – 14 años",
+        "pelaje": "Largo, sedoso y afelpado en capa doble (Gen Lh1/Lh2)",
+        "temperamento": "Dulce, juguetón, leal y afectuoso con niños",
+        "nivelActividad": "Moderado",
+        "apartamento": "Sí, excelente adaptación a espacios urbanos",
+        "clima": "Requiere ambientes frescos y climatizados en zonas cálidas"
+      },
+      "contenido": "El Bulldog Francés Fluffy Blue posee la mutación recesiva de pelaje largo sobre una base genética azul diluida (d/d). A diferencia del Bulldog estándar de pelo corto, el ejemplar Fluffy muestra orejas, mejillas y lomo cubiertos por una melena suave y ondeada que no requiere cortes ni acicalamientos agresivos. En Dinastía Bulldog Fluffy evaluamos radiográficamente a los reproductores (caderas y columna) y realizamos panel de ADN para descartar cataratas hereditarias y mielopatía degenerativa.",
+      "perfil": {
+        "actividad": "moderado",
+        "apartamento": true,
+        "ninos": true,
+        "tagline": "Pelaje azul cobalto afelpado y mirada magnética"
+      }
+    },
+    {
+      "slug": "fluffy-visual-isabella",
+      "nombre": "Bulldog Francés Fluffy Visual Isabella",
+      "nombreCorto": "Fluffy Isabella",
+      "titulo": "Bulldog Francés Fluffy Visual Isabella: Precio y Exclusividad 2026",
+      "resumen": "La variante Fluffy Visual Isabella representa la cima del lujo canino internacional. Con tono beige tostado lila suave, nariz rosa hígado y ojos claros avellana o verdosos, es la genética más codiciada del planeta.",
+      "variantes": [
+        {
+          "tipo": "Fluffy Isabella Portador ADN Testeado",
+          "registro": "Con Pedigree AKC / FCI",
+          "precioCOP": 13500000,
+          "precioMXN": 62000,
+          "precioUSD": 3400
+        },
+        {
+          "tipo": "Fluffy Visual Isabella Compañía",
+          "registro": "Con Pedigree AKC / FCI",
+          "precioCOP": 18000000,
+          "precioMXN": 85000,
+          "precioUSD": 4600
+        },
+        {
+          "tipo": "Fluffy Visual Isabella Cría / Show",
+          "registro": "Pedigree Completo Internacional + Panel ADN",
+          "precioCOP": 26000000,
+          "precioMXN": 120000,
+          "precioUSD": 6800
+        }
+      ],
+      "caracteristicas": {
+        "peso": "8.5 – 12.5 kg",
+        "esperanzaVida": "12 – 14 años",
+        "pelaje": "Extremadamente denso, sedoso de tono beige liláceo champán",
+        "temperamento": "Ultra cariñoso, tranquilo, inteligente y compañero ideal",
+        "nivelActividad": "Tranquilo a moderado",
+        "apartamento": "Ideal para departamento o casas de lujo",
+        "clima": "Excelente en interiores climatizados"
+      },
+      "contenido": "El color Isabella es el resultado genético de combinar la doble dilución azul (b/b o bC/bC chocolate testable junto con d/d). Cuando este patrón genético se expresa visualmente en la mutación Fluffy (Lh/Lh), el cachorro luce como un peluche viviente de tono dorado champagne con destellos plateados. Todos nuestros cachorros Fluffy Isabella se entregan esterilizados o con contrato de cría responsable, microchip de identificación ISO e historial veterinario certificado.",
+      "perfil": {
+        "actividad": "tranquilo",
+        "apartamento": true,
+        "ninos": true,
+        "tagline": "El color más exótico y exclusivo del mundo"
+      }
+    },
+    {
+      "slug": "fluffy-lilac",
+      "nombre": "Bulldog Francés Fluffy Lilac",
+      "nombreCorto": "Fluffy Lilac",
+      "titulo": "Bulldog Francés Fluffy Lilac: Precio 2026 y Genética",
+      "resumen": "El Fluffy Lilac destaca por su manto plateado lavanda que brilla con la luz solar. Sus ojos azules o verdosos y su cara achatada arrugada le confieren una expresión inolvidable.",
+      "variantes": [
+        {
+          "tipo": "Fluffy Lilac Visual Compañía",
+          "registro": "Con Pedigree AKC / FCI",
+          "precioCOP": 15000000,
+          "precioMXN": 70000,
+          "precioUSD": 3800
+        },
+        {
+          "tipo": "Fluffy Lilac Tan / Platinum",
+          "registro": "Pedigree Internacional Certificado",
+          "precioCOP": 20000000,
+          "precioMXN": 95000,
+          "precioUSD": 5100
+        }
+      ],
+      "caracteristicas": {
+        "peso": "9 – 13 kg",
+        "esperanzaVida": "11 – 14 años",
+        "pelaje": "Manto lavanda metálico con subpelo esponjoso",
+        "temperamento": "Sociable, juguetón, muy leal y faldero",
+        "nivelActividad": "Moderado",
+        "apartamento": "Sí, perfecto para vida urbana",
+        "clima": "Requiere temperatura controlada en verano"
+      },
+      "contenido": "El Lilac es una dilución especial producida por la combinación de chocolate no testable (co/co) y azul (d/d). Al sumar el gen Fluffy, el manto no solo adquiere longitud sino un tacto terciopelo inigualable. Los cachorros nacen con ojos azules cristalinos que evolucionan hacia un verde agua o ámbar claro en la madurez.",
+      "perfil": {
+        "actividad": "moderado",
+        "apartamento": true,
+        "ninos": true,
+        "tagline": "Tono lavanda plateado con pelaje de terciopelo"
+      }
+    },
+    {
+      "slug": "fluffy-fluffy-cocoa",
+      "nombre": "Bulldog Francés Fluffy Cocoa",
+      "nombreCorto": "Fluffy Cocoa",
+      "titulo": "Bulldog Francés Fluffy Cocoa: Guía y Precios 2026",
+      "resumen": "Con un manto chocolate oscuro profundo e intenso de textura esponjosa, el Fluffy Cocoa cautiva a quienes buscan elegancia cálida y nobleza en un perro de compañía.",
+      "variantes": [
+        {
+          "tipo": "Fluffy Cocoa Estándar",
+          "registro": "Con Pedigree AKC / ACCC",
+          "precioCOP": 14000000,
+          "precioMXN": 65000,
+          "precioUSD": 3500
+        },
+        {
+          "tipo": "Fluffy Cocoa Fawn / Tan",
+          "registro": "Pedigree Internacional AKC",
+          "precioCOP": 17500000,
+          "precioMXN": 82000,
+          "precioUSD": 4400
+        }
+      ],
+      "caracteristicas": {
+        "peso": "9 – 13.5 kg",
+        "esperanzaVida": "11 – 15 años",
+        "pelaje": "Denso, abullonado, color marrón chocolate intenso",
+        "temperamento": "Equilibrado, cariñoso y protector de la familia",
+        "nivelActividad": "Tranquilo",
+        "apartamento": "Sí, excelente en hogar o departamento",
+        "clima": "Se adapta a climas templados y fríos"
+      },
+      "contenido": "El gen Cocoa (co/co) proporciona un color chocolate rico sin tonalidades rojizas indeseadas. Su melena en el pecho y cuello simula un pequeño león dócil. En nuestro criadero todos los reproductores son examinados ecocardiográficamente antes del cruce.",
+      "perfil": {
+        "actividad": "tranquilo",
+        "apartamento": true,
+        "ninos": true,
+        "tagline": "Chocolate rico y abullonado estilo melena de león"
+      }
+    },
+    {
+      "slug": "fluffy-merle",
+      "nombre": "Bulldog Francés Fluffy Merlé",
+      "nombreCorto": "Fluffy Merlé",
+      "titulo": "Bulldog Francés Fluffy Merlé: Precio y Genética 2026",
+      "resumen": "El Fluffy Merlé presenta un fascinante mosaico de manchas oscuras sobre fondo lila, azul o crema, frecuentemente acompañado de ojos azules o heterocromía (un ojo de cada color).",
+      "variantes": [
+        {
+          "tipo": "Fluffy Blue Merlé",
+          "registro": "Con Registro Pedigree AKC",
+          "precioCOP": 16500000,
+          "precioMXN": 78000,
+          "precioUSD": 4200
+        },
+        {
+          "tipo": "Fluffy Isabella Merlé Exclusivo",
+          "registro": "Pedigree Completo + ADN Certificado",
+          "precioCOP": 22000000,
+          "precioMXN": 105000,
+          "precioUSD": 5600
+        }
+      ],
+      "caracteristicas": {
+        "peso": "9 – 13 kg",
+        "esperanzaVida": "11 – 14 años",
+        "pelaje": "Patrón moteado artístico con pelo largo y sedoso",
+        "temperamento": "Extrovertido, inteligente, alegre y carismático",
+        "nivelActividad": "Moderado",
+        "apartamento": "Sí, muy adaptable",
+        "clima": "Cuidados estándar de braquicéfalos"
+      },
+      "contenido": "El patrón Merlé requiere una crianza altamente responsable: en Dinastía Bulldog Fluffy NUNCA realizamos cruces Merlé x Merlé para garantizar ejemplares 100% sanos sin deficiencias auditivas ni oculares. Cada cachorro entrega garantía de salud escrita por 2 años.",
+      "perfil": {
+        "actividad": "moderado",
+        "apartamento": true,
+        "ninos": true,
+        "tagline": "Obra de arte canina con manchas arlequinadas y ojos azules"
+      }
+    }
+  ],
+  "testimonios": [
+    {
+      "nombre": "Camila & Santiago",
+      "ciudad": "Bogotá, Colombia",
+      "texto": "Recibimos a nuestro Fluffy Blue en el Aeropuerto El Dorado. Llegó súper adaptado, con su libreta de vacunas completa y su certificado de ADN. Es la sensación de la casa.",
+      "variedad": "Fluffy Blue"
+    },
+    {
+      "nombre": "Dr. Fernando Ruiz",
+      "ciudad": "Ciudad de México (CDMX)",
+      "texto": "Buscaba un Fluffy Isabella con pedigree AKC real. El equipo de Dinastía Bulldog Fluffy coordinó el vuelo con niñera aérea hasta el aeropuerto Benito Juárez. El cachorro es de una calidad impresionante.",
+      "variedad": "Fluffy Visual Isabella"
+    },
+    {
+      "nombre": "Valeria Mendoza",
+      "ciudad": "Medellín, Colombia",
+      "texto": "Nuestro Fluffy Merlé llegó a Medellín sano, cariñoso y súper educado. El soporte posventa del criadero ha sido de 10 estrellas.",
+      "variedad": "Fluffy Merlé"
+    }
+  ]
+}

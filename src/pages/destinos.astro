@@ -1,0 +1,248 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+function parseRow(rowStr: string): string[] {
+  const values: string[] = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < rowStr.length; i++) {
+    const char = rowStr[i];
+    const nextChar = rowStr[i + 1];
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      values.push(cur);
+      cur = '';
+    } else {
+      cur += char;
+    }
+  }
+  values.push(cur);
+  return values;
+}
+
+function parseCSV(text: string) {
+  const lines: string[] = [];
+  let cur = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const nextChar = text[i + 1];
+    if (char === '"') {
+      cur += '"';
+      if (inQuotes && nextChar === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === '\n' && !inQuotes) {
+      lines.push(cur);
+      cur = '';
+    } else if (char === '\r' && !inQuotes) {
+      // ignore
+    } else {
+      cur += char;
+    }
+  }
+  if (cur.trim()) lines.push(cur);
+
+  const header = parseRow(lines[0]).map((h) => h.trim());
+  const rows: Record<string, string>[] = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const values = parseRow(lines[i]);
+    if (values.length >= 5) {
+      const obj: Record<string, string> = {};
+      header.forEach((h, idx) => {
+        obj[h] = values[idx] ? values[idx].trim() : '';
+      });
+      rows.push(obj);
+    }
+  }
+  return rows;
+}
+
+const csvPath = path.resolve(process.cwd(), 'dataset_fluffy_stories.csv');
+let rawText = '';
+try {
+  rawText = fs.readFileSync(csvPath, 'utf-8');
+} catch (e) {
+  rawText = fs.readFileSync(path.resolve(process.cwd(), 'dataset_enriched_stories.csv'), 'utf-8');
+}
+
+const rawRows = parseCSV(rawText);
+
+const locations = rawRows.map((row) => {
+  const rawSlug = row['URL Final (Slug)'] || 'bulldog-frances-fluffy-bogota';
+  const cleanSlug = rawSlug.replace(/^maine-coon-/, 'bulldog-frances-fluffy-');
+  const h1 = row['H1 Título'] || 'Bulldog Francés Fluffy';
+  const ciudad = h1.replace(/Bulldog Francés Fluffy en /gi, '').replace(/Bulldog Francês Fluffy en /gi, '').trim();
+  const pais = row['País'] || 'Colombia';
+  const aeropuerto = row['Aeropuerto'] || 'Aeropuerto Local';
+  const moneda = row['Moneda'] || 'COP';
+
+  return {
+    slug: cleanSlug,
+    url: `/${cleanSlug}/`,
+    h1,
+    ciudad,
+    pais,
+    aeropuerto,
+    moneda
+  };
+});
+
+// Agrupar ubicaciones por país
+const groupedByCountry = locations.reduce<Record<string, typeof locations>>((acc, loc) => {
+  if (!acc[loc.pais]) acc[loc.pais] = [];
+  acc[loc.pais].push(loc);
+  return acc;
+}, {});
+
+const countries = Object.keys(groupedByCountry).sort();
+
+const FLAG_MAP: Record<string, string> = {
+  'Colombia': '🇨🇴',
+  'México': '🇲🇽',
+  'Costa Rica': '🇨🇷',
+  'El Salvador': '🇸🇻',
+  'Guatemala': '🇬🇹',
+  'Honduras': '🇭🇳',
+  'Nicaragua': '🇳🇮',
+  'Panamá': '🇵🇦',
+  'República Dominicana': '🇩🇴',
+  'Argentina': '🇦🇷',
+  'Bolivia': '🇧🇴',
+  'Brasil': '🇧🇷',
+  'Chile': '🇨🇱',
+  'Ecuador': '🇪🇨',
+  'Paraguay': '🇵🇾',
+  'Perú': '🇵🇪',
+  'Uruguay': '🇺🇾',
+  'Venezuela': '🇻🇪',
+  'España': '🇪🇸',
+  'Estados Unidos': '🇺🇸',
+  'EE. UU.': '🇺🇸',
+  'EE.UU.': '🇺🇸',
+  'USA': '🇺🇸'
+};
+---
+
+<Base
+  title="Destinos y Cobertura de Envíos | Dinastía Bulldog Fluffy"
+  description="Conoce las 100+ ciudades y aeropuertos donde entregamos personalmente nuestros cachorros Bulldog Francés Fluffy en Colombia, México, EE. UU. y el mundo."
+>
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: 'Inicio', url: '/' }, { name: 'Destinos y Cobertura' }]} />
+  </div>
+
+  <section class="hero" style="padding: 60px 0 50px; margin-top: 0;">
+    <div class="wrap text-center">
+      <p class="hero-kicker">Entrega VIP Presencial · Niñera Aérea</p>
+      <h1>Destinos & Cobertura de <em>Entregas por Ciudad</em></h1>
+      <p class="lead" style="margin: 0 auto 28px;">
+        Entregamos nuestros cachorros <strong>Bulldog Francés Fluffy</strong> con transporte climatizado presencial en más de 100 ciudades. Selecciona tu ubicación para conocer la historia local, aeropuerto y protocolo de llegada.
+      </p>
+
+      {/* Buscador interactivo instantáneo */}
+      <div style="max-width: 580px; margin: 0 auto; position: relative;">
+        <input
+          type="text"
+          id="city-search"
+          placeholder="🔍 Escribe tu ciudad (ej. Bogotá, CDMX, Lima, Madrid)..."
+          style="width: 100%; padding: 18px 24px; border-radius: 999px; border: 2px solid var(--amber); background: var(--surface); color: var(--ink); font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.15); outline: none; transition: border-color 0.2s, background 0.2s;"
+        />
+        <div id="search-results" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: var(--surface); border: 1.5px solid var(--amber); border-radius: 18px; max-height: 320px; overflow-y: auto; z-index: 200; box-shadow: var(--shadow-night); text-align: left;"></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap" style="padding-top: 40px;">
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; justify-content: center;">
+      {countries.map((c) => (
+        <a href={`#pais-${c.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn--ghost" style="padding: 8px 20px; font-size: 0.9rem;">
+          {FLAG_MAP[c] || '📍'} {c} ({groupedByCountry[c].length})
+        </a>
+      ))}
+    </div>
+
+    {countries.map((country) => (
+      <section id={`pais-${country.toLowerCase().replace(/\s+/g, '-')}`} style="margin-bottom: 56px;">
+        <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--amber); padding-bottom: 10px; margin-bottom: 24px;">
+          <h2 style="margin: 0; font-size: 1.7rem;">{FLAG_MAP[country] || '📍'} {country}</h2>
+          <span class="badge">{groupedByCountry[country].length} ciudades</span>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+          {groupedByCountry[country].map((loc) => (
+            <a class="card" href={loc.url}>
+              <div class="card-header-icon">
+                <h3 style="font-size: 1.15rem;">{loc.ciudad}</h3>
+                <span class="badge">{loc.pais.toLowerCase() === 'colombia' ? 'COP' : 'USD'}</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px;">
+                  ✈️ <strong>{loc.aeropuerto}</strong>
+                </p>
+                <p style="font-size: 0.82rem; color: var(--amber-deep); margin-top: 8px; font-weight: 700;">
+                  Ver disponibilidad & historia local →
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+  <script id="fluffy-locations-data" type="application/json" set:html={JSON.stringify(locations)} />
+  <script is:inline>
+    const locationsData = JSON.parse(document.getElementById('fluffy-locations-data').textContent || '[]');
+    const searchInput = document.getElementById('city-search');
+    const resultsContainer = document.getElementById('search-results');
+
+    if (searchInput && resultsContainer) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        if (query.length < 2) {
+          resultsContainer.style.display = 'none';
+          return;
+        }
+
+        const matches = locationsData.filter((l) => 
+          l.ciudad.toLowerCase().includes(query) || 
+          l.pais.toLowerCase().includes(query) ||
+          l.aeropuerto.toLowerCase().includes(query)
+        ).slice(0, 8);
+
+        if (matches.length === 0) {
+          resultsContainer.innerHTML = '<div style="padding: 16px; color: var(--ink-soft); text-align: center;">No se encontraron ciudades con ese nombre.</div>';
+        } else {
+          resultsContainer.innerHTML = matches.map((m) => `
+            <a href="${m.url}" style="display: block; padding: 14px 20px; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--ink); transition: background 0.2s;">
+              <strong style="color: var(--amber-deep);">${m.ciudad}</strong>, ${m.pais}
+              <div style="font-size: 0.8rem; color: var(--ink-soft);">✈️ ${m.aeropuerto}</div>
+            </a>
+          `).join('');
+        }
+        resultsContainer.style.display = 'block';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+          resultsContainer.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</Base>

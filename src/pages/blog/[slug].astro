@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../data/blog/*.md');
+  return posts.map((post) => {
+    const slug = post.file.split('/').pop()?.replace('.md', '');
+    return {
+      params: { slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+const { title, description, date, author, category } = post.frontmatter;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  author: { '@type': 'Organization', name: author },
+  datePublished: date,
+};
+---
+
+<Base title={`${title} | Dinastía Bulldog Fluffy`} description={description} schema={[articleSchema]}>
+  <main class="wrap">
+    <Breadcrumbs
+      items={[
+        { nombre: 'Inicio', url: '/' },
+        { nombre: 'Blog', url: '/blog/' },
+        { nombre: title },
+      ]}
+    />
+
+    <article class="blog-post-content" style="max-width: 800px; margin: 32px auto 0;">
+      <span class="badge">{category}</span>
+      <h1 style="margin-top: 12px;">{title}</h1>
+      <div style="font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 24px;">
+        <span>Publicado el {date}</span> · <span>Por {author}</span>
+      </div>
+
+      <div class="post-body" style="font-size: 1.05rem; line-height: 1.8;">
+        <Content />
+      </div>
+    </article>
+
+    <WhatsAppCTA contexto={`dudas sobre: ${title}`} />
+  </main>
+</Base>

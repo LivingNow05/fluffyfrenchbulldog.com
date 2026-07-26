@@ -1,0 +1,386 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import PriceTable from '../components/PriceTable.astro';
+import FaqSection from '../components/FaqSection.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import CalculadoraComida from '../components/CalculadoraComida.astro';
+import QuizModal from '../components/QuizModal.astro';
+import fluffy from '../data/fluffy.json';
+import faqsData from '../data/faqs.json';
+
+export function getStaticPaths() {
+  function parseRow(rowStr: string): string[] {
+    const values: string[] = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < rowStr.length; i++) {
+      const char = rowStr[i];
+      const nextChar = rowStr[i + 1];
+      if (char === '"') {
+        if (inQuotes && nextChar === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (char === ',' && !inQuotes) {
+        values.push(cur);
+        cur = '';
+      } else {
+        cur += char;
+      }
+    }
+    values.push(cur);
+    return values;
+  }
+
+  function parseCSV(text: string) {
+    const lines: string[] = [];
+    let cur = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const nextChar = text[i + 1];
+      if (char === '"') {
+        cur += '"';
+        if (inQuotes && nextChar === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (char === '\n' && !inQuotes) {
+        lines.push(cur);
+        cur = '';
+      } else if (char === '\r' && !inQuotes) {
+        // ignore
+      } else {
+        cur += char;
+      }
+    }
+    if (cur.trim()) lines.push(cur);
+
+    const header = parseRow(lines[0]).map((h) => h.trim());
+    const rows: Record<string, string>[] = [];
+
+    for (let i = 1; i < lines.length; i++) {
+      const values = parseRow(lines[i]);
+      if (values.length >= 5) {
+        const obj: Record<string, string> = {};
+        header.forEach((h, idx) => {
+          obj[h] = values[idx] ? values[idx].trim() : '';
+        });
+        rows.push(obj);
+      }
+    }
+    return rows;
+  }
+
+  const fluffyCsvPath = path.resolve(process.cwd(), 'dataset_fluffy_stories.csv');
+  const fallbackCsvPath = path.resolve(process.cwd(), 'dataset_enriched_stories.csv');
+  
+  let rawText = '';
+  let isFluffyCsv = false;
+  try {
+    if (fs.existsSync(fluffyCsvPath)) {
+      rawText = fs.readFileSync(fluffyCsvPath, 'utf-8');
+      isFluffyCsv = true;
+    } else {
+      rawText = fs.readFileSync(fallbackCsvPath, 'utf-8');
+    }
+  } catch (e) {
+    console.error('Error al leer CSV:', e);
+  }
+
+  const rawRows = parseCSV(rawText);
+
+  return rawRows.map((row) => {
+    const rawSlug = row['URL Final (Slug)'] || 'bulldog-frances-fluffy-bogota';
+    const cleanSlug = rawSlug.replace(/^maine-coon-/, 'bulldog-frances-fluffy-');
+
+    let h1 = row['H1 Título'] || 'Bulldog Francés Fluffy';
+    let metaDesc = row['Meta Descripción'] || '';
+    let historia = row['Historia Local'] || '';
+
+    if (!isFluffyCsv) {
+      h1 = h1.replace(/Maine Coon/gi, 'Bulldog Francés Fluffy').replace(/Gato/gi, 'Bulldog Fluffy');
+      metaDesc = metaDesc
+        .replace(/Maine Coon/gi, 'Bulldog Francés Fluffy')
+        .replace(/gatos/gi, 'cachorros')
+        .replace(/gigantes/gi, 'exóticos de pelo largo');
+      historia = historia
+        .replace(/Maine Coon/gi, 'Bulldog Francés Fluffy')
+        .replace(/felino/gi, 'canino')
+        .replace(/gato doméstico/gi, 'Bulldog Fluffy')
+        .replace(/gato/gi, 'cachorro');
+    }
+
+    const pais = row['País'] || 'Colombia';
+    const ciudad = h1.replace(/Bulldog Francés Fluffy en /gi, '').replace(/Bulldog Francês Fluffy en /gi, '').trim();
+    const aeropuerto = row['Aeropuerto'] || 'Aeropuerto Local';
+    const moneda = row['Moneda'] || 'COP';
+
+    return {
+      params: { slug: cleanSlug },
+      props: {
+        item: {
+          slug: cleanSlug,
+          h1,
+          metaDesc,
+          historia,
+          pais,
+          ciudad,
+          aeropuerto,
+          moneda,
+        },
+      },
+    };
+  });
+}
+
+const { item } = Astro.props;
+
+const FLAG_MAP: Record<string, string> = {
+  'Colombia': '🇨🇴',
+  'México': '🇲🇽',
+  'Costa Rica': '🇨🇷',
+  'El Salvador': '🇸🇻',
+  'Guatemala': '🇬🇹',
+  'Honduras': '🇭🇳',
+  'Nicaragua': '🇳🇮',
+  'Panamá': '🇵🇦',
+  'República Dominicana': '🇩🇴',
+  'Argentina': '🇦🇷',
+  'Bolivia': '🇧🇴',
+  'Brasil': '🇧🇷',
+  'Chile': '🇨🇱',
+  'Ecuador': '🇪🇨',
+  'Paraguay': '🇵🇾',
+  'Perú': '🇵🇪',
+  'Uruguay': '🇺🇾',
+  'Venezuela': '🇻🇪',
+  'España': '🇪🇸',
+  'Estados Unidos': '🇺🇸',
+  'EE. UU.': '🇺🇸',
+  'EE.UU.': '🇺🇸',
+  'USA': '🇺🇸'
+};
+
+// Construir tabla de precios para esta localización
+const filasPrecios = fluffy.variedades.map((v) => ({
+  variedad: v.nombreCorto,
+  tipo: v.variantes[0]?.tipo || 'Estándar',
+  registro: 'AKC / FCI',
+  precioCOP: v.variantes[0]?.precioCOP || 10000000,
+  precioMXN: v.variantes[0]?.precioMXN || 50000,
+  precioUSD: v.variantes[0]?.precioUSD || 2800,
+}));
+
+const localSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: item.h1,
+  description: item.metaDesc,
+  category: 'Mascotas > Perros de Raza > Bulldog Francés Fluffy',
+  brand: { '@type': 'Brand', name: fluffy.site.brand },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: item.moneda,
+    lowPrice: 2300,
+    highPrice: 6800,
+    offerCount: 5,
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': `${fluffy.site.domain}/#criadero` },
+  },
+};
+
+const authorSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Equipo Médico Veterinario Dinastía Bulldog Fluffy',
+  medicalSpecialty: 'Canine Genetics & Brachycephalic Care',
+  knowsAbout: ['Gen L4/L1 Fluffy', 'Pedigree AKC/FCI', 'Nutrición Canina Exclusiva', 'Bienestar Animal Ley 1774']
+};
+---
+
+<Base
+  title={`${item.h1} | Envíos Certificados Dinastía Bulldog Fluffy`}
+  description={item.metaDesc}
+  schema={[localSchema, authorSchema]}
+>
+  <main class="wrap">
+    <Breadcrumbs
+      items={[
+        { nombre: 'Inicio', url: '/' },
+        { nombre: 'Destinos & Envíos', url: '/destinos/' },
+        { nombre: item.h1 },
+      ]}
+    />
+
+    <section class="breed-hero">
+      <div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+          <span class="badge" style="background: var(--amber-soft); color: var(--amber); border-color: var(--amber);">{FLAG_MAP[item.pais] || '📍'} {item.ciudad}, {item.pais}</span>
+          <span class="badge">🧬 Gen L4/L1 Lh</span>
+          <span class="badge">📜 AKC / FCI</span>
+        </div>
+
+        <h1>{item.h1}</h1>
+        
+        {/* Respuesta Rápida / AEO Snippet */}
+        <div class="answer-box">
+          <strong>📍 Resumen de Entrega en {item.ciudad}:</strong> Entregamos cachorros <strong>Bulldog Francés Fluffy</strong> de raza pura en <strong>{item.ciudad}</strong> con despacho seguro hasta el <strong>{item.aeropuerto}</strong> (el costo de envío aéreo/terrestre suele rondar los $1.000 USD / $3.8M COP según la distancia). Cada cachorro se entrega con examen genético ADN de pelaje (Lh), esquema de vacunas al día, microchip ISO y contrato de salud garantizado por 2 años.
+        </div>
+
+        <p class="lead">{item.metaDesc}</p>
+      </div>
+
+      <div class="breed-hero-image" style="border-radius: var(--radius); overflow: hidden; border: 2px solid var(--border); box-shadow: var(--shadow-night); position: relative;">
+        <img class="dark-only" src="/images/fluffy-showcase-hero.jpg" alt={`Colores y variedades de Bulldog Francés Fluffy disponibles para entrega en ${item.ciudad}`} />
+        <img class="light-only" src="/images/fluffy-showcase-hero-light.jpg" alt={`Colores y variedades de Bulldog Francés Fluffy disponibles para entrega en ${item.ciudad}`} />
+        <div style="background: var(--surface); backdrop-filter: blur(8px); padding: 8px 14px; text-align: center; font-size: 0.78rem; color: var(--amber); border-top: 1px solid var(--border);">
+          🎨 Linajes y Colores Principales: Fluffy Blue, Visual Isabella, Lilac, Cocoa & Merlé
+        </div>
+      </div>
+    </section>
+
+    {/* Criterios EEAT & Autoridad Médica Veterinarios */}
+    <section class="answer-box" style="margin: 40px 0; padding: 28px;">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 18px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--amber); color: var(--night); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.5rem; flex-shrink: 0;">🩺</div>
+        <div>
+          <h3 style="margin: 0; font-size: 1.2rem; color: inherit;">Revisión Médica & Autoridad Veterinaria EEAT</h3>
+          <p style="margin: 4px 0 0; font-size: 0.86rem; opacity: 0.9;">Supervisión profesional garantizada para entregas en <strong>{item.ciudad}, {item.pais}</strong> · Reg. Prof. M.V. 14892 · Certificación ACCC / AKC / FCI</p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px;">
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; color: var(--amber);">📋 Reg. Prof. M.V. 14892</div>
+          <p style="font-size: 0.84rem; margin: 0; opacity: 0.9; line-height: 1.5;">
+            Control médico clínico pre-vuelo, examen cardiorrespiratorio y certificación oficial de salud veterinaria para viaje seguro.
+          </p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; color: var(--amber);">🧬 Garantía Genética 2 Años</div>
+          <p style="font-size: 0.84rem; margin: 0; opacity: 0.9; line-height: 1.5;">
+            Padres certificados por ADN libres de Cataratas Hereditarias (HC), Mielopatía Degenerativa (DM) y confirmación de Gen Fluffy (Lh).
+          </p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+          <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 6px; color: var(--amber);">💉 Esquema de Vacunas & ISO</div>
+          <p style="font-size: 0.84rem; margin: 0; opacity: 0.9; line-height: 1.5;">
+            Carné de vacunación al día (Puppy DP/Sextuple), desparasitación interna y microchip subcutáneo homologado ISO 11784/11785.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin: 36px 0;">
+      <h2>🏛️ Historia Local y Aclimatación en {item.ciudad}</h2>
+      <div class="answer-box" style="padding: 24px 28px;">
+        <p style="font-size: 1.08rem; line-height: 1.8; margin: 0;">{item.historia}</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🏷️ Precios Verificados de Criadero para {item.ciudad} (2026)</h2>
+      <PriceTable filas={filasPrecios} caption={`Precios de Bulldog Francés Fluffy para ${item.ciudad}`} conVariedad={true} pais={item.pais} />
+    </section>
+
+    {/* Galería de Variedades con Imágenes e Insignias */}
+    <section style="margin: 50px 0;">
+      <h2>🎨 Variedades Disponibles para Envío a {item.ciudad}</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+        {fluffy.variedades.map((v) => {
+          const minUsd = Math.min(...v.variantes.map(v2 => v2.precioUSD));
+          const minCop = Math.min(...v.variantes.map(v2 => v2.precioCOP));
+          const esInt = item.pais.toLowerCase() !== 'colombia';
+
+          return (
+            <a class="card" href={`/colores/${v.slug}/`}>
+              <div class="card-image" style="width: 100%; height: 185px; border-radius: 12px; overflow: hidden; position: relative; margin-bottom: 12px;">
+                <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés Fluffy ${v.nombre}`} style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
+                <span class="badge" style="position: absolute; top: 10px; right: 10px; background: rgba(12, 12, 14, 0.82); backdrop-filter: blur(8px); border-color: rgba(232, 166, 61, 0.4); color: var(--amber-bright); font-size: 0.72rem; padding: 4px 10px;">
+                  ✨ Manto Sedoso Lh
+                </span>
+              </div>
+              <h3 style="font-size: 1.18rem; margin: 0 0 6px;">{v.nombreCorto}</h3>
+              <span class="desde">
+                {esInt 
+                  ? `Desde $${minUsd.toLocaleString('en-US')} USD` 
+                  : `Desde $${minCop.toLocaleString('es-CO')} COP`}
+              </span>
+              <p style="font-size: 0.85rem; color: var(--ink-soft); margin-top: 6px; margin-bottom: 10px;">{v.perfil.tagline}</p>
+
+              {/* Insignias de características (Pelaje, Gen, Pedigree) */}
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto;">
+                <span class="badge" style="font-size: 0.72rem; padding: 2px 8px;">✨ Manto Sedoso Lh</span>
+                <span class="badge" style="font-size: 0.72rem; padding: 2px 8px;">🧬 Gen {v.slug.includes('isabella') ? 'bb/dd' : v.slug.includes('blue') ? 'dd' : 'L4/L1'}</span>
+                <span class="badge" style="font-size: 0.72rem; padding: 2px 8px;">📜 AKC / FCI</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <section style="margin: 40px 0;">
+      <h2>✈️ Protocolo de Envío Seguro al {item.aeropuerto}</h2>
+      <ul class="spec-list">
+        <li>
+          <div class="spec-icon-badge">✈️</div>
+          <div class="spec-info">
+            <span class="spec-label">1. Transporte Climatizado Certificado</span>
+            <span class="spec-value">El cachorro viaja en contenedor normado IATA con temperatura controlada (el valor del envío ronda los $1.000 USD / $3.8M COP según el destino).</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">📋</div>
+          <div class="spec-info">
+            <span class="spec-label">2. Documentación Sanitaria Certificada</span>
+            <span class="spec-value">Certificado de vacunas al día, desparasitación interna/externa y certificado veterinario de vuelo.</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">🛬</div>
+          <div class="spec-info">
+            <span class="spec-label">3. Entrega Personal en {item.aeropuerto}</span>
+            <span class="spec-value">Te entregamos tu cachorro en mano en la zona de llegadas del {item.aeropuerto} en {item.ciudad}.</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">📲</div>
+          <div class="spec-info">
+            <span class="spec-label">4. Asesoría y Soporte Posventa 24/7</span>
+            <span class="spec-value">Asesoría nutricional y de aclimatación para asegurar la felicidad de tu cachorro en {item.pais}.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    {/* Calculadora Nutricional para la Ciudad */}
+    <section style="margin: 50px 0;">
+      <h2 style="text-align: center; margin-bottom: 10px;">🥗 Nutrición y Alimentación para tu Bulldog Fluffy en {item.ciudad}</h2>
+      <p class="lead" style="text-align: center; margin-bottom: 24px;">
+        Calcula la ración recomendada de alimento Super Premium o dieta BARF según el peso y edad de tu cachorro para mantener su pelaje sedoso en {item.ciudad}.
+      </p>
+      <CalculadoraComida variedad={item.ciudad} />
+    </section>
+
+    <ReviewsSection />
+
+    <FaqSection faqs={faqsData.general} titulo={`Preguntas sobre envíos a ${item.ciudad}`} />
+
+    <WhatsAppCTA contexto={`un Bulldog Francés Fluffy en ${item.ciudad}`} />
+
+    <QuizModal />
+  </main>
+</Base>

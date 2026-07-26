@@ -1,0 +1,146 @@
+---
+import Base from '../../layouts/Base.astro';
+import PriceTable from '../../components/PriceTable.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
+import fluffy from '../../data/fluffy.json';
+import faqsData from '../../data/faqs.json';
+
+export function getStaticPaths() {
+  return fluffy.variedades.map((v) => ({
+    params: { slug: v.slug },
+    props: { v },
+  }));
+}
+
+const { v } = Astro.props;
+const faqs = (faqsData.variedades as Record<string, { q: string; a: string }[]>)[v.slug] ?? [];
+
+const cop = (n: number) => `$${n.toLocaleString('es-CO')} COP`;
+const usd = (n: number) => `$${n.toLocaleString('en-US')} USD`;
+
+const minCOP = Math.min(...v.variantes.map((v2) => v2.precioCOP));
+const maxCOP = Math.max(...v.variantes.map((v2) => v2.precioCOP));
+const minUSD = Math.min(...v.variantes.map((v2) => v2.precioUSD));
+const maxUSD = Math.max(...v.variantes.map((v2) => v2.precioUSD));
+
+const rangoCOP = minCOP === maxCOP ? cop(minCOP) : `${cop(minCOP)} - ${cop(maxCOP)}`;
+const rangoUSD = minUSD === maxUSD ? usd(minUSD) : `${usd(minUSD)} - ${usd(maxUSD)}`;
+
+const specLabels: Record<string, string> = {
+  peso: 'Peso adulto',
+  esperanzaVida: 'Esperanza de vida',
+  pelaje: 'Pelaje y Genética',
+  temperamento: 'Temperamento',
+  nivelActividad: 'Nivel de actividad',
+  apartamento: 'Apto para apartamento',
+  clima: 'Adaptación al clima',
+};
+
+const specIcons: Record<string, string> = {
+  peso: '⚖️',
+  esperanzaVida: '❤️',
+  pelaje: '🧬',
+  temperamento: '🎭',
+  nivelActividad: '🏃',
+  apartamento: '🏡',
+  clima: '🌡️',
+};
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: v.nombre,
+  description: v.resumen,
+  image: `${fluffy.site.domain}/images/variedades/${v.slug}.jpg`,
+  category: 'Mascotas > Perros',
+  brand: { '@type': 'Brand', name: fluffy.site.brand },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: minUSD,
+    highPrice: maxUSD,
+    offerCount: v.variantes.length,
+    availability: 'https://schema.org/PreOrder',
+    seller: { '@id': `${fluffy.site.domain}/#criadero` },
+  },
+};
+
+const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
+---
+
+<Base
+  title={`${v.nombre}: Precio, Colores y Características 2026`}
+  description={`¿Buscas un ${v.nombreCorto}? En 2026 cuesta desde ${rangoUSD} USD. Conoce sus cuidados, temperamento, pedigree AKC y garantía genética de salud.`}
+  schema={[productSchema]}
+  variedad={v.nombre}
+>
+  <main class="wrap">
+    <Breadcrumbs
+      items={[
+        { nombre: 'Inicio', url: '/' },
+        { nombre: 'Precios', url: '/precios-bulldog-fluffy/' },
+        { nombre: v.nombreCorto },
+      ]}
+    />
+
+    <div class="breed-hero">
+      <div>
+        <h1 style="margin-bottom: 20px;">{v.titulo}</h1>
+        <div class="answer-box">
+          <strong>Respuesta rápida:</strong> un <strong>{v.nombre}</strong> de Dinastía cuesta <strong>{rangoUSD}</strong> (o {rangoCOP}) en 2026, según la variante (portador o visual) y derechos de cría. Incluye registro de pedigree internacional, microchip ISO, vacunas completas y garantía médica por escrito.
+        </div>
+        <p class="lead" style="margin-top: 20px;">{v.resumen}</p>
+      </div>
+      <div class="breed-hero-image">
+        <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés Fluffy variedad ${v.nombre}`} class="reveal" />
+      </div>
+    </div>
+
+    <h2>🏛️ Precios del {v.nombreCorto} (Edición 2026)</h2>
+    <PriceTable filas={v.variantes} caption={`Tabla de precios para el ${v.nombre}`} esInternacional={false} />
+
+    <h2>📊 Características de la variedad {v.nombreCorto}</h2>
+    <ul class="spec-list" style="margin-bottom: 40px;">
+      {Object.entries(v.caracteristicas).map(([k, val]) => (
+        <li>
+          <div class="spec-icon-badge">{specIcons[k] || '🐾'}</div>
+          <div class="spec-info">
+            <span class="spec-label">{specLabels[k] ?? k}</span>
+            <span class="spec-value">{val}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <h2>🎨 Detalles de la variedad y cuidados</h2>
+    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 50px;">{v.contenido}</p>
+
+    <FaqSection faqs={faqs} titulo={`❓ Preguntas frecuentes sobre el ${v.nombreCorto}`} />
+
+    <WhatsAppCTA contexto={`un cachorro ${v.nombre}`} />
+
+    <ReviewsSection />
+
+    <h2>🐾 Otras variedades exclusivas</h2>
+    <div class="grid">
+      {otras.map((r) => {
+        const minVal = Math.min(...r.variantes.map((v2) => v2.precioUSD));
+        return (
+          <a class="card" href={`/colores/${r.slug}/`}>
+            <div class="card-image">
+              <img src={`/images/variedades/${r.slug}.jpg`} alt={`Bulldog Francés Fluffy - ${r.nombre}`} loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3>{r.nombre}</h3>
+              <span class="desde">Desde ${minVal.toLocaleString('en-US')} USD</span>
+              <p style="margin-top: 4px; font-weight: bold;">{r.perfil.tagline}</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </main>
+</Base>

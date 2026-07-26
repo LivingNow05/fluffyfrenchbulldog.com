@@ -1,0 +1,35 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import fluffy from '../data/fluffy.json';
+
+export interface Props {
+  /** Texto contextual, ej. "un Bulldog Francés Fluffy Blue" */
+  contexto?: string;
+}
+
+const { contexto = 'tu cachorro Bulldog Fluffy' } = Astro.props;
+const { site } = fluffy;
+const numero = site.whatsapp.replace(/[^\d]/g, '');
+const mensaje = encodeURIComponent(`Hola, me interesa ${contexto}. Quisiera ver fotos y detalles.`);
+---
+
+<div class="cta-box reveal">
+  <h2>¿Buscas {contexto}?</h2>
+  <p>
+    Escríbenos directamente por WhatsApp y te compartiremos fotos, videos en vivo, certificados de pedigree y detalles del envío seguro a tu ciudad (el valor del transporte suele rondar los $1.000 USD / $3.8M COP según la ubicación).
+  </p>
+  <a class="btn-whatsapp" href={`https://wa.me/${numero}?text=${mensaje}`} rel="noopener" target="_blank">
+    <WhatsAppIcon size={22} class="btn-wa-icon" />
+    <span>Consultar disponibilidad inmediata por WhatsApp</span>
+  </a>
+  <div class="badges" style="justify-content:center;">
+    {fluffy.site.afiliaciones.map((a) => <span class="badge">Registro {a}</span>)}
+  </div>
+
+  <div class="paw-trail" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
+  </div>
+</div>

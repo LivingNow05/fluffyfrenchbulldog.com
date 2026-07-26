@@ -1,0 +1,224 @@
+---
+interface Props {
+  variedad?: string;
+}
+
+const { variedad = 'general' } = Astro.props;
+---
+
+<div class="calc-box reveal" id="calculadora-comida">
+  <div class="calc-header">
+    <svg class="calc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+    </svg>
+    <div>
+      <h4>Calculadora Nutricional para Bulldog Fluffy</h4>
+      <p>Calcula la porción diaria recomendada de alimento holístico o BARF según el peso y edad de tu cachorro.</p>
+    </div>
+  </div>
+
+  <div class="calc-body">
+    <div class="calc-inputs">
+      <div class="input-group">
+        <label for="dog-weight">Peso de tu Bulldog (kg)</label>
+        <div class="range-container">
+          <input type="range" id="dog-weight" min="2" max="16" step="0.5" value="10.0" />
+          <span class="range-val" id="dog-weight-val">10.0 kg</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="dog-activity">Etapa de vida / Actividad</label>
+        <select id="dog-activity">
+          <option value="cachorro">Cachorro en desarrollo (2 a 8 meses)</option>
+          <option value="normal" selected>Adulto Actividad Estándar</option>
+          <option value="bajo">Adulto Mayor / Sedentario</option>
+          <option value="atleta">Alta Actividad / Reproductor</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card">
+        <span class="result-label">Porción Diaria Recomendada</span>
+        <div class="result-number">
+          <span id="result-grams">--</span> <span class="unit">gramos / día</span>
+        </div>
+        <p class="result-disclaimer" id="result-note">Dividir en 2 a 3 tomas diarias. Basado en alimento Super Premium (3.800 kcal/kg).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const container = document.getElementById('calculadora-comida');
+    if (!container) return;
+
+    const weightInput = container.querySelector('#dog-weight');
+    const weightVal = container.querySelector('#dog-weight-val');
+    const activitySelect = container.querySelector('#dog-activity');
+    const gramsText = container.querySelector('#result-grams');
+
+    function calculate() {
+      const weight = parseFloat(weightInput.value);
+      weightVal.textContent = weight.toFixed(1) + ' kg';
+
+      // RER Canino = 70 * (peso ^ 0.75)
+      const rer = 70 * Math.pow(weight, 0.75);
+
+      let factor = 1.6;
+      const activity = activitySelect.value;
+      if (activity === 'cachorro') factor = 2.5;
+      if (activity === 'bajo') factor = 1.2;
+      if (activity === 'atleta') factor = 2.0;
+
+      const der = rer * factor;
+      const kcalPerGram = 3.8;
+      const grams = Math.round(der / kcalPerGram);
+
+      let current = parseInt(gramsText.textContent) || 0;
+      const step = grams > current ? 1 : -1;
+      const duration = 200;
+      const steps = Math.abs(grams - current);
+      if (steps === 0) {
+        gramsText.textContent = grams;
+        return;
+      }
+      
+      const intervalTime = Math.max(5, Math.min(30, duration / steps));
+      const timer = setInterval(() => {
+        current += step;
+        gramsText.textContent = current;
+        if (current === grams) clearInterval(timer);
+      }, intervalTime);
+    }
+
+    weightInput.addEventListener('input', calculate);
+    activitySelect.addEventListener('change', calculate);
+    calculate();
+  })();
+</script>
+
+<style>
+  .calc-box {
+    margin: 40px auto;
+    max-width: 740px;
+  }
+  .calc-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+  }
+  .calc-header h4 {
+    margin: 0 0 2px;
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .calc-header p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+  .calc-body {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .calc-body {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+  .calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-group label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .range-container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .range-container input {
+    flex-grow: 1;
+    accent-color: var(--amber);
+    cursor: pointer;
+  }
+  .range-val {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--amber);
+    min-width: 65px;
+    text-align: right;
+  }
+  select {
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ink);
+    font-size: 0.92rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  select option {
+    background: #151518;
+    color: #f4f2ec;
+  }
+  :root.light-theme select {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(15, 23, 42, 0.12);
+  }
+  :root.light-theme select option {
+    background: #ffffff;
+    color: #0f172a;
+  }
+  select:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 12px var(--amber-glow);
+  }
+  .result-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .result-number {
+    font-size: 2.2rem;
+    font-weight: 850;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+  }
+  .result-number .unit {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .result-disclaimer {
+    margin: 0;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+  }
+</style>

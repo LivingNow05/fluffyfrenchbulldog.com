@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import PriceTable from '../components/PriceTable.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FaqSection from '../components/FaqSection.astro';
+import fluffy from '../data/fluffy.json';
+import faqsData from '../data/faqs.json';
+
+const todasLasFilas = fluffy.variedades.flatMap((v) =>
+  v.variantes.map((varItem) => ({
+    variedad: v.nombreCorto,
+    tipo: varItem.tipo,
+    registro: varItem.registro,
+    precioCOP: varItem.precioCOP,
+    precioMXN: varItem.precioMXN,
+    precioUSD: varItem.precioUSD,
+  }))
+);
+---
+
+<Base
+  title="Precios Bulldog Francés Fluffy 2026 | Dinastía Bulldog Fluffy"
+  description="Lista de precios oficial 2026 para Bulldog Francés Fluffy en Colombia, México y EE. UU. Precios de Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con pedigree AKC/FCI."
+>
+  <main class="wrap">
+    <Breadcrumbs
+      items={[
+        { nombre: 'Inicio', url: '/' },
+        { nombre: 'Precios Oficiales 2026' },
+      ]}
+    />
+
+    <h1 style="margin-top: 24px;">🏷️ Precios de Bulldog Francés Fluffy 2026</h1>
+    <div class="answer-box">
+      <strong>⚡ Guía de Precios Oficial:</strong> El valor de un cachorro Bulldog Francés Fluffy en 2026 oscila entre
+      <strong>$8.500.000 COP ($2.300 USD)</strong> para portadores genéticos de pelo largo y hasta
+      <strong>$26.000.000 COP ($6.800 USD)</strong> para variedades Fluffy Visual Isabella con pedigree completo y derechos de cría.
+    </div>
+
+    <p class="lead">
+      En Dinastía Bulldog Fluffy publicamos nuestros precios con total transparencia. Cada ejemplar entregado incluye panel de ADN genético, esquema de vacunación al día, microchip de identificación ISO y garantía de salud genético firmada por contrato.
+    </p>
+
+    <PriceTable filas={todasLasFilas} caption="Lista Completa de Precios Bulldog Francés Fluffy 2026" conVariedad={true} />
+
+    <section style="margin: 40px 0;">
+      <h2>📊 Factores que Influyen en el Precio de un Fluffy</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🧬 1. Genética de Color Exótico</h3>
+          <p>Combinaciones raras como Isabella (doble chocolate + azul) o Merlé arlequinado requieren generaciones de selección limpia.</p>
+        </div>
+        <div class="card">
+          <h3>✨ 2. Fluffy Visual vs Portador</h3>
+          <p>Un ejemplar Fluffy Visual (Lh/Lh) exhibe el manto largo sedoso. Un portador (Lh/n) transmite la genética sin mostrar el manto abullonado.</p>
+        </div>
+        <div class="card">
+          <h3>📜 3. Pedigree y Derechos de Cría</h3>
+          <p>Los ejemplares de compañía se entregan esterilizados. Los ejemplares con derechos de cría incluyen registro AKC/FCI completo.</p>
+        </div>
+      </div>
+    </section>
+
+    <FaqSection faqs={faqsData.general} titulo="Dudas frecuentes sobre valores y formas de pago" />
+
+    <WhatsAppCTA contexto="tu Bulldog Fluffy con cotización personalizada" />
+  </main>
+</Base>

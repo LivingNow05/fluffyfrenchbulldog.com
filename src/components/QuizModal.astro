@@ -1,0 +1,462 @@
+---
+// Componente Quiz Modal de Calificación de Leads — Dinastía Bulldog Fluffy
+// Modal Quiz Interactivo de WhatsApp para consulta de disponibilidad
+import WhatsAppIcon from './WhatsAppIcon.astro';
+---
+
+<div id="qm-overlay" class="qm-overlay" style="display:none;" aria-hidden="true" role="dialog" aria-modal="true">
+  <div id="qm-backdrop" class="qm-backdrop"></div>
+  <div id="qm-card" class="qm-card">
+    <button type="button" id="qm-close" class="qm-close" aria-label="Cerrar modal">&times;</button>
+    
+    <div class="qm-head">
+      <span id="qm-badge" class="qm-badge">ENCUENTRA TU BULLDOG FLUFFY IDEAL</span>
+      <h3 id="qm-title" class="qm-title">Cuéntanos un poco sobre ti</h3>
+      <p id="qm-subtitle" class="qm-subtitle">Te recomendamos la variedad de Bulldog Fluffy perfecta según tu perfil, estilo de vida y presupuesto.</p>
+    </div>
+
+    <div id="qm-progress" class="qm-progress">
+      <!-- Pasos inyectados dinámicamente por quiz-modal.js -->
+    </div>
+
+    <div id="qm-steps" class="qm-steps">
+      <!-- Pasos inyectados dinámicamente por quiz-modal.js -->
+    </div>
+  </div>
+</div>
+
+<script src="/scripts/quiz-modal.js" is:inline></script>
+
+<style is:global>
+  .qm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .qm-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 8, 12, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  :root.light-theme .qm-backdrop {
+    background: rgba(240, 240, 245, 0.85);
+  }
+
+  .qm-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #141419;
+    border: 1px solid rgba(234, 179, 8, 0.25);
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
+    box-sizing: border-box;
+    color: #f4f4f5;
+  }
+
+  :root.light-theme .qm-card {
+    background: #ffffff;
+    border-color: rgba(202, 138, 4, 0.3);
+    color: #18181b;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2);
+  }
+
+  .qm-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #a1a1aa;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 6px 10px;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .qm-close:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  :root.light-theme .qm-close:hover {
+    color: #18181b;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .qm-head {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .qm-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    color: #eab308;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  :root.light-theme .qm-badge {
+    background: rgba(202, 138, 4, 0.12);
+    border-color: rgba(202, 138, 4, 0.3);
+    color: #ca8a04;
+  }
+
+  .qm-title {
+    font-family: var(--font-display, sans-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: inherit;
+    margin: 0 0 6px 0;
+    line-height: 1.25;
+  }
+
+  .qm-subtitle {
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  :root.light-theme .qm-subtitle {
+    color: #52525b;
+  }
+
+  .qm-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .qm-progress-seg {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  :root.light-theme .qm-progress-seg {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .qm-progress-seg.is-active {
+    background: #eab308;
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.5);
+  }
+
+  :root.light-theme .qm-progress-seg.is-active {
+    background: #ca8a04;
+    box-shadow: 0 0 8px rgba(202, 138, 4, 0.4);
+  }
+
+  .qm-steps {
+    transition: opacity 0.25s ease;
+  }
+
+  .qm-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: inherit;
+    margin: 0 0 14px 0;
+  }
+
+  .qm-hint {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    margin: -8px 0 14px 0;
+  }
+
+  :root.light-theme .qm-hint {
+    color: #71717a;
+  }
+
+  .qm-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .qm-options--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .qm-options--grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .qm-opt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  :root.light-theme .qm-opt {
+    background: #f4f4f5;
+    border-color: #e4e4e7;
+  }
+
+  .qm-opt:hover {
+    background: rgba(234, 179, 8, 0.08);
+    border-color: rgba(234, 179, 8, 0.4);
+    transform: translateY(-2px);
+  }
+
+  :root.light-theme .qm-opt:hover {
+    background: rgba(202, 138, 4, 0.08);
+    border-color: rgba(202, 138, 4, 0.4);
+  }
+
+  .qm-opt-emoji {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .qm-opt-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: inherit;
+  }
+
+  .qm-opt-sub {
+    font-size: 0.78rem;
+    color: #a1a1aa;
+    margin-top: 2px;
+  }
+
+  :root.light-theme .qm-opt-sub {
+    color: #71717a;
+  }
+
+  .qm-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    color: inherit;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  :root.light-theme .qm-input {
+    background: #f4f4f5;
+    border-color: #d4d4d8;
+  }
+
+  .qm-input:focus {
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+  }
+
+  :root.light-theme .qm-input:focus {
+    border-color: #ca8a04;
+    box-shadow: 0 0 10px rgba(202, 138, 4, 0.25);
+  }
+
+  .qm-next {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    color: #000000;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+  }
+
+  .qm-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
+  }
+
+  .qm-next--wa {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: #ffffff;
+    margin-top: 12px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  }
+
+  .qm-next--wa:hover {
+    box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+  }
+
+  .qm-result {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .qm-rec {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :root.light-theme .qm-rec {
+    background: #f4f4f5;
+    border-color: #e4e4e7;
+  }
+
+  .qm-rec.is-selected {
+    background: rgba(234, 179, 8, 0.12);
+    border-color: #eab308;
+    box-shadow: 0 0 14px rgba(234, 179, 8, 0.25);
+  }
+
+  :root.light-theme .qm-rec.is-selected {
+    background: rgba(202, 138, 4, 0.12);
+    border-color: #ca8a04;
+    box-shadow: 0 0 14px rgba(202, 138, 4, 0.2);
+  }
+
+  .qm-rec-emoji {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .qm-rec-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .qm-rec-name {
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .qm-rec-badge {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #eab308;
+    color: #000000;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  :root.light-theme .qm-rec-badge {
+    background: #ca8a04;
+    color: #ffffff;
+  }
+
+  .qm-rec-tag {
+    font-size: 0.78rem;
+    color: #a1a1aa;
+  }
+
+  :root.light-theme .qm-rec-tag {
+    color: #71717a;
+  }
+
+  .qm-rec-price {
+    text-align: right;
+    font-size: 0.72rem;
+    color: #a1a1aa;
+    flex-shrink: 0;
+    line-height: 1.25;
+  }
+
+  .qm-rec-price strong {
+    font-size: 0.95rem;
+    color: #eab308;
+    display: block;
+    margin-top: 1px;
+  }
+
+  :root.light-theme .qm-rec-price strong {
+    color: #ca8a04;
+  }
+
+  .qm-rec-price small {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+  }
+
+  :root.light-theme .qm-rec-price small {
+    color: #71717a;
+  }
+
+  .qm-link {
+    display: block;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #eab308;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: opacity 0.2s;
+  }
+
+  :root.light-theme .qm-link {
+    color: #ca8a04;
+  }
+
+  .qm-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+  }
+</style>

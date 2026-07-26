@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import fluffy from '../data/fluffy.json';
+
+const { site } = fluffy;
+---
+
+<Base
+  title="Sobre el Criadero | Dinastía Bulldog Fluffy"
+  description="Conoce el criadero Dinastía Bulldog Fluffy. Nuestra ética de crianza, certificaciones de pedigree AKC, FCI y ACCC, tests genéticos de ADN y envíos aéreos internacionales."
+>
+  <main class="wrap">
+    <Breadcrumbs
+      items={[
+        { nombre: 'Inicio', url: '/' },
+        { nombre: 'Sobre el Criadero' },
+      ]}
+    />
+
+    <h1 style="margin-top: 24px;">🐾 Sobre Dinastía Bulldog Fluffy</h1>
+    <p class="lead">
+      Somos un criadero especializado en la selección, conservación y mejora genética del <strong>Bulldog Francés Fluffy (pelo largo exótico)</strong> en Colombia con proyección internacional.
+    </p>
+
+    <div class="answer-box">
+      <strong>🎯 Nuestra Misión:</strong> Criar cachorros Bulldog Francés Fluffy de estructura anatómica perfecta, excelente capacidad respiratoria, salud genética certificada por ADN y un temperamento equilibrado ideal para convivir en familia.
+    </div>
+
+    <section style="margin: 40px 0;">
+      <h2>🩺 Estándares Médicos y Genéticos</h2>
+      <ul class="spec-list">
+        <li>
+          <div class="spec-icon-badge">🧬</div>
+          <div class="spec-info">
+            <span class="spec-label">Panel de ADN Certificado</span>
+            <span class="spec-value">Todos nuestros reproductores cuentan con análisis genético de laboratorio para descartar cataratas juveniles, mielopatía degenerativa y cistinuria.</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">❤️</div>
+          <div class="spec-info">
+            <span class="spec-label">Salud Cardíaca & Articular</span>
+            <span class="spec-value">Monitoreo veterinario constante con ecocardiogramas y evaluaciones de caderas antes de cada cruce.</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">🏡</div>
+          <div class="spec-info">
+            <span class="spec-label">Socialización Temprana</span>
+            <span class="spec-value">Cachorros criados en ambiente familiar, expuestos a estímulos sensoriales, ruidos cotidianos y convivencia afectuosa.</span>
+          </div>
+        </li>
+        <li>
+          <div class="spec-icon-badge">✈️</div>
+          <div class="spec-info">
+            <span class="spec-label">Envíos con Niñera Aérea</span>
+            <span class="spec-value">Garantizamos que tu cachorro viaje cómodo en cabina climatizada hasta tu ciudad en Colombia, México, EE. UU. o España.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section style="margin: 40px 0;">
+      <h2>📜 Nuestras Afiliaciones</h2>
+      <div class="badges" style="font-size: 1.1rem; gap: 14px;">
+        {site.afiliaciones.map((a) => <span class="badge" style="padding: 10px 20px;">📜 Registro Oficial {a}</span>)}
+      </div>
+    </section>
+
+    <WhatsAppCTA contexto="una visita o consulta con nuestros criadores" />
+  </main>
+</Base>

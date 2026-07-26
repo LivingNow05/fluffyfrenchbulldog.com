@@ -1,0 +1,59 @@
+---
+import fluffy from '../data/fluffy.json';
+
+export interface Props {
+  filas: { variedad?: string; tipo: string; registro: string; precioCOP: number; precioMXN?: number; precioUSD: number }[];
+  caption: string;
+  conVariedad?: boolean;
+  pais?: string;
+}
+
+const { filas, caption, conVariedad = false, pais = 'Colombia' } = Astro.props;
+const esInternacional = pais.toLowerCase() !== 'colombia';
+
+const cop = (n: number) => `$${n.toLocaleString('es-CO')} COP`;
+const mxn = (n?: number) => n ? `$${n.toLocaleString('es-MX')} MXN` : 'N/A';
+const usd = (n: number) => `$${n.toLocaleString('en-US')} USD`;
+---
+
+<span class="updated-tag">✓ Precios verificados: {fluffy.site.preciosVerificados} ({esInternacional ? 'Tarifas Internacionales USD' : 'Tarifas Colombia COP'})</span>
+<div class="price-table-scroll">
+  <table class="price-table">
+    <caption class="sr-only" style="display:none;">{caption}</caption>
+    <thead>
+      <tr>
+        {conVariedad && <th scope="col">Variedad / Color</th>}
+        <th scope="col">Tipo de Ejemplar</th>
+        <th scope="col">Registro / Pedigree</th>
+        {esInternacional ? (
+          <th scope="col" class="highlighted-header">Precio Internacional (USD)</th>
+        ) : (
+          <>
+            <th scope="col" class="highlighted-header">Precio (COP)</th>
+            <th scope="col">Precio USD</th>
+          </>
+        )}
+      </tr>
+    </thead>
+    <tbody>
+      {filas.map((f) => (
+        <tr>
+          {conVariedad && <td><strong>{f.variedad}</strong></td>}
+          <td>{f.tipo}</td>
+          <td>{f.registro}</td>
+          {esInternacional ? (
+            <td class="num">{usd(f.precioUSD)}</td>
+          ) : (
+            <>
+              <td class="num">{cop(f.precioCOP)}</td>
+              <td class="num">{usd(f.precioUSD)}</td>
+            </>
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="price-note">
+  * Precios de nuestros ejemplares sujetos a disponibilidad de camadas. Incluyen esquema de vacunación completo, desparasitación al día, microchip ISO, prueba de ADN genético y contrato con garantía de salud por 2 años.
+</p>

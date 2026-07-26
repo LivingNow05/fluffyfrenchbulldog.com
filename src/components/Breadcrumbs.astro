@@ -1,0 +1,28 @@
+---
+export interface Props {
+  items: { nombre: string; url?: string }[];
+}
+
+const { items } = Astro.props;
+const siteUrl = Astro.site ? Astro.site.href : 'https://bulldogfluffy.com.co';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.nombre,
+    ...(it.url ? { item: new URL(it.url, siteUrl).href } : {}),
+  })),
+};
+---
+
+<nav class="breadcrumbs" aria-label="Miga de pan">
+  <ol>
+    {items.map((it) => (
+      <li>{it.url ? <a href={it.url}>{it.nombre}</a> : it.nombre}</li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

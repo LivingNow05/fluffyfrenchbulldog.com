@@ -1,0 +1,204 @@
+---
+import fluffy from '../data/fluffy.json';
+
+const { testimonios } = fluffy;
+
+// Asignamos una imagen específica a cada testimonio
+const reviews = testimonios.map((t, idx) => ({
+  ...t,
+  img: `/images/testimonios/testimonio_real_${idx + 1}.jpg`,
+  avatar: t.nombre.charAt(0),
+  colorBg: idx === 0 ? 'var(--amber)' : idx === 1 ? '#e8a63d' : '#8a77f0',
+}));
+
+// Duplicamos el set de testimonios para asegurar fluidez en el marquee infinito
+const duplicatedReviews = [...reviews, ...reviews, ...reviews];
+---
+
+<section id="reviews" class="reviews-section reveal">
+  <h2 class="section-title">⭐ Opiniones de la Familia Dinastía</h2>
+  <p class="lead" style="text-align:center; margin-bottom:30px;">
+    Conoce la experiencia de familias reales en Colombia e Hispanoamérica que ya disfrutan de la compañía y pureza de nuestros Bulldog Francés Fluffy.
+  </p>
+
+  <div class="marquee-container fade-edges">
+    <div class="marquee-track pause-animation">
+      {duplicatedReviews.map((r, idx) => (
+        <div class="review-card" key={idx}>
+          <div class="review-image">
+            <img src={r.img} alt={`Bulldog Fluffy de ${r.nombre} en ${r.ciudad}`} loading="lazy" />
+          </div>
+          <div class="review-header">
+            <div class="avatar" style={`background-color: ${r.colorBg};`}>{r.avatar}</div>
+            <div class="user-info">
+              <div class="name-badge">
+                <span class="username">{r.nombre}</span>
+                <span class="verified-badge">✓ Verificado</span>
+              </div>
+              <span class="user-city">Recibido en {r.ciudad}</span>
+            </div>
+          </div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"{r.texto}"</p>
+          <span class="review-tag">Variedad: {r.variedad}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    margin: 80px 0;
+    overflow: hidden;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 850;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 16px 0;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+  }
+  .pause-animation:hover {
+    animation-play-state: paused;
+  }
+  .review-card {
+    width: 380px;
+    flex-shrink: 0;
+    background: rgba(21, 21, 25, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(244, 242, 236, 0.08);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s var(--ease-out), border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .review-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(232, 166, 61, 0.4);
+    box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.45), 0 0 24px var(--amber-glow);
+  }
+  :root.light-theme .review-card {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.04);
+  }
+  :root.light-theme .review-card:hover {
+    border-color: rgba(217, 119, 6, 0.4);
+    box-shadow: 0 18px 38px -8px rgba(217, 119, 6, 0.15), 0 0 20px rgba(217, 119, 6, 0.12);
+  }
+  .review-image {
+    width: 100%;
+    height: 180px;
+    border-radius: calc(var(--radius) - 4px);
+    overflow: hidden;
+  }
+  .review-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .review-card:hover .review-image img {
+    transform: scale(1.06);
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .name-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .username {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .verified-badge {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .user-city {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .stars {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  .review-text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .review-tag {
+    align-self: flex-start;
+    background: rgba(232, 166, 61, 0.12);
+    border: 1px solid rgba(232, 166, 61, 0.25);
+    color: var(--amber-bright);
+    font-size: 0.78rem;
+    font-weight: 750;
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  :root.light-theme .review-tag {
+    background: rgba(217, 119, 6, 0.08);
+    border-color: rgba(217, 119, 6, 0.22);
+    color: #b45309;
+  }
+
+  @media (max-width: 640px) {
+    .review-card {
+      width: 320px;
+      padding: 18px;
+    }
+    .review-image {
+      height: 140px;
+    }
+  }
+</style>

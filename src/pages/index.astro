@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import BulldogIcon from '../components/BulldogIcon.astro';
+import CalculadoraComida from '../components/CalculadoraComida.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import fluffy from '../data/fluffy.json';
+import faqsData from '../data/faqs.json';
+
+const { site, variedades } = fluffy;
+const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
+const desde = (v: (typeof variedades)[number]) => Math.min(...v.variantes.map((v2) => v2.precioCOP));
+---
+
+<Base
+  title="Dinastía Bulldog Fluffy | Criadero de Bulldog Francés Fluffy con Pedigree"
+  description="Criadero especializado en Bulldog Francés Fluffy de raza pura. Variedades Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con registro AKC, FCI y garantía genética."
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-kicker">Criadero Certificado · AKC · FCI · ACCC</p>
+          <h1>Criadero de Bulldog Francés Fluffy <em>de Raza Pura</em></h1>
+          <p class="lead">
+            <strong>Exclusividad genética, salud garantizada y belleza insuperable.</strong> En {site.brand} nos dedicamos a la crianza ética del Bulldog Francés de pelo largo (gen Fluffy). Cada cachorro incluye microchip ISO, test de ADN genético y envío seguro con niñera aérea.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn--amber" href="/precios-bulldog-fluffy/">Ver Precios 2026</a>
+            <a class="btn btn--ghost" href="/destinos/">📍 Buscar Mi Ciudad</a>
+            <a class="btn btn--whatsapp" href={waHref} target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+              <WhatsAppIcon size={18} class="cta-icon" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        <BulldogIcon />
+      </div>
+      <div class="hero-stats">
+        <div><strong>5</strong><span>variedades exóticas</span></div>
+        <div><strong>+100</strong><span>ciudades de cobertura</span></div>
+        <div><strong>100%</strong><span>pedigree oficial AKC/FCI</span></div>
+        <div><strong>+12</strong><span>países con envíos aéreos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    {/* SECCIÓN DE CIUDADES DESTACADAS */}
+    <h2 id="cobertura" class="reveal">📍 Entregas y Cobertura por Ciudad</h2>
+    <p class="lead reveal">Realizamos envíos seguros con niñera aérea en cabina climatizada a más de 100 ciudades. Haz clic en tu ciudad para conocer el protocolo de llegada y la historia local.</p>
+    
+    <div class="grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+      {[
+        { city: 'Bogotá', country: 'Colombia', airport: 'El Dorado (BOG)', slug: 'bulldog-frances-fluffy-bogota' },
+        { city: 'Medellín', country: 'Colombia', airport: 'José María Córdova (MDE)', slug: 'bulldog-frances-fluffy-medellin' },
+        { city: 'Cali', country: 'Colombia', airport: 'Alfonso Bonilla (CLO)', slug: 'bulldog-frances-fluffy-cali' },
+        { city: 'Barranquilla', country: 'Colombia', airport: 'Ernesto Cortissoz (BAQ)', slug: 'bulldog-frances-fluffy-barranquilla' },
+        { city: 'CDMX', country: 'México', airport: 'Benito Juárez (MEX)', slug: 'bulldog-frances-fluffy-cdmx' },
+        { city: 'Guadalajara', country: 'México', airport: 'Guadalajara (GDL)', slug: 'bulldog-frances-fluffy-guadalajara' },
+        { city: 'Monterrey', country: 'México', airport: 'Monterrey (MTY)', slug: 'bulldog-frances-fluffy-monterrey' },
+        { city: 'Buenos Aires', country: 'Argentina', airport: 'Ezeiza (EZE)', slug: 'bulldog-frances-fluffy-buenos-aires' },
+        { city: 'Santiago', country: 'Chile', airport: 'Arturo Merino (SCL)', slug: 'bulldog-frances-fluffy-santiago' },
+        { city: 'Lima', country: 'Perú', airport: 'Jorge Chávez (LIM)', slug: 'bulldog-frances-fluffy-lima' },
+        { city: 'São Paulo', country: 'Brasil', airport: 'Guarulhos (GRU)', slug: 'bulldog-frances-fluffy-sao-paulo' },
+        { city: 'Panamá', country: 'Panamá', airport: 'Tocumen (PTY)', slug: 'bulldog-frances-fluffy-panama' }
+      ].map((item) => (
+        <a class="card" href={`/${item.slug}/`} style="padding: 18px;">
+          <div class="card-header-icon" style="margin-bottom: 4px;">
+            <h3 style="font-size: 1.1rem; margin: 0;">📍 {item.city}</h3>
+            <span class="badge" style="font-size: 0.72rem;">{item.country}</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-soft); margin: 0;">✈️ {item.airport}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="reveal" style="text-align: center; margin: 28px 0 50px;">
+      <a class="btn btn--amber" href="/destinos/">Ver los 100+ Destinos Disponibles →</a>
+    </div>
+
+    <h2 id="variedades" class="reveal">🎨 Nuestras Variedades de Bulldog Fluffy</h2>
+    <p class="lead reveal">Explora nuestros linajes exclusivos de pelo largo (Gen L4/L1), seleccionados por su estructura musculosa, salud certificada y temperamento faldero.</p>
+    <div class="grid reveal">
+      {variedades.map((v) => {
+        const minUsd = Math.min(...v.variantes.map((v2) => v2.precioUSD));
+        return (
+          <a class="card" href={`/colores/${v.slug}/`}>
+            <div class="card-image" style="width: 100%; height: 220px; border-radius: 12px; overflow: hidden; margin-bottom: 14px;">
+              <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés Fluffy - ${v.nombre}`} style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
+            </div>
+            <div class="card-header-icon">
+              <h3>{v.nombre}</h3>
+              <span class="badge">🐾 Visual Lh</span>
+            </div>
+            <div class="card-body">
+              <span class="desde">Desde ${desde(v).toLocaleString('es-CO')} COP <small>(${minUsd.toLocaleString('en-US')} USD)</small></span>
+              <p style="margin-top:4px;"><strong>{v.perfil.tagline}</strong></p>
+              <p style="font-size:0.86rem; margin-top:6px; color:var(--ink-soft);">{v.resumen}</p>
+              <div class="badges" style="margin-top:12px;">
+                <span class="badge">{v.caracteristicas.pelaje.split(' ')[0]}</span>
+                <span class="badge">📜 Pedigree AKC</span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <h2 class="reveal">⭐ ¿Por qué elegir Dinastía Bulldog Fluffy?</h2>
+    <div class="grid reveal">
+      <div class="card">
+        <h3>🛡️ 1. Garantía Genética por 2 Años</h3>
+        <p>Evaluamos a nuestros padres con pruebas de ADN para descartar Cataratas Juveniles (HC) y Mielopatía Degenerativa (DM).</p>
+      </div>
+      <div class="card">
+        <h3>✈️ 2. Niñera Aérea Personalizada</h3>
+        <p>Entregamos tu cachorro en mano en el aeropuerto de tu ciudad en Colombia, México, EE. UU. o España en cabina climatizada.</p>
+      </div>
+      <div class="card">
+        <h3>📜 3. Pedigree Internacional AKC / FCI</h3>
+        <p>Garantía de pureza racial certificada con trazabilidad completa de líneas de sangre americanas y europeas.</p>
+      </div>
+    </div>
+
+    <CalculadoraComida />
+
+    <ReviewsSection />
+
+    <FaqSection faqs={faqsData.general} titulo="Preguntas frecuentes sobre el criadero y la raza" />
+
+    <WhatsAppCTA contexto="un cachorro Bulldog Francés Fluffy" />
+  </main>
+</Base>
