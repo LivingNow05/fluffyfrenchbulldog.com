@@ -261,6 +261,7 @@ const allSchema = [localBusiness, ...schema];
       document.querySelectorAll('.reveal, .cta-box').forEach((el) => observer.observe(el));
     </script>
     <a class="whatsapp-float" href={`https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener" aria-label="Hablar por WhatsApp">
+      <span class="whatsapp-float-tooltip">💬 ¿Hablamos por WhatsApp?</span>
       <WhatsAppIcon size={28} />
     </a>
 
