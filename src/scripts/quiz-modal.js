@@ -239,10 +239,10 @@
             <button type="button" class="qm-rec${i === 0 ? ' is-top is-selected' : ''}" data-slug="${r.slug}">
               <span class="qm-rec-emoji">🐶</span>
               <span class="qm-rec-info">
-                <span class="qm-rec-name">${r.nombreCorto || r.nombre}${i === 0 ? '<span class="qm-rec-badge">Mejor Match</span>' : ''}</span>
+                <span class="qm-rec-name">${r.nombreCorto || r.nombre}${i === 0 ? '<span class="qm-rec-badge">MEJOR MATCH</span>' : ''}</span>
                 <span class="qm-rec-tag">${(r.perfil && r.perfil.tagline) || ''}</span>
               </span>
-              <span class="qm-rec-price">desde<br><strong>${cop(r.desde)}</strong><br><small>(${usd(r.desdeUSD)})</small></span>
+              <span class="qm-rec-price">desde<br><strong>${usd(r.desdeUSD)}</strong><br><small>(${cop(r.desde)})</small></span>
             </button>`
             )
             .join('')}
