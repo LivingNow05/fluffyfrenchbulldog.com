@@ -384,15 +384,41 @@ a:hover { color: var(--amber-bright); }
 .btn-all-cities:hover {
   text-decoration: underline !important;
 }
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  text-decoration: none !important;
+  color: var(--moon) !important;
   white-space: nowrap;
   letter-spacing: -0.015em;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  border-bottom: none !important;
 }
-.logo-text { color: var(--moon); }
-.logo-text span { color: var(--amber); }
+.logo:hover {
+  text-decoration: none !important;
+  opacity: 0.92;
+}
+
+.logo-text {
+  color: var(--moon);
+  font-weight: 800;
+  text-decoration: none !important;
+}
+:root.light-theme .logo-text {
+  color: #0f172a !important;
+}
+
+.logo-text span {
+  color: var(--amber);
+}
+:root.light-theme .logo-text span {
+  color: #d97706 !important;
+}
 .logo svg { display: block; flex-shrink: 0; }
 
 .site-nav { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }

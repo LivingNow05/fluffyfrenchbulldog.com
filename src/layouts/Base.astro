@@ -5,6 +5,7 @@ import '../styles/global.css';
 import fluffy from '../data/fluffy.json';
 import QuizModal from '../components/QuizModal.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import BulldogIcon from '../components/BulldogIcon.astro';
 
 export interface Props {
   title: string;
@@ -91,6 +92,7 @@ const allSchema = [localBusiness, ...schema];
     <header class="site-header">
       <div class="wrap">
         <a class="logo" href="/" aria-label="Dinastía Bulldog Fluffy — Inicio">
+          <BulldogIcon size={34} class="logo-bulldog" />
           <span class="logo-text">Dinastía Bulldog <span>Fluffy</span></span>
         </a>
         <nav class="site-nav" aria-label="Navegación principal">
