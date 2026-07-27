@@ -1757,7 +1757,8 @@ table.price-table {
 }
 
 /* Tarjetas de Resultado / Recomendación (.qm-rec) */
-.qm-recs {
+.qm-recs,
+.qm-result {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1766,20 +1767,24 @@ table.price-table {
 
 .qm-rec {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(244, 242, 236, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(244, 242, 236, 0.12);
   border-radius: 16px;
-  padding: 12px 14px;
+  padding: 14px 18px;
   cursor: pointer;
   transition: all 0.25s var(--ease-out);
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  color: #fcfbfa !important;
 }
 
 :root.light-theme .qm-rec {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid rgba(15, 23, 42, 0.08);
+  color: #0f172a !important;
 }
 
 .qm-rec:hover {
@@ -1797,7 +1802,7 @@ table.price-table {
 
 .qm-rec.is-selected {
   border-color: var(--amber-bright);
-  background: linear-gradient(135deg, rgba(232, 166, 61, 0.16), rgba(21, 21, 26, 0.8));
+  background: linear-gradient(135deg, rgba(232, 166, 61, 0.16), rgba(21, 21, 26, 0.9));
   box-shadow: 0 6px 20px rgba(232, 166, 61, 0.25), inset 0 0 12px rgba(232, 166, 61, 0.1);
 }
 
@@ -1807,6 +1812,73 @@ table.price-table {
   box-shadow: 0 6px 20px rgba(217, 119, 6, 0.15);
 }
 
+.qm-rec-emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.qm-rec-info,
+.qm-rec-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  text-align: left;
+}
+
+.qm-rec-name,
+.qm-rec-title {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1rem;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+:root.light-theme .qm-rec-name,
+:root.light-theme .qm-rec-title {
+  color: #0f172a !important;
+}
+
+.qm-rec-tag,
+.qm-rec-desc {
+  font-size: 0.82rem;
+  color: rgba(244, 242, 236, 0.75) !important;
+  line-height: 1.4;
+}
+
+:root.light-theme .qm-rec-tag,
+:root.light-theme .qm-rec-desc {
+  color: #475569 !important;
+}
+
+.qm-rec-price {
+  font-size: 0.82rem;
+  color: rgba(244, 242, 236, 0.7) !important;
+  text-align: right;
+  line-height: 1.35;
+  margin-left: auto;
+}
+
+:root.light-theme .qm-rec-price {
+  color: #64748b !important;
+}
+
+.qm-rec-price strong {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--amber-bright) !important;
+  display: block;
+}
+
+:root.light-theme .qm-rec-price strong {
+  color: #d97706 !important;
+}
+
 .qm-rec-badge {
   align-self: flex-start;
   font-size: 0.68rem;
@@ -1814,7 +1886,7 @@ table.price-table {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   background: linear-gradient(135deg, var(--amber-bright), var(--amber));
-  color: #0c0c0e;
+  color: #0c0c0e !important;
   padding: 3px 10px;
   border-radius: 999px;
   box-shadow: 0 2px 8px var(--amber-glow);
@@ -1822,55 +1894,21 @@ table.price-table {
 
 :root.light-theme .qm-rec-badge {
   background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: #ffffff;
+  color: #ffffff !important;
   box-shadow: 0 2px 8px rgba(217, 119, 6, 0.25);
 }
 
 .qm-rec-badge--secondary {
   background: rgba(244, 242, 236, 0.1);
-  color: var(--moon);
+  color: var(--moon) !important;
   box-shadow: none;
   border: 1px solid rgba(244, 242, 236, 0.15);
 }
 
 :root.light-theme .qm-rec-badge--secondary {
   background: rgba(15, 23, 42, 0.06);
-  color: #0f172a;
+  color: #0f172a !important;
   border: 1px solid rgba(15, 23, 42, 0.12);
-}
-
-.qm-rec-body {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.qm-rec-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.98rem;
-  color: var(--moon);
-}
-
-:root.light-theme .qm-rec-title {
-  color: #0f172a;
-}
-
-.qm-rec-desc {
-  font-size: 0.8rem;
-  color: var(--moon-soft);
-  line-height: 1.4;
-}
-
-:root.light-theme .qm-rec-desc {
-  color: #475569;
-}
-
-.qm-rec-price {
-  font-size: 1.08rem;
-  font-weight: 800;
-  color: var(--amber-bright);
-  margin-top: 4px;
 }
 
 /* ─── Floating WhatsApp Button with Tooltip & Pulse ─────────────────────────── */
