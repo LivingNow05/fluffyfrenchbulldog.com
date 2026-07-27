@@ -91,7 +91,7 @@ const locations = rawRows.map((row) => {
   const ciudad = h1.replace(/Bulldog Francés Fluffy en /gi, '').replace(/Bulldog Francês Fluffy en /gi, '').trim();
   const pais = row['País'] || 'Colombia';
   const aeropuerto = row['Aeropuerto'] || 'Aeropuerto Local';
-  const moneda = row['Moneda'] || 'COP';
+  const moneda = row['Moneda'] || 'USD';
 
   return {
     slug: cleanSlug,
@@ -190,7 +190,7 @@ const FLAG_MAP: Record<string, string> = {
             <a class="card" href={loc.url}>
               <div class="card-header-icon">
                 <h3 style="font-size: 1.15rem;">{loc.ciudad}</h3>
-                <span class="badge">{loc.pais.toLowerCase() === 'colombia' ? 'COP' : 'USD'}</span>
+                <span class="badge">USD</span>
               </div>
               <div class="card-body">
                 <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px;">

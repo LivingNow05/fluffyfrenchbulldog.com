@@ -10,7 +10,6 @@
     ? CATALOGO.find((r) => r.nombre === razaContexto || r.slug === razaContexto || r.nombreCorto === razaContexto)
     : null;
 
-  const cop = (n) => '$' + Number(n).toLocaleString('es-CO') + ' COP';
   const usd = (n) => '$' + Number(n).toLocaleString('en-US') + ' USD';
 
   // Detección de ciudad por el título ("... en Bogotá") como respaldo.
@@ -24,57 +23,33 @@
     }
   }
 
-  // ─── Presupuestos: techos en COP para filtrar el catálogo ─────────────────────
+  // ─── Presupuestos en USD ─────────────────────
   const PRESUPUESTOS = {
-    inicial: { techo: 12000000, label: 'Inicial ($8.5M – $12M COP / $2.3K – $3K USD)' },
-    medio: { techo: 16000000, label: 'Medio ($12M – $16M COP / $3K – $4.2K USD)' },
-    premium: { techo: 22000000, label: 'Premium Exclusivo ($16M – $22M COP / $4.2K – $5.8K USD)' },
-    show: { techo: Infinity, label: 'Calidad Show / Isabella ($22M+ COP / $5.8K+ USD)' },
+    inicial: { techo: 12000000, label: '$2,300 – $3,000 USD' },
+    medio: { techo: 16000000, label: '$3,000 – $4,200 USD' },
+    premium: { techo: 22000000, label: '$4,200 – $5,800 USD' },
+    show: { techo: Infinity, label: '$5,800+ USD' },
   };
 
-  // ─── Pasos del quiz ──────────────────────────────────────────────────────────
+  // ─── Pasos del quiz (Embudo ágil de 3 pasos) ──────────────────────────────────
   const getBaseSteps = () => [
     {
-      key: 'vivienda',
-      question: '1. ¿Dónde vivirá tu cachorro Bulldog Fluffy?',
-      options: [
-        { value: 'Apartamento', emoji: '🏢', label: 'Apartamento', sub: 'Espacio interior climatizado' },
-        { value: 'Casa', emoji: '🏡', label: 'Casa con patio', sub: 'Espacio amplio para jugar' },
-      ],
-    },
-    {
-      key: 'actividad',
-      question: '2. ¿Qué temperamento o carácter prefieres?',
-      options: [
-        { value: 'tranquilo', emoji: '🛋️', label: 'Tranquilo - Faldero', sub: 'Consentido y relajado de regazo' },
-        { value: 'moderado', emoji: '🎾', label: 'Juguetón - Enérgico', sub: 'Activo, curioso y dinámico' },
-      ],
-    },
-    {
-      key: 'ninos',
-      question: '3. ¿Habrá niños compartiendo con el cachorro?',
-      options: [
-        { value: 'Sí', emoji: '👶', label: 'Sí', sub: 'Menores de 12 años en casa' },
-        { value: 'No', emoji: '🧑', label: 'No', sub: 'Solo adultos o adolescentes' },
-      ],
-    },
-    {
       key: 'presupuesto',
-      question: '4. ¿Qué rango de inversión estimas para tu Fluffy?',
+      question: '1. ¿Qué rango de inversión estimas para tu Fluffy?',
       options: [
-        { value: 'inicial', emoji: '💵', label: 'Inicial', sub: '$8.5M – $12M COP (~$2.3K USD)' },
-        { value: 'medio', emoji: '💰', label: 'Medio', sub: '$12M – $16M COP (~$3.5K USD)' },
-        { value: 'premium', emoji: '💎', label: 'Premium Exclusivo', sub: '$16M – $22M COP (~$4.5K USD)' },
-        { value: 'show', emoji: '👑', label: 'Calidad Show Isabella', sub: 'Sin límite ($22M+ COP / $5.8K+ USD)' },
+        { value: 'inicial', emoji: '💵', label: 'Línea Estándar / Blue', sub: '$2,300 – $3,000 USD' },
+        { value: 'medio', emoji: '💰', label: 'Línea Exótica Lilac / Cocoa', sub: '$3,000 – $4,200 USD' },
+        { value: 'premium', emoji: '💎', label: 'Línea Premium Merlé', sub: '$4,200 – $5,800 USD' },
+        { value: 'show', emoji: '👑', label: 'Calidad Show / Visual Isabella', sub: '$5,800+ USD' },
       ],
     },
     {
       key: 'sexo',
-      question: '5. ¿Prefieres Macho o Hembra?',
+      question: '2. ¿Prefieres Macho o Hembra?',
       options: [
-        { value: 'Macho', emoji: '♂️', label: 'Macho', sub: 'Robusto y carismático' },
-        { value: 'Hembra', emoji: '♀️', label: 'Hembra', sub: 'Tierna y compacta' },
-        { value: 'Indiferente', emoji: '🐶', label: 'Indiferente', sub: 'El cachorro de mayor conexión' },
+        { value: 'Macho', emoji: '♂️', label: 'Macho', sub: 'Robusto, cariñoso y carismático' },
+        { value: 'Hembra', emoji: '♀️', label: 'Hembra', sub: 'Tierna, elegante y compacta' },
+        { value: 'Indiferente', emoji: '🐶', label: 'Indiferente', sub: 'El cachorro de mejor química' },
       ],
     },
   ];
@@ -263,10 +238,10 @@
             <button type="button" class="qm-rec${i === 0 ? ' is-top is-selected' : ''}" data-slug="${r.slug}">
               <span class="qm-rec-emoji">🐶</span>
               <span class="qm-rec-info">
-                <span class="qm-rec-name">${r.nombreCorto || r.nombre}${i === 0 ? '<span class="qm-rec-badge">Mejor Match</span>' : ''}</span>
+                <span class="qm-rec-name">${r.nombreCorto || r.nombre}${i === 0 ? '<span class="qm-rec-badge">MEJOR MATCH</span>' : ''}</span>
                 <span class="qm-rec-tag">${(r.perfil && r.perfil.tagline) || ''}</span>
               </span>
-              <span class="qm-rec-price">desde<br><strong>${cop(r.desde)}</strong><br><small>(${usd(r.desdeUSD)})</small></span>
+              <span class="qm-rec-price">desde<br><strong>${usd(r.desdeUSD)}</strong></span>
             </button>`
             )
             .join('')}
@@ -293,7 +268,7 @@
   function buildMessage(elegido) {
     let msg = `Hola ${MARCA} 🐾\n`;
     if (elegido) {
-      msg += `📦 ME INTERESA: ${elegido.nombre} (desde ${cop(elegido.desde)} / ${usd(elegido.desdeUSD)})\n`;
+      msg += `📦 ME INTERESA: ${elegido.nombre} (desde ${usd(elegido.desdeUSD)})\n`;
     }
 
     const tienePerfil = state.vivienda || state.actividad || state.ninos || state.presupuesto || state.sexo;
@@ -306,9 +281,9 @@
       if (state.sexo) msg += `⚥ Sexo preferido: ${state.sexo}\n`;
     }
     if (state.ciudad && state.ciudad !== 'No indicada') {
-      msg += `📍 Ciudad / Entrega: ${state.ciudad} (Envío estimado ~$1.000 USD / $3.8M COP)\n`;
+      msg += `📍 Ciudad / Entrega: ${state.ciudad} (Envío estimado ~$1,000 USD)\n`;
     } else if (detectadaCiudad) {
-      msg += `📍 Ciudad / Entrega: ${detectadaCiudad} (Envío estimado ~$1.000 USD / $3.8M COP)\n`;
+      msg += `📍 Ciudad / Entrega: ${detectadaCiudad} (Envío estimado ~$1,000 USD)\n`;
     }
 
     msg += '\nDeseo conocer disponibilidad actual de camadas, fotos/videos reales y proceso de reserva.';
@@ -377,7 +352,7 @@
       if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') closeModal();
     });
 
-    // Intercepta todos los enlaces a WhatsApp del sitio
+    // Interceptar todos los enlaces a WhatsApp del sitio
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"], a[href*="api.whatsapp"], .whatsapp-float, .btn-whatsapp');
       if (!link) return;

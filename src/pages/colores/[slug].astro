@@ -18,15 +18,11 @@ export function getStaticPaths() {
 const { v } = Astro.props;
 const faqs = (faqsData.variedades as Record<string, { q: string; a: string }[]>)[v.slug] ?? [];
 
-const cop = (n: number) => `$${n.toLocaleString('es-CO')} COP`;
 const usd = (n: number) => `$${n.toLocaleString('en-US')} USD`;
 
-const minCOP = Math.min(...v.variantes.map((v2) => v2.precioCOP));
-const maxCOP = Math.max(...v.variantes.map((v2) => v2.precioCOP));
 const minUSD = Math.min(...v.variantes.map((v2) => v2.precioUSD));
 const maxUSD = Math.max(...v.variantes.map((v2) => v2.precioUSD));
 
-const rangoCOP = minCOP === maxCOP ? cop(minCOP) : `${cop(minCOP)} - ${cop(maxCOP)}`;
 const rangoUSD = minUSD === maxUSD ? usd(minUSD) : `${usd(minUSD)} - ${usd(maxUSD)}`;
 
 const specLabels: Record<string, string> = {
@@ -90,7 +86,7 @@ const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
       <div>
         <h1 style="margin-bottom: 20px;">{v.titulo}</h1>
         <div class="answer-box">
-          <strong>Respuesta rápida:</strong> un <strong>{v.nombre}</strong> de Dinastía cuesta <strong>{rangoUSD}</strong> (o {rangoCOP}) en 2026, según la variante (portador o visual) y derechos de cría. Incluye registro de pedigree internacional, microchip ISO, vacunas completas y garantía médica por escrito.
+          <strong>Respuesta rápida:</strong> un <strong>{v.nombre}</strong> de Dinastía cuesta <strong>{rangoUSD}</strong> en 2026, según la variante (portador o visual) y derechos de cría. Incluye registro de pedigree internacional, microchip ISO, vacunas completas y garantía médica por escrito.
         </div>
         <p class="lead" style="margin-top: 20px;">{v.resumen}</p>
       </div>
@@ -100,7 +96,7 @@ const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
     </div>
 
     <h2>🏛️ Precios del {v.nombreCorto} (Edición 2026)</h2>
-    <PriceTable filas={v.variantes} caption={`Tabla de precios para el ${v.nombre}`} esInternacional={false} />
+    <PriceTable filas={v.variantes} caption={`Tabla de precios para el ${v.nombre}`} />
 
     <h2>📊 Características de la variedad {v.nombreCorto}</h2>
     <ul class="spec-list" style="margin-bottom: 40px;">

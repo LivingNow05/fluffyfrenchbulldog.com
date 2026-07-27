@@ -10,7 +10,6 @@
     ? CATALOGO.find((r) => r.nombre === razaContexto || r.slug === razaContexto || r.nombreCorto === razaContexto)
     : null;
 
-  const cop = (n) => '$' + Number(n).toLocaleString('es-CO') + ' COP';
   const usd = (n) => '$' + Number(n).toLocaleString('en-US') + ' USD';
 
   // Detección de ciudad por el título ("... en Bogotá") como respaldo.
@@ -24,12 +23,12 @@
     }
   }
 
-  // ─── Presupuestos: techos en COP para filtrar el catálogo ─────────────────────
+  // ─── Presupuestos en USD ─────────────────────
   const PRESUPUESTOS = {
-    inicial: { techo: 12000000, label: 'Inicial ($8.5M – $12M COP / $2.3K – $3K USD)' },
-    medio: { techo: 16000000, label: 'Medio ($12M – $16M COP / $3K – $4.2K USD)' },
-    premium: { techo: 22000000, label: 'Premium Exclusivo ($16M – $22M COP / $4.2K – $5.8K USD)' },
-    show: { techo: Infinity, label: 'Calidad Show / Isabella ($22M+ COP / $5.8K+ USD)' },
+    inicial: { techo: 12000000, label: '$2,300 – $3,000 USD' },
+    medio: { techo: 16000000, label: '$3,000 – $4,200 USD' },
+    premium: { techo: 22000000, label: '$4,200 – $5,800 USD' },
+    show: { techo: Infinity, label: '$5,800+ USD' },
   };
 
   // ─── Pasos del quiz (Embudo ágil de 3 pasos) ──────────────────────────────────
@@ -38,10 +37,10 @@
       key: 'presupuesto',
       question: '1. ¿Qué rango de inversión estimas para tu Fluffy?',
       options: [
-        { value: 'inicial', emoji: '💵', label: 'Línea Estándar / Blue', sub: '$8.5M – $12M COP (~$2.3K USD)' },
-        { value: 'medio', emoji: '💰', label: 'Línea Exótica Lilac / Cocoa', sub: '$12M – $16M COP (~$3.5K USD)' },
-        { value: 'premium', emoji: '💎', label: 'Línea Premium Merlé', sub: '$16M – $22M COP (~$4.5K USD)' },
-        { value: 'show', emoji: '👑', label: 'Calidad Show / Visual Isabella', sub: 'Top de Selección ($22M+ COP / $5.8K+ USD)' },
+        { value: 'inicial', emoji: '💵', label: 'Línea Estándar / Blue', sub: '$2,300 – $3,000 USD' },
+        { value: 'medio', emoji: '💰', label: 'Línea Exótica Lilac / Cocoa', sub: '$3,000 – $4,200 USD' },
+        { value: 'premium', emoji: '💎', label: 'Línea Premium Merlé', sub: '$4,200 – $5,800 USD' },
+        { value: 'show', emoji: '👑', label: 'Calidad Show / Visual Isabella', sub: '$5,800+ USD' },
       ],
     },
     {
@@ -242,7 +241,7 @@
                 <span class="qm-rec-name">${r.nombreCorto || r.nombre}${i === 0 ? '<span class="qm-rec-badge">MEJOR MATCH</span>' : ''}</span>
                 <span class="qm-rec-tag">${(r.perfil && r.perfil.tagline) || ''}</span>
               </span>
-              <span class="qm-rec-price">desde<br><strong>${usd(r.desdeUSD)}</strong><br><small>(${cop(r.desde)})</small></span>
+              <span class="qm-rec-price">desde<br><strong>${usd(r.desdeUSD)}</strong></span>
             </button>`
             )
             .join('')}
@@ -269,7 +268,7 @@
   function buildMessage(elegido) {
     let msg = `Hola ${MARCA} 🐾\n`;
     if (elegido) {
-      msg += `📦 ME INTERESA: ${elegido.nombre} (desde ${cop(elegido.desde)} / ${usd(elegido.desdeUSD)})\n`;
+      msg += `📦 ME INTERESA: ${elegido.nombre} (desde ${usd(elegido.desdeUSD)})\n`;
     }
 
     const tienePerfil = state.vivienda || state.actividad || state.ninos || state.presupuesto || state.sexo;
@@ -282,9 +281,9 @@
       if (state.sexo) msg += `⚥ Sexo preferido: ${state.sexo}\n`;
     }
     if (state.ciudad && state.ciudad !== 'No indicada') {
-      msg += `📍 Ciudad / Entrega: ${state.ciudad} (Envío estimado ~$1.000 USD / $3.8M COP)\n`;
+      msg += `📍 Ciudad / Entrega: ${state.ciudad} (Envío estimado ~$1,000 USD)\n`;
     } else if (detectadaCiudad) {
-      msg += `📍 Ciudad / Entrega: ${detectadaCiudad} (Envío estimado ~$1.000 USD / $3.8M COP)\n`;
+      msg += `📍 Ciudad / Entrega: ${detectadaCiudad} (Envío estimado ~$1,000 USD)\n`;
     }
 
     msg += '\nDeseo conocer disponibilidad actual de camadas, fotos/videos reales y proceso de reserva.';

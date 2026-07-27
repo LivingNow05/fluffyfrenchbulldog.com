@@ -26,7 +26,7 @@ const catalogo = fluffy.variedades.map((v) => ({
   nombreCorto: v.nombreCorto || v.nombre,
   slug: v.slug,
   url: `/colores/${v.slug}/`,
-  desde: Math.min(...v.variantes.map((v2) => v2.precioCOP)),
+  desde: Math.min(...v.variantes.map((v2) => v2.precioUSD)),
   desdeUSD: Math.min(...v.variantes.map((v2) => v2.precioUSD)),
   perfil: v.perfil,
 }));

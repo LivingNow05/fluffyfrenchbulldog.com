@@ -124,7 +124,7 @@ export function getStaticPaths() {
     const pais = row['País'] || 'Colombia';
     const ciudad = h1.replace(/Bulldog Francés Fluffy en /gi, '').replace(/Bulldog Francês Fluffy en /gi, '').trim();
     const aeropuerto = row['Aeropuerto'] || 'Aeropuerto Local';
-    const moneda = row['Moneda'] || 'COP';
+    const moneda = row['Moneda'] || 'USD';
 
     return {
       params: { slug: cleanSlug },
@@ -177,7 +177,6 @@ const filasPrecios = fluffy.variedades.map((v) => ({
   variedad: v.nombreCorto,
   tipo: v.variantes[0]?.tipo || 'Estándar',
   registro: 'AKC / FCI',
-  precioCOP: v.variantes[0]?.precioCOP || 10000000,
   precioMXN: v.variantes[0]?.precioMXN || 50000,
   precioUSD: v.variantes[0]?.precioUSD || 2800,
 }));
@@ -235,7 +234,7 @@ const authorSchema = {
         
         {/* Respuesta Rápida / AEO Snippet */}
         <div class="answer-box">
-          <strong>📍 Resumen de Entrega en {item.ciudad}:</strong> Entregamos cachorros <strong>Bulldog Francés Fluffy</strong> de raza pura en <strong>{item.ciudad}</strong> con despacho seguro hasta el <strong>{item.aeropuerto}</strong> (el costo de envío aéreo/terrestre suele rondar los $1.000 USD / $3.8M COP según la distancia). Cada cachorro se entrega con examen genético ADN de pelaje (Lh), esquema de vacunas al día, microchip ISO y contrato de salud garantizado por 2 años.
+          <strong>📍 Resumen de Entrega en {item.ciudad}:</strong> Entregamos cachorros <strong>Bulldog Francés Fluffy</strong> de raza pura en <strong>{item.ciudad}</strong> con despacho seguro hasta el <strong>{item.aeropuerto}</strong> (el costo de envío aéreo/terrestre suele rondar los $1.000 USD según la distancia). Cada cachorro se entrega con examen genético ADN de pelaje (Lh), esquema de vacunas al día, microchip ISO y contrato de salud garantizado por 2 años.
         </div>
 
         <p class="lead">{item.metaDesc}</p>
@@ -302,8 +301,6 @@ const authorSchema = {
       <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
         {fluffy.variedades.map((v) => {
           const minUsd = Math.min(...v.variantes.map(v2 => v2.precioUSD));
-          const minCop = Math.min(...v.variantes.map(v2 => v2.precioCOP));
-          const esInt = item.pais.toLowerCase() !== 'colombia';
 
           return (
             <a class="card" href={`/colores/${v.slug}/`}>
@@ -315,9 +312,7 @@ const authorSchema = {
               </div>
               <h3 style="font-size: 1.18rem; margin: 0 0 6px;">{v.nombreCorto}</h3>
               <span class="desde">
-                {esInt 
-                  ? `Desde $${minUsd.toLocaleString('en-US')} USD` 
-                  : `Desde $${minCop.toLocaleString('es-CO')} COP`}
+                Desde ${minUsd.toLocaleString('en-US')} USD
               </span>
               <p style="font-size: 0.85rem; color: var(--ink-soft); margin-top: 6px; margin-bottom: 10px;">{v.perfil.tagline}</p>
 

@@ -24,21 +24,18 @@
         {
           "tipo": "Fluffy Blue Portador (lh1/lh2)",
           "registro": "Con Pedigree AKC / FCI",
-          "precioCOP": 8500000,
           "precioMXN": 42000,
           "precioUSD": 2300
         },
         {
           "tipo": "Fluffy Blue Visual Estándar",
           "registro": "Con Pedigree AKC / FCI",
-          "precioCOP": 12000000,
           "precioMXN": 55000,
           "precioUSD": 3000
         },
         {
           "tipo": "Fluffy Blue Visual con Derechos de Cría",
           "registro": "Con Pedigree Certificado Internacional",
-          "precioCOP": 18000000,
           "precioMXN": 85000,
           "precioUSD": 4600
         }
@@ -70,21 +67,18 @@
         {
           "tipo": "Fluffy Isabella Portador ADN Testeado",
           "registro": "Con Pedigree AKC / FCI",
-          "precioCOP": 13500000,
           "precioMXN": 62000,
           "precioUSD": 3400
         },
         {
           "tipo": "Fluffy Visual Isabella Compañía",
           "registro": "Con Pedigree AKC / FCI",
-          "precioCOP": 18000000,
           "precioMXN": 85000,
           "precioUSD": 4600
         },
         {
           "tipo": "Fluffy Visual Isabella Cría / Show",
           "registro": "Pedigree Completo Internacional + Panel ADN",
-          "precioCOP": 26000000,
           "precioMXN": 120000,
           "precioUSD": 6800
         }
@@ -116,14 +110,12 @@
         {
           "tipo": "Fluffy Lilac Visual Compañía",
           "registro": "Con Pedigree AKC / FCI",
-          "precioCOP": 15000000,
           "precioMXN": 70000,
           "precioUSD": 3800
         },
         {
           "tipo": "Fluffy Lilac Tan / Platinum",
           "registro": "Pedigree Internacional Certificado",
-          "precioCOP": 20000000,
           "precioMXN": 95000,
           "precioUSD": 5100
         }
@@ -155,14 +147,12 @@
         {
           "tipo": "Fluffy Cocoa Estándar",
           "registro": "Con Pedigree AKC / ACCC",
-          "precioCOP": 14000000,
           "precioMXN": 65000,
           "precioUSD": 3500
         },
         {
           "tipo": "Fluffy Cocoa Fawn / Tan",
           "registro": "Pedigree Internacional AKC",
-          "precioCOP": 17500000,
           "precioMXN": 82000,
           "precioUSD": 4400
         }
@@ -194,14 +184,12 @@
         {
           "tipo": "Fluffy Blue Merlé",
           "registro": "Con Registro Pedigree AKC",
-          "precioCOP": 16500000,
           "precioMXN": 78000,
           "precioUSD": 4200
         },
         {
           "tipo": "Fluffy Isabella Merlé Exclusivo",
           "registro": "Pedigree Completo + ADN Certificado",
-          "precioCOP": 22000000,
           "precioMXN": 105000,
           "precioUSD": 5600
         }

@@ -11,7 +11,6 @@ import faqsData from '../data/faqs.json';
 
 const { site, variedades } = fluffy;
 const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
-const desde = (v: (typeof variedades)[number]) => Math.min(...v.variantes.map((v2) => v2.precioCOP));
 ---
 
 <Base
@@ -96,7 +95,7 @@ const desde = (v: (typeof variedades)[number]) => Math.min(...v.variantes.map((v
               <span class="badge">🐾 Visual Lh</span>
             </div>
             <div class="card-body">
-              <span class="desde">Desde ${desde(v).toLocaleString('es-CO')} COP <small>(${minUsd.toLocaleString('en-US')} USD)</small></span>
+              <span class="desde">Desde $${minUsd.toLocaleString('en-US')} USD</span>
               <p style="margin-top:4px;"><strong>{v.perfil.tagline}</strong></p>
               <p style="font-size:0.86rem; margin-top:6px; color:var(--ink-soft);">{v.resumen}</p>
               <div class="badges" style="margin-top:12px;">
