@@ -156,35 +156,98 @@ a:hover { color: var(--amber-bright); }
 }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0) scale(0.98); }
-.btn--amber {
+.btn--amber,
+.btn-amber,
+.btn-primary,
+.btn--primary {
   background: linear-gradient(140deg, var(--amber-bright), var(--amber) 60%);
   color: var(--night) !important;
   box-shadow: 0 8px 26px var(--amber-glow);
 }
-.btn--amber:hover { box-shadow: 0 14px 38px var(--amber-glow), 0 0 20px rgba(246, 201, 109, 0.4); }
+.btn--amber:hover,
+.btn-amber:hover,
+.btn-primary:hover,
+.btn--primary:hover { box-shadow: 0 14px 38px var(--amber-glow), 0 0 20px rgba(246, 201, 109, 0.4); }
 
-:root.light-theme .btn--amber {
+:root.light-theme .btn--amber:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn-amber:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn-primary:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn--primary:not(.hero *):not(.cta-box *):not(.site-footer *) {
   background: linear-gradient(135deg, #f59e0b, #d97706 75%);
   color: #ffffff !important;
   box-shadow: 0 8px 24px rgba(217, 119, 6, 0.35);
 }
-:root.light-theme .btn--amber:hover {
+:root.light-theme .btn--amber:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn-amber:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn-primary:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn--primary:not(.hero *):not(.cta-box *):not(.site-footer *):hover {
   box-shadow: 0 14px 36px rgba(217, 119, 6, 0.48), 0 0 24px rgba(245, 158, 11, 0.35);
 }
 
-.btn--ghost {
-  background: transparent;
+.btn--ghost,
+.btn-ghost,
+.btn-secondary,
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
   color: var(--moon) !important;
-  border: 1.5px solid rgba(244, 242, 236, 0.28);
+  border: 1.5px solid rgba(244, 242, 236, 0.2);
 }
-.btn--ghost:hover { border-color: var(--amber); color: var(--amber-bright) !important; }
+.btn--ghost:hover,
+.btn-ghost:hover,
+.btn-secondary:hover,
+.btn--secondary:hover {
+  border-color: var(--amber);
+  color: var(--amber-bright) !important;
+  background: rgba(232, 166, 61, 0.12);
+}
 
-:root.light-theme .btn--ghost {
+/* Forzar contraste claro impecable cuando los botones secundarios están en secciones fijas oscuras (Hero, CTA, Footer) */
+.hero .btn--ghost,
+.hero .btn-ghost,
+.hero .btn-secondary,
+.hero .btn--secondary,
+.cta-box .btn--ghost,
+.cta-box .btn-ghost,
+.cta-box .btn-secondary,
+.cta-box .btn--secondary,
+.site-footer .btn--ghost,
+.site-footer .btn-ghost,
+.site-footer .btn-secondary,
+.site-footer .btn--secondary {
+  color: #fcfbfa !important;
+  border: 1.5px solid rgba(244, 242, 236, 0.25) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+.hero .btn--ghost:hover,
+.hero .btn-ghost:hover,
+.hero .btn-secondary:hover,
+.hero .btn--secondary:hover,
+.cta-box .btn--ghost:hover,
+.cta-box .btn-ghost:hover,
+.cta-box .btn-secondary:hover,
+.cta-box .btn--secondary:hover,
+.site-footer .btn--ghost:hover,
+.site-footer .btn-ghost:hover,
+.site-footer .btn-secondary:hover,
+.site-footer .btn--secondary:hover {
+  color: var(--amber-bright) !important;
+  border-color: var(--amber) !important;
+  background: rgba(232, 166, 61, 0.18) !important;
+  box-shadow: 0 0 18px rgba(232, 166, 61, 0.3) !important;
+}
+
+:root.light-theme .btn--ghost:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn-ghost:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn-secondary:not(.hero *):not(.cta-box *):not(.site-footer *),
+:root.light-theme .btn--secondary:not(.hero *):not(.cta-box *):not(.site-footer *) {
   background: transparent;
   color: #0f172a !important;
   border: 1.5px solid rgba(15, 23, 42, 0.2);
 }
-:root.light-theme .btn--ghost:hover {
+:root.light-theme .btn--ghost:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn-ghost:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn-secondary:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
+:root.light-theme .btn--secondary:not(.hero *):not(.cta-box *):not(.site-footer *):hover {
   border-color: #d97706;
   color: #d97706 !important;
   background: rgba(217, 119, 6, 0.06);
