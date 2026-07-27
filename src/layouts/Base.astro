@@ -6,6 +6,7 @@ import fluffy from '../data/fluffy.json';
 import QuizModal from '../components/QuizModal.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import BulldogIcon from '../components/BulldogIcon.astro';
+import FloatingRightCTA from '../components/FloatingRightCTA.astro';
 
 export interface Props {
   title: string;
@@ -142,11 +143,12 @@ const allSchema = [localBusiness, ...schema];
               </div>
             </div>
           </div>
+          <a href="/blog/cuidados-alimentacion-salud-bulldog-fluffy/" class="nav-guide-link">📘 Guía Cuidados</a>
           <a href="/blog/">Blog & Guías</a>
           <a href="/sobre-nosotros/">El Criadero</a>
           <a class="nav-cta" href={`https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener" aria-label="WhatsApp">
             <WhatsAppIcon size={18} class="cta-icon" />
-            <span class="cta-text">WhatsApp</span>
+            <span class="cta-text">📲 Contactar</span>
           </a>
         </nav>
         <div class="header-controls">
@@ -310,5 +312,6 @@ const allSchema = [localBusiness, ...schema];
       }
     </style>
 
+      <FloatingRightCTA />
   </body>
 </html>
