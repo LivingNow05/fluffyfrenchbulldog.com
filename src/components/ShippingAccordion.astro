@@ -1,0 +1,168 @@
+---
+interface Props {
+  ciudad?: string;
+  aeropuerto?: string;
+}
+
+const { ciudad = 'tu ciudad', aeropuerto = 'Aeropuerto Internacional' } = Astro.props;
+
+const pasosLogistica = [
+  {
+    titulo: '✈️ 1. Viaje VIP en Cabina con Travel Nanny',
+    resumen: 'Tu cachorro nunca viaja en bodega de carga. Viaja en cabina de pasajeros al cuidado exclusivo de nuestra niñera aérea profesional.',
+    detalle: `Cada entrega para ${ciudad} se realiza mediante una Travel Nanny certificada que mantiene al cachorro en cabina climatizada con atención médica veterinaria, alimentación programada y monitoreo de temperatura constante durante todo el vuelo hacia ${aeropuerto}.`
+  },
+  {
+    titulo: '🩺 2. Certificados de Salud Internacional & PCR',
+    resumen: 'Documentación médica completa avalada por médicos veterinarios con registro profesional.',
+    detalle: 'El cachorro se entrega con examen clínico reciente, test PCR de salud negativo, certificado de vacunación al día (parvovirus, moquillo, rabia según edad), desparasitación interna/externa y microchip de identificación ISO 11784/11785.'
+  },
+  {
+    titulo: '🧬 3. Garantía de Salud & Pureza Genética ADN',
+    resumen: 'Certificado de registro de pedigree internacional y garantía genética escrita por 2 años.',
+    detalle: 'Respaldamos la pureza de manto (Gen L4/L1 Lh) y la salud de cada ejemplar con prueba de filiación genética por ADN y garantía de salud por escrito frente a enfermedades congénitas.'
+  },
+  {
+    titulo: '📦 4. Trámites de Aduana & Entrega en Mano',
+    resumen: 'Gestión aduanera y sanitaria simplificada para recibir en el aeropuerto o en tu domicilio.',
+    detalle: `Nos encargamos de los permisos de exportación/importación ICA / SAG / SENASA / SAGARPA según el país de destino. Te entregamos al cachorro personalmente en el ${aeropuerto} o coordinamos el traslado final directo a tu puerta.`
+  }
+];
+---
+
+<div class="shipping-accordion-wrapper">
+  <div class="shipping-header">
+    <span class="shipping-badge">🛫 PROTOCOLO DE VIAJE SEGURO</span>
+    <h3>Logística y Garantías de Entrega para {ciudad}</h3>
+    <p>Conoce paso a paso cómo garantizamos la llegada de tu cachorro en óptimas condiciones de salud y confort.</p>
+  </div>
+
+  <div class="accordion-list">
+    {pasosLogistica.map((item, index) => (
+      <details class="shipping-details" open={index === 0}>
+        <summary class="shipping-summary">
+          <span class="summary-title">{item.titulo}</span>
+          <span class="summary-icon">+</span>
+        </summary>
+        <div class="shipping-content">
+          <p class="resumen-text">{item.resumen}</p>
+          <p class="detalle-text">{item.detalle}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</div>
+
+<style>
+  .shipping-accordion-wrapper {
+    background: rgba(21, 21, 26, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(232, 166, 61, 0.22);
+    border-radius: 24px;
+    padding: 32px;
+    margin: 40px 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+  :root.light-theme .shipping-accordion-wrapper {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(217, 119, 6, 0.18);
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+  }
+  .shipping-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .shipping-badge {
+    background: rgba(232, 166, 61, 0.15);
+    color: var(--amber-bright);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    margin-bottom: 10px;
+    border: 1px solid rgba(232, 166, 61, 0.3);
+  }
+  :root.light-theme .shipping-badge {
+    background: rgba(217, 119, 6, 0.1);
+    color: #b45309;
+    border-color: rgba(217, 119, 6, 0.25);
+  }
+  .shipping-header h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 4px 0 8px;
+    color: var(--ink);
+  }
+  .shipping-header p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .shipping-details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(244, 242, 236, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+  }
+  :root.light-theme .shipping-details {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+  .shipping-details[open] {
+    border-color: rgba(232, 166, 61, 0.4);
+    background: rgba(232, 166, 61, 0.04);
+  }
+  :root.light-theme .shipping-details[open] {
+    border-color: rgba(217, 119, 6, 0.35);
+    background: rgba(217, 119, 6, 0.04);
+  }
+  .shipping-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    list-style: none;
+  }
+  .shipping-summary::-webkit-details-marker {
+    display: none;
+  }
+  .summary-icon {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--amber);
+    transition: transform 0.25s ease;
+  }
+  .shipping-details[open] .summary-icon {
+    transform: rotate(45deg);
+  }
+  .shipping-content {
+    padding: 0 20px 20px;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .resumen-text {
+    font-weight: 600;
+    color: var(--amber-bright);
+    margin-bottom: 6px;
+  }
+  :root.light-theme .resumen-text {
+    color: #b45309;
+  }
+  .detalle-text {
+    margin: 0;
+  }
+</style>

@@ -272,12 +272,118 @@ a:hover { color: var(--amber-bright); }
   width: 100%;
 }
 
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.32rem;
-  font-weight: 650;
+.nav-item-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   text-decoration: none;
-  color: var(--moon);
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 6px 0;
+}
+.dropdown-trigger:hover,
+.nav-item-dropdown:hover .dropdown-trigger {
+  color: var(--amber);
+}
+.drop-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+}
+.nav-item-dropdown:hover .drop-arrow {
+  transform: rotate(180deg);
+}
+
+.megamenu-cities {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  width: 620px;
+  background: rgba(21, 21, 26, 0.96);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(232, 166, 61, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(232, 166, 61, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-out), visibility 0.25s;
+  z-index: 200;
+}
+.nav-item-dropdown:hover .megamenu-cities {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(4px);
+}
+
+:root.light-theme .megamenu-cities {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.megamenu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.megamenu-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.megamenu-col .col-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--amber);
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(232, 166, 61, 0.15);
+}
+.megamenu-col a {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.megamenu-col a:hover {
+  color: var(--ink);
+  transform: translateX(3px);
+}
+
+.megamenu-col.col-cta {
+  background: rgba(232, 166, 61, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.megamenu-col.col-cta p {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 4px 0 8px;
+  line-height: 1.35;
+}
+.btn-all-cities {
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  color: var(--amber) !important;
+  text-decoration: none;
+}
+.btn-all-cities:hover {
+  text-decoration: underline !important;
+}
   white-space: nowrap;
   letter-spacing: -0.015em;
   display: inline-flex;

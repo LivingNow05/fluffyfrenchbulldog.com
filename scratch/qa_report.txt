@@ -1,0 +1,39 @@
+QA Automation Report
+====================
+
+
+Testing on Desktop Chrome
+--------------------
+
+Testing URL: http://localhost:4321/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/bulldog-frances-fluffy-bogota/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/precios-bulldog-fluffy/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/colores/fluffy-blue/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/destinos/
+  [OK] No errors found.
+
+Testing on Mobile Pixel 5
+--------------------
+
+Testing URL: http://localhost:4321/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/bulldog-frances-fluffy-bogota/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/precios-bulldog-fluffy/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/colores/fluffy-blue/
+  [OK] No errors found.
+
+Testing URL: http://localhost:4321/destinos/
+  [OK] No errors found.

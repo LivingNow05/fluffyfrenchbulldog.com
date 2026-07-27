@@ -13,7 +13,29 @@ const reviews = testimonios.map((t, idx) => ({
 
 // Duplicamos el set de testimonios para asegurar fluidez en el marquee infinito
 const duplicatedReviews = [...reviews, ...reviews, ...reviews];
+
+const reviewsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Bulldog Francés Fluffy — Dinastía Fluffy',
+  description: 'Cachorros Bulldog Francés Fluffy puros con pedigree internacional, test de salud y envío en cabina con Travel Nanny.',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: reviews.length.toString(),
+    bestRating: '5',
+    worstRating: '1'
+  },
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.nombre },
+    reviewBody: r.texto,
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }
+  }))
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
 
 <section id="reviews" class="reviews-section reveal">
   <h2 class="section-title">⭐ Opiniones de la Familia Dinastía</h2>

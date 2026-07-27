@@ -9,13 +9,14 @@ import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 export interface Props {
   title: string;
   description: string;
+  ogImage?: string;
   /** JSON-LD adicional de la página (Product, FAQPage, etc.) */
   schema?: object[];
   /** Nombre de la variedad para dar contexto al modal de WhatsApp */
   variedad?: string;
 }
 
-const { title, description, schema = [], variedad } = Astro.props;
+const { title, description, ogImage = '/images/fluffy_showcase_hero.jpg', schema = [], variedad } = Astro.props;
 const { site } = fluffy;
 
 // Catálogo compacto para el modal-quiz
@@ -28,7 +29,7 @@ const catalogo = fluffy.variedades.map((v) => ({
   desdeUSD: Math.min(...v.variantes.map((v2) => v2.precioUSD)),
   perfil: v.perfil,
 }));
-const canonical = new URL(Astro.url.pathname, Astro.site || 'https://bulldogfluffy.com.co');
+const canonical = new URL(Astro.url.pathname, Astro.site || 'https://fluffyfrenchbulldog.com');
 
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -60,7 +61,9 @@ const allSchema = [localBusiness, ...schema];
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content={site.brand} />
+    <meta property="og:image" content={new URL(ogImage, canonical).href} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL(ogImage, canonical).href} />
     <script is:inline>
       const getTheme = () => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -93,7 +96,41 @@ const allSchema = [localBusiness, ...schema];
         <nav class="site-nav" aria-label="Navegación principal">
           <a href="/precios-bulldog-fluffy/">Precios 2026</a>
           <a href="/#variedades">Variedades</a>
-          <a href="/destinos/">Ciudades & Destinos</a>
+          <div class="nav-item-dropdown">
+            <a href="/destinos/" class="dropdown-trigger">
+              Ciudades & Destinos <span class="drop-arrow">▾</span>
+            </a>
+            <div class="dropdown-menu megamenu-cities">
+              <div class="megamenu-grid">
+                <div class="megamenu-col">
+                  <span class="col-title">🇨🇴 Colombia</span>
+                  <a href="/bulldog-frances-fluffy-bogota/">Bogotá</a>
+                  <a href="/bulldog-frances-fluffy-medellin/">Medellín</a>
+                  <a href="/bulldog-frances-fluffy-cali/">Cali</a>
+                  <a href="/bulldog-frances-fluffy-barranquilla/">Barranquilla</a>
+                </div>
+                <div class="megamenu-col">
+                  <span class="col-title">🇲🇽 México</span>
+                  <a href="/bulldog-frances-fluffy-cdmx/">CDMX</a>
+                  <a href="/bulldog-frances-fluffy-guadalajara/">Guadalajara</a>
+                  <a href="/bulldog-frances-fluffy-monterrey/">Monterrey</a>
+                  <a href="/bulldog-frances-fluffy-queretaro/">Querétaro</a>
+                </div>
+                <div class="megamenu-col">
+                  <span class="col-title">🇵🇪 Perú & 🇨🇱 Chile</span>
+                  <a href="/bulldog-frances-fluffy-lima/">Lima</a>
+                  <a href="/bulldog-frances-fluffy-arequipa/">Arequipa</a>
+                  <a href="/bulldog-frances-fluffy-santiago/">Santiago</a>
+                  <a href="/bulldog-frances-fluffy-valparaiso/">Valparaíso</a>
+                </div>
+                <div class="megamenu-col col-cta">
+                  <span class="col-title">✈️ Cobertura Global</span>
+                  <p>Envíos internacionales con Travel Nanny a 100+ destinos.</p>
+                  <a href="/destinos/" class="btn-all-cities">Ver las 100+ Ciudades →</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href="/blog/">Blog & Guías</a>
           <a href="/sobre-nosotros/">El Criadero</a>
           <a class="nav-cta" href={`https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener" aria-label="WhatsApp">

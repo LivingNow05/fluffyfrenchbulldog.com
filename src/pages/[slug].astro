@@ -8,6 +8,7 @@ import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
 import CalculadoraComida from '../components/CalculadoraComida.astro';
+import ShippingAccordion from '../components/ShippingAccordion.astro';
 import QuizModal from '../components/QuizModal.astro';
 import fluffy from '../data/fluffy.json';
 import faqsData from '../data/faqs.json';
@@ -332,39 +333,8 @@ const authorSchema = {
       </div>
     </section>
 
-    <section style="margin: 40px 0;">
-      <h2>✈️ Protocolo de Envío Seguro al {item.aeropuerto}</h2>
-      <ul class="spec-list">
-        <li>
-          <div class="spec-icon-badge">✈️</div>
-          <div class="spec-info">
-            <span class="spec-label">1. Transporte Climatizado Certificado</span>
-            <span class="spec-value">El cachorro viaja en contenedor normado IATA con temperatura controlada (el valor del envío ronda los $1.000 USD / $3.8M COP según el destino).</span>
-          </div>
-        </li>
-        <li>
-          <div class="spec-icon-badge">📋</div>
-          <div class="spec-info">
-            <span class="spec-label">2. Documentación Sanitaria Certificada</span>
-            <span class="spec-value">Certificado de vacunas al día, desparasitación interna/externa y certificado veterinario de vuelo.</span>
-          </div>
-        </li>
-        <li>
-          <div class="spec-icon-badge">🛬</div>
-          <div class="spec-info">
-            <span class="spec-label">3. Entrega Personal en {item.aeropuerto}</span>
-            <span class="spec-value">Te entregamos tu cachorro en mano en la zona de llegadas del {item.aeropuerto} en {item.ciudad}.</span>
-          </div>
-        </li>
-        <li>
-          <div class="spec-icon-badge">📲</div>
-          <div class="spec-info">
-            <span class="spec-label">4. Asesoría y Soporte Posventa 24/7</span>
-            <span class="spec-value">Asesoría nutricional y de aclimatación para asegurar la felicidad de tu cachorro en {item.pais}.</span>
-          </div>
-        </li>
-      </ul>
-    </section>
+    {/* Logística e Itinerario de Viaje Seguro */}
+    <ShippingAccordion ciudad={item.ciudad} aeropuerto={item.aeropuerto} />
 
     {/* Calculadora Nutricional para la Ciudad */}
     <section style="margin: 50px 0;">
@@ -377,7 +347,13 @@ const authorSchema = {
 
     <ReviewsSection />
 
-    <FaqSection faqs={faqsData.general} titulo={`Preguntas sobre envíos a ${item.ciudad}`} />
+    <FaqSection 
+      faqs={faqsData.general.map(f => ({
+        q: f.q.replace(/tu ciudad/gi, item.ciudad),
+        a: f.a.replace(/tu ciudad/gi, item.ciudad).replace(/aeropuerto/gi, `${item.aeropuerto}`)
+      }))} 
+      titulo={`Preguntas sobre envíos de cachorros a ${item.ciudad}`} 
+    />
 
     <WhatsAppCTA contexto={`un Bulldog Francés Fluffy en ${item.ciudad}`} />
 

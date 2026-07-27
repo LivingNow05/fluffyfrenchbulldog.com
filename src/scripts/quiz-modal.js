@@ -32,49 +32,25 @@
     show: { techo: Infinity, label: 'Calidad Show / Isabella ($22M+ COP / $5.8K+ USD)' },
   };
 
-  // ─── Pasos del quiz ──────────────────────────────────────────────────────────
+  // ─── Pasos del quiz (Embudo ágil de 3 pasos) ──────────────────────────────────
   const getBaseSteps = () => [
     {
-      key: 'vivienda',
-      question: '1. ¿Dónde vivirá tu cachorro Bulldog Fluffy?',
-      options: [
-        { value: 'Apartamento', emoji: '🏢', label: 'Apartamento', sub: 'Espacio interior climatizado' },
-        { value: 'Casa', emoji: '🏡', label: 'Casa con patio', sub: 'Espacio amplio para jugar' },
-      ],
-    },
-    {
-      key: 'actividad',
-      question: '2. ¿Qué temperamento o carácter prefieres?',
-      options: [
-        { value: 'tranquilo', emoji: '🛋️', label: 'Tranquilo - Faldero', sub: 'Consentido y relajado de regazo' },
-        { value: 'moderado', emoji: '🎾', label: 'Juguetón - Enérgico', sub: 'Activo, curioso y dinámico' },
-      ],
-    },
-    {
-      key: 'ninos',
-      question: '3. ¿Habrá niños compartiendo con el cachorro?',
-      options: [
-        { value: 'Sí', emoji: '👶', label: 'Sí', sub: 'Menores de 12 años en casa' },
-        { value: 'No', emoji: '🧑', label: 'No', sub: 'Solo adultos o adolescentes' },
-      ],
-    },
-    {
       key: 'presupuesto',
-      question: '4. ¿Qué rango de inversión estimas para tu Fluffy?',
+      question: '1. ¿Qué rango de inversión estimas para tu Fluffy?',
       options: [
-        { value: 'inicial', emoji: '💵', label: 'Inicial', sub: '$8.5M – $12M COP (~$2.3K USD)' },
-        { value: 'medio', emoji: '💰', label: 'Medio', sub: '$12M – $16M COP (~$3.5K USD)' },
-        { value: 'premium', emoji: '💎', label: 'Premium Exclusivo', sub: '$16M – $22M COP (~$4.5K USD)' },
-        { value: 'show', emoji: '👑', label: 'Calidad Show Isabella', sub: 'Sin límite ($22M+ COP / $5.8K+ USD)' },
+        { value: 'inicial', emoji: '💵', label: 'Línea Estándar / Blue', sub: '$8.5M – $12M COP (~$2.3K USD)' },
+        { value: 'medio', emoji: '💰', label: 'Línea Exótica Lilac / Cocoa', sub: '$12M – $16M COP (~$3.5K USD)' },
+        { value: 'premium', emoji: '💎', label: 'Línea Premium Merlé', sub: '$16M – $22M COP (~$4.5K USD)' },
+        { value: 'show', emoji: '👑', label: 'Calidad Show / Visual Isabella', sub: 'Top de Selección ($22M+ COP / $5.8K+ USD)' },
       ],
     },
     {
       key: 'sexo',
-      question: '5. ¿Prefieres Macho o Hembra?',
+      question: '2. ¿Prefieres Macho o Hembra?',
       options: [
-        { value: 'Macho', emoji: '♂️', label: 'Macho', sub: 'Robusto y carismático' },
-        { value: 'Hembra', emoji: '♀️', label: 'Hembra', sub: 'Tierna y compacta' },
-        { value: 'Indiferente', emoji: '🐶', label: 'Indiferente', sub: 'El cachorro de mayor conexión' },
+        { value: 'Macho', emoji: '♂️', label: 'Macho', sub: 'Robusto, cariñoso y carismático' },
+        { value: 'Hembra', emoji: '♀️', label: 'Hembra', sub: 'Tierna, elegante y compacta' },
+        { value: 'Indiferente', emoji: '🐶', label: 'Indiferente', sub: 'El cachorro de mejor química' },
       ],
     },
   ];

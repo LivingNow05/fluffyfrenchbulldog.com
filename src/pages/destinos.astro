@@ -4,6 +4,7 @@ import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ShippingAccordion from '../components/ShippingAccordion.astro';
 
 function parseRow(rowStr: string): string[] {
   const values: string[] = [];
@@ -204,6 +205,10 @@ const FLAG_MAP: Record<string, string> = {
         </div>
       </section>
     ))}
+
+    <ShippingAccordion ciudad="tu ciudad de residencia" />
+    <WhatsAppCTA contexto="envíos internacionales de Bulldog Fluffy" />
+  </main>
 
   <script id="fluffy-locations-data" type="application/json" set:html={JSON.stringify(locations)} />
   <script is:inline>
