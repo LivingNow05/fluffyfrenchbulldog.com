@@ -17,31 +17,85 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
   title="Dinastía Bulldog Fluffy | Criadero de Bulldog Francés Fluffy con Pedigree"
   description="Criadero especializado en Bulldog Francés Fluffy de raza pura. Variedades Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con registro AKC, FCI y garantía genética."
 >
-  <section class="hero">
+  <section class="hero hero--brandkit">
     <div class="wrap">
+      <div class="hero-kicker-pill">
+        <span class="pulse-dot-green"></span>
+        <span class="kicker-text">CRIADERO CERTIFICADO AKC · FCI · ACCC</span>
+        <span class="kicker-divider">•</span>
+        <span class="kicker-highlight">GARANTÍA GENÉTICA 2 AÑOS</span>
+      </div>
+
       <div class="hero-grid">
-        <div>
-          <p class="hero-kicker">Criadero Certificado · AKC · FCI · ACCC</p>
-          <h1>Criadero de Bulldog Francés Fluffy <em>de Raza Pura</em></h1>
-          <p class="lead">
-            <strong>Exclusividad genética, salud garantizada y belleza insuperable.</strong> En {site.brand} nos dedicamos a la crianza ética del Bulldog Francés de pelo largo (gen Fluffy). Cada cachorro incluye microchip ISO, test de ADN genético y envío seguro con niñera aérea.
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Exclusividad en <span class="text-gold-gradient">Bulldog Francés Fluffy</span> de Raza Pura
+          </h1>
+
+          <p class="lead hero-lead">
+            Crianza ética internacional del Bulldog Francés de pelo largo (gen Fluffy). Ejemplares seleccionados con pedigree certificado, test de salud por ADN y protocolo de entrega en cabina climatizada con niñera aérea VIP.
           </p>
+
           <div class="hero-cta">
-            <a class="btn btn--amber" href="/precios-bulldog-fluffy/">Ver Precios 2026</a>
-            <a class="btn btn--ghost" href="/destinos/">📍 Buscar Mi Ciudad</a>
+            <a class="btn btn--amber" href="/precios-bulldog-fluffy/">
+              <span>✦ Ver Precios 2026</span>
+            </a>
+            <a class="btn btn--ghost" href="/destinos/">
+              <span>📍 Buscar Mi Ciudad</span>
+            </a>
             <a class="btn btn--whatsapp" href={waHref} target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
               <WhatsAppIcon size={18} class="cta-icon" />
-              <span>WhatsApp</span>
+              <span>WhatsApp Directo</span>
             </a>
           </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-badge-item">
+              <span class="trust-icon">📜</span>
+              <span>Pedigree Oficial AKC / FCI</span>
+            </div>
+            <div class="trust-badge-item">
+              <span class="trust-icon">🧬</span>
+              <span>Test ADN 100% Pura Raza</span>
+            </div>
+            <div class="trust-badge-item">
+              <span class="trust-icon">✈️</span>
+              <span>Niñera Aérea VIP</span>
+            </div>
+          </div>
         </div>
-        <BulldogIcon />
+
+        <div class="hero-stage-wrapper">
+          <div class="hero-spotlight-backdrop"></div>
+          <BulldogIcon />
+          <div class="stage-tag-badge">
+            <span class="stage-tag-dot"></span>
+            <span>Microchip ISO 11784 Verificado</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div><strong>5</strong><span>variedades exóticas</span></div>
-        <div><strong>+100</strong><span>ciudades de cobertura</span></div>
-        <div><strong>100%</strong><span>pedigree oficial AKC/FCI</span></div>
-        <div><strong>+12</strong><span>países con envíos aéreos</span></div>
+
+      <div class="hero-stats-bento">
+        <div class="stat-card">
+          <div class="stat-num">01 / VARIEDADES</div>
+          <div class="stat-val">5</div>
+          <div class="stat-label">Variedades Exóticas de Colección</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">02 / COBERTURA</div>
+          <div class="stat-val">+100</div>
+          <div class="stat-label">Ciudades con Entrega Aérea</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">03 / SALUD Y ADN</div>
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Garantía Médica Certificada M.V.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">04 / DESTINOS</div>
+          <div class="stat-val">+12</div>
+          <div class="stat-label">Países con Envíos VIP en Cabina</div>
+        </div>
       </div>
     </div>
   </section>
