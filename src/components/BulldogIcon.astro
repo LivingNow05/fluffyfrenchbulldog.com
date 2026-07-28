@@ -1,102 +1,96 @@
 ---
 export interface Props {
   className?: string;
+  useImage?: boolean;
 }
 
-const { className = 'bulldog-hero-svg' } = Astro.props;
+const { className = 'bulldog-hero-svg', useImage = true } = Astro.props;
 ---
 
 <div class={`bulldog-animated-container ${className}`}>
-  <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulldog-svg-element">
-    <defs>
-      <radialGradient id="amber-glow-logo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) scale(220)">
-        <stop stop-color="#e8a63d" stop-opacity="0.4"/>
-        <stop offset="0.75" stop-color="#f6c96d" stop-opacity="0.1"/>
-        <stop offset="1" stop-color="#e8a63d" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-
-    <!-- Resplandor Dorado de Fondo -->
-    <circle cx="256" cy="256" r="220" fill="url(#amber-glow-logo)" opacity="0.55" />
-
-    <g class="logo-gold-stroke" stroke="#e8a63d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
-      
-      <!-- 1. OREJA IZQUIERDA (Oreja de murciélago abierta con 4 mechones de pelo fluffy al exterior) -->
-      <path d="M 215 168 C 190 120 152 78 122 72 C 98 67 76 86 92 108 Q 70 120 90 132 Q 74 145 100 156 Q 88 170 128 180 C 138 185 146 192 150 200" />
-      <path d="M 195 154 C 172 122 144 94 122 86" stroke-width="9" opacity="0.85" />
-
-      <!-- 2. OREJA DERECHA (Oreja de murciélago abierta con 4 mechones de pelo fluffy al exterior) -->
-      <path d="M 297 168 C 322 120 360 78 390 72 C 414 67 436 86 420 108 Q 442 120 422 132 Q 438 145 412 156 Q 424 170 384 180 C 374 185 366 192 362 200" />
-      <path d="M 317 154 C 340 122 368 94 390 86" stroke-width="9" opacity="0.85" />
-
-      <!-- 3. PUENTE SUPERIOR DE LA CABEZA ENTRE OREJAS (Frente chata) -->
-      <path d="M 215 168 Q 256 160 297 168" />
-
-      <!-- 4. CONTORNO EXTERIOR DE CABEZA Y MOFLETES CON MECHONES FLUFFY INFERIORES SUAVES -->
-      <path d="M 150 200 C 126 225 114 248 128 265 Q 106 278 130 292 Q 118 306 146 320 C 172 362 210 380 256 380 C 302 380 340 362 366 320 Q 394 306 382 292 Q 406 278 384 265 C 398 248 386 225 362 200" />
-
-      <!-- 5. ARRUGA DE LA FRENTE (Pliegue característico de Bulldog) -->
-      <path d="M 215 190 Q 256 180 297 190" stroke-width="9" opacity="0.85" />
-
-      <!-- 6. OJOS CIRCULARES BIEN SEPARADOS CON BRILLO -->
-      <g class="animated-eye-left">
-        <circle cx="182" cy="226" r="17" fill="#e8a63d" stroke="none" class="eye-fill" />
-        <circle cx="177" cy="221" r="4.5" fill="#ffffff" stroke="none" />
+  {useImage ? (
+    <div class="logo-image-glow-wrapper">
+      <img 
+        src="/images/fluffy_logo.jpg" 
+        alt="Dinastía Bulldog Fluffy Emblem" 
+        class="bulldog-gold-emblem-img"
+        loading="eager"
+        width="340"
+        height="340"
+      />
+    </div>
+  ) : (
+    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulldog-svg-element">
+      <defs>
+        <radialGradient id="amber-glow-logo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) scale(220)">
+          <stop stop-color="#e8a63d" stop-opacity="0.4"/>
+          <stop offset="0.75" stop-color="#f6c96d" stop-opacity="0.1"/>
+          <stop offset="1" stop-color="#e8a63d" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="256" cy="256" r="220" fill="url(#amber-glow-logo)" opacity="0.55" />
+      <g class="logo-gold-stroke" stroke="#e8a63d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 215 168 C 190 120 152 78 122 72 C 98 67 76 86 92 108 Q 70 120 90 132 Q 74 145 100 156 Q 88 170 128 180 C 138 185 146 192 150 200" />
+        <path d="M 195 154 C 172 122 144 94 122 86" stroke-width="9" opacity="0.85" />
+        <path d="M 297 168 C 322 120 360 78 390 72 C 414 67 436 86 420 108 Q 442 120 422 132 Q 438 145 412 156 Q 424 170 384 180 C 374 185 366 192 362 200" />
+        <path d="M 317 154 C 340 122 368 94 390 86" stroke-width="9" opacity="0.85" />
+        <path d="M 215 168 Q 256 160 297 168" />
+        <path d="M 150 200 C 126 225 114 248 128 265 Q 106 278 130 292 Q 118 306 146 320 C 172 362 210 380 256 380 C 302 380 340 362 366 320 Q 394 306 382 292 Q 406 278 384 265 C 398 248 386 225 362 200" />
+        <path d="M 215 190 Q 256 180 297 190" stroke-width="9" opacity="0.85" />
+        <g class="animated-eye-left">
+          <circle cx="182" cy="226" r="17" fill="#e8a63d" stroke="none" class="eye-fill" />
+          <circle cx="177" cy="221" r="4.5" fill="#ffffff" stroke="none" />
+        </g>
+        <g class="animated-eye-right">
+          <circle cx="330" cy="226" r="17" fill="#e8a63d" stroke="none" class="eye-fill" />
+          <circle cx="325" cy="221" r="4.5" fill="#ffffff" stroke="none" />
+        </g>
+        <path d="M 256 272 C 220 252 174 262 174 296 C 174 332 220 342 256 314 C 292 342 338 332 338 296 C 338 262 292 252 256 272 Z" />
+        <path d="M 226 240 C 235 232 277 232 286 240 C 294 258 276 272 256 272 C 236 272 218 258 226 240 Z" fill="#e8a63d" stroke="none" class="nose-fill" />
+        <path d="M 256 272 L 256 298" stroke-width="11" />
+        <path d="M 232 306 Q 256 320 280 306" stroke-width="11" />
       </g>
-      <g class="animated-eye-right">
-        <circle cx="330" cy="226" r="17" fill="#e8a63d" stroke="none" class="eye-fill" />
-        <circle cx="325" cy="221" r="4.5" fill="#ffffff" stroke="none" />
-      </g>
-
-      <!-- 7. HOCICO, CHOPS Y TRUFA EN T -->
-      <!-- Chops (Bocaza de Bulldog en dos bucles de moflete redondeados) -->
-      <path d="M 256 272 C 220 252 174 262 174 296 C 174 332 220 342 256 314 C 292 342 338 332 338 296 C 338 262 292 252 256 272 Z" />
-
-      <!-- Trufa en T -->
-      <path d="M 226 240 C 235 232 277 232 286 240 C 294 258 276 272 256 272 C 236 272 218 258 226 240 Z" fill="#e8a63d" stroke="none" class="nose-fill" />
-      <path d="M 256 272 L 256 298" stroke-width="11" />
-      <path d="M 232 306 Q 256 320 280 306" stroke-width="11" />
-
-    </g>
-  </svg>
+    </svg>
+  )}
 </div>
 
 <style>
   .bulldog-animated-container {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 12px 30px rgba(232, 166, 61, 0.3));
+  }
+
+  .logo-image-glow-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bulldog-gold-emblem-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 24px;
+    display: block;
+    box-shadow: 0 16px 40px rgba(232, 166, 61, 0.25), 0 0 50px rgba(232, 166, 61, 0.15);
+    border: 1px solid rgba(232, 166, 61, 0.3);
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+  }
+
+  .bulldog-gold-emblem-img:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 24px 50px rgba(232, 166, 61, 0.4), 0 0 70px rgba(232, 166, 61, 0.25);
   }
 
   .bulldog-svg-element {
     width: 100%;
     height: auto;
     overflow: visible;
-  }
-
-  .logo-gold-stroke {
-    color: var(--amber);
-  }
-  :root.light-theme .logo-gold-stroke {
-    stroke: #d97706;
-  }
-  :root.light-theme .eye-fill,
-  :root.light-theme .nose-fill {
-    fill: #d97706;
-  }
-
-  /* Animación suave de parpadeo */
-  .animated-eye-left, .animated-eye-right {
-    animation: logoBlink 5s ease-in-out infinite;
-    transform-origin: 256px 226px;
-  }
-
-  @keyframes logoBlink {
-    0%, 94%, 98%, 100% { transform: scaleY(1); }
-    96% { transform: scaleY(0.1); }
   }
 </style>
