@@ -1,32 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <rect width="512" height="512" rx="128" fill="#121316"/>
-  <g stroke="#e8a63d" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Left Bat Ear with Outer Fluffy Hair Tufts -->
+  <g stroke="#e8a63d" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 200 170 C 180 120 142 80 115 85 C 92 90 90 120 108 152 C 122 178 135 198 145 220" />
     <path d="M 118 108 Q 88 100 98 120 Q 75 135 94 150 Q 72 168 96 182 Q 82 200 110 208" />
-    <path d="M 178 150 C 158 120 135 98 122 102 C 114 105 115 125 128 152" stroke-width="12" opacity="0.9" />
-
-    <!-- Right Bat Ear with Outer Fluffy Hair Tufts -->
     <path d="M 312 170 C 332 120 370 80 397 85 C 420 90 422 120 404 152 C 390 178 377 198 367 220" />
     <path d="M 394 108 Q 424 100 414 120 Q 437 135 418 150 Q 440 168 416 182 Q 430 200 402 208" />
-    <path d="M 334 150 C 354 120 377 98 390 102 C 398 105 397 125 384 152" stroke-width="12" opacity="0.9" />
-
-    <!-- Top Head Bridge -->
     <path d="M 200 170 C 220 162 292 162 312 170" />
-
-    <!-- Head & Cheeks Contour -->
     <path d="M 145 220 C 120 270 125 385 256 425 C 387 385 392 270 367 220" />
-
-    <!-- Eyes (Filled Circles) -->
     <circle cx="192" cy="265" r="22" fill="#e8a63d" stroke="none" />
     <circle cx="320" cy="265" r="22" fill="#e8a63d" stroke="none" />
-
-    <!-- Muzzle / Jowls Contour -->
     <path d="M 256 295 C 205 295 174 325 174 368 C 174 412 215 425 256 425 C 297 425 338 412 338 368 C 338 325 307 295 256 295 Z" fill="none" />
-
-    <!-- Trufa / Nose -->
     <path d="M 226 325 C 238 315 274 315 286 325 C 298 335 294 358 278 365 C 266 370 246 370 234 365 C 218 358 214 335 226 325 Z" fill="#e8a63d" stroke="none" />
-    <path d="M 256 365 L 256 395" stroke-width="16" />
-    <path d="M 235 395 L 277 395" stroke-width="14" />
+    <path d="M 256 365 L 256 385" stroke-width="18" />
+    <path d="M 220 385 Q 256 410 292 385" stroke-width="18" fill="none" />
   </g>
 </svg>
