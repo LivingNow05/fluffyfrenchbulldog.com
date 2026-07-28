@@ -329,17 +329,20 @@ a:hover { color: var(--amber-bright); }
 
 /* ─── Header flotante (.site-header) ───────────────────────────────────────── */
 .site-header {
-  --moon: #fcfbfa;
-  --moon-soft: rgba(244, 242, 236, 0.65);
-  --ink: #fcfbfa;
-  --ink-soft: rgba(244, 242, 236, 0.65);
-  --amber: #e8a63d;
-  --amber-deep: #e8a63d;
-  --amber-bright: #fcd53f;
-  background: rgba(21, 21, 24, 0.76);
+  --moon: #f8fafc;
+  --moon-soft: rgba(248, 250, 252, 0.7);
+  --ink: #f8fafc;
+  --ink-soft: rgba(248, 250, 252, 0.7);
+  --brand: #3b82f6;
+  --brand-deep: #2563eb;
+  --brand-bright: #60a5fa;
+  --amber: var(--brand);
+  --amber-deep: var(--brand-deep);
+  --amber-bright: var(--brand-bright);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(20px) saturate(1.3);
   -webkit-backdrop-filter: blur(20px) saturate(1.3);
-  border: 1.5px solid rgba(244, 242, 236, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   position: sticky;
   top: 16px;
@@ -347,7 +350,7 @@ a:hover { color: var(--amber-bright); }
   width: calc(100% - 32px);
   max-width: calc(var(--max) - 44px);
   margin: 16px auto 10px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -359,14 +362,17 @@ a:hover { color: var(--amber-bright); }
   --moon-soft: #475569;
   --ink: #0f172a;
   --ink-soft: #475569;
-  --amber: #d97706;
-  --amber-deep: #b45309;
-  --amber-bright: #f59e0b;
-  background: rgba(255, 255, 255, 0.85);
+  --brand: #2563eb;
+  --brand-deep: #1d4ed8;
+  --brand-bright: #3b82f6;
+  --amber: var(--brand);
+  --amber-deep: var(--brand-deep);
+  --amber-bright: var(--brand-bright);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1.5px solid rgba(15, 23, 42, 0.09);
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
 }
 
 .site-header .wrap {
@@ -396,7 +402,7 @@ a:hover { color: var(--amber-bright); }
 }
 .dropdown-trigger:hover,
 .nav-item-dropdown:hover .dropdown-trigger {
-  color: var(--amber);
+  color: var(--brand-bright);
 }
 .drop-arrow {
   font-size: 0.75rem;
@@ -412,13 +418,13 @@ a:hover { color: var(--amber-bright); }
   left: 50%;
   transform: translateX(-50%) translateY(12px);
   width: 620px;
-  background: rgba(21, 21, 26, 0.96);
+  background: rgba(15, 23, 42, 0.96);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(232, 166, 61, 0.25);
-  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(232, 166, 61, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -434,7 +440,7 @@ a:hover { color: var(--amber-bright); }
 
 :root.light-theme .megamenu-cities {
   background: rgba(255, 255, 255, 0.97);
-  border: 1px solid rgba(217, 119, 6, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
 }
 
@@ -536,10 +542,10 @@ a:hover { color: var(--amber-bright); }
 }
 
 .logo-text span {
-  color: var(--amber);
+  color: var(--brand-bright);
 }
 :root.light-theme .logo-text span {
-  color: #d97706 !important;
+  color: var(--brand) !important;
 }
 .logo svg { display: block; flex-shrink: 0; }
 
