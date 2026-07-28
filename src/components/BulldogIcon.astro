@@ -7,17 +7,119 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 ---
 
 <div class={`bulldog-animated-container ${className}`}>
-  <div class="logo-image-floating-wrapper">
-    <img 
-      src="/images/fluffy_logo.png" 
-      alt="Dinastía Bulldog Fluffy Emblem" 
-      class="bulldog-gold-emblem-img"
-      loading="eager"
-      width="340"
-      height="340"
-    />
-  </div>
+  <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulldog-svg-element" id="bulldog-eye-tracker-svg">
+    <defs>
+      <radialGradient id="amber-glow-friendly" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) scale(230)">
+        <stop stop-color="#e8a63d" stop-opacity="0.45"/>
+        <stop offset="0.75" stop-color="#f6c96d" stop-opacity="0.12"/>
+        <stop offset="1" stop-color="#e8a63d" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Resplandor Dorado de Fondo -->
+    <circle cx="256" cy="256" r="220" fill="url(#amber-glow-friendly)" opacity="0.65" />
+
+    <g stroke="#e8a63d" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" class="logo-gold-stroke">
+      <!-- Oreja Izquierda -->
+      <path d="M 200 170 C 180 120 142 80 115 85 C 92 90 90 120 108 152 C 122 178 135 198 145 220" />
+      <path d="M 118 108 Q 88 100 98 120 Q 75 135 94 150 Q 72 168 96 182 Q 82 200 110 208" />
+      <path d="M 178 150 C 158 120 135 98 122 102 C 114 105 115 125 128 152" stroke-width="11" opacity="0.85" />
+
+      <!-- Oreja Derecha -->
+      <path d="M 312 170 C 332 120 370 80 397 85 C 420 90 422 120 404 152 C 390 178 377 198 367 220" />
+      <path d="M 394 108 Q 424 100 414 120 Q 437 135 418 150 Q 440 168 416 182 Q 430 200 402 208" />
+      <path d="M 334 150 C 354 120 377 98 390 102 C 398 105 397 125 384 152" stroke-width="11" opacity="0.85" />
+
+      <!-- Puente de la Cabeza -->
+      <path d="M 200 170 C 220 162 292 162 312 170" />
+
+      <!-- Contorno de la Cabeza -->
+      <path d="M 145 220 C 120 270 125 385 256 425 C 387 385 392 270 367 220" />
+
+      <!-- OJOS AMIGABLES CON SEGUIMIENTO DE CURSOR -->
+      <!-- Ojo Izquierdo -->
+      <g class="eye-socket-left">
+        <!-- Cuenca del Ojo -->
+        <circle cx="192" cy="265" r="26" fill="#121316" stroke="#e8a63d" stroke-width="6" />
+        <!-- Pupila animada seguidora de cursor -->
+        <g class="js-pupil-interactive" id="pupil-left">
+          <circle cx="192" cy="265" r="16" fill="#e8a63d" stroke="none" class="eye-fill" />
+          <circle cx="187" cy="260" r="5.5" fill="#ffffff" stroke="none" />
+        </g>
+      </g>
+
+      <!-- Ojo Derecho -->
+      <g class="eye-socket-right">
+        <!-- Cuenca del Ojo -->
+        <circle cx="320" cy="265" r="26" fill="#121316" stroke="#e8a63d" stroke-width="6" />
+        <!-- Pupila animada seguidora de cursor -->
+        <g class="js-pupil-interactive" id="pupil-right">
+          <circle cx="320" cy="265" r="16" fill="#e8a63d" stroke="none" class="eye-fill" />
+          <circle cx="315" cy="260" r="5.5" fill="#ffffff" stroke="none" />
+        </g>
+      </g>
+
+      <!-- Hocico y Mofletes -->
+      <path d="M 256 295 C 205 295 174 325 174 368 C 174 412 215 425 256 425 C 297 425 338 412 338 368 C 338 325 307 295 256 295 Z" fill="none" />
+
+      <!-- Trufa / Nariz -->
+      <path d="M 226 325 C 238 315 274 315 286 325 C 298 335 294 358 278 365 C 266 370 246 370 234 365 C 218 358 214 335 226 325 Z" fill="#e8a63d" stroke="none" class="nose-fill" />
+      <path d="M 256 365 L 256 385" stroke-width="14" />
+
+      <!-- Sonrisa Curva Feliz -->
+      <path d="M 220 385 Q 256 410 292 385" stroke-width="14" fill="none" />
+    </g>
+  </svg>
 </div>
+
+<script>
+  function initEyeTracking() {
+    const pupils = document.querySelectorAll('.js-pupil-interactive');
+    if (!pupils.length) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ticking = false;
+
+    function updatePupils() {
+      pupils.forEach((pupil) => {
+        const rect = pupil.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width / 2;
+        const eyeCenterY = rect.top + rect.height / 2;
+
+        const dx = mouseX - eyeCenterX;
+        const dy = mouseY - eyeCenterY;
+        const dist = Math.hypot(dx, dy);
+
+        // Máximo desplazamiento en píxeles dentro de la cuenca
+        const maxOffset = 9;
+        const angle = Math.atan2(dy, dx);
+        const offset = Math.min(dist / 15, maxOffset);
+
+        const offsetX = Math.cos(angle) * offset;
+        const offsetY = Math.sin(angle) * offset;
+
+        (pupil as HTMLElement).style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!ticking) {
+        requestAnimationFrame(updatePupils);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEyeTracking);
+  } else {
+    initEyeTracking();
+  }
+</script>
 
 <style>
   .bulldog-animated-container {
@@ -27,27 +129,29 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.35));
   }
 
-  .logo-image-floating-wrapper {
-    position: relative;
+  .bulldog-svg-element {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .bulldog-gold-emblem-img {
-    width: 100%;
-    max-width: 320px;
     height: auto;
-    display: block;
-    filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.45));
-    transition: transform 0.4s var(--ease-out), filter 0.4s ease;
+    overflow: visible;
   }
 
-  .bulldog-gold-emblem-img:hover {
-    transform: scale(1.04) translateY(-4px);
-    filter: drop-shadow(0 22px 50px rgba(232, 166, 61, 0.65));
+  .js-pupil-interactive {
+    transition: transform 0.08s ease-out;
+    will-change: transform;
+    transform-origin: center;
+  }
+
+  .logo-gold-stroke {
+    color: var(--amber);
+  }
+  :root.light-theme .logo-gold-stroke {
+    stroke: #d97706;
+  }
+  :root.light-theme .eye-fill,
+  :root.light-theme .nose-fill {
+    fill: #d97706;
   }
 </style>
