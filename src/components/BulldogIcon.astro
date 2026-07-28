@@ -14,22 +14,28 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
       alt="Dinastía Bulldog Fluffy Emblem" 
       class="bulldog-gold-emblem-img"
       loading="eager"
-      width="340"
-      height="340"
+      width="500"
+      height="500"
     />
     
-    <!-- Capa de Ojos Interactivos Seguidora de Cursor sobre la Foto -->
+    <!-- Capa de Ojos Lux Exóticos Interactivos sobre la Foto -->
     <div class="eye-tracker-overlay">
       <div class="photo-eye-socket eye-socket-left">
         <div class="photo-pupil js-photo-pupil" id="photo-pupil-l">
-          <span class="pupil-dot"></span>
-          <span class="pupil-shine"></span>
+          <div class="iris-ring">
+            <span class="pupil-center"></span>
+            <span class="pupil-shine-main"></span>
+            <span class="pupil-shine-sec"></span>
+          </div>
         </div>
       </div>
       <div class="photo-eye-socket eye-socket-right">
         <div class="photo-pupil js-photo-pupil" id="photo-pupil-r">
-          <span class="pupil-dot"></span>
-          <span class="pupil-shine"></span>
+          <div class="iris-ring">
+            <span class="pupil-center"></span>
+            <span class="pupil-shine-main"></span>
+            <span class="pupil-shine-sec"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -55,10 +61,10 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
         const dy = mouseY - eyeCenterY;
         const dist = Math.hypot(dx, dy);
 
-        // Máximo desplazamiento permitido dentro del ojo (7px)
-        const maxOffset = 7;
+        // Máximo desplazamiento suave dentro del ojo
+        const maxOffset = 10;
         const angle = Math.atan2(dy, dx);
-        const offset = Math.min(dist / 16, maxOffset);
+        const offset = Math.min(dist / 14, maxOffset);
 
         const offsetX = Math.cos(angle) * offset;
         const offsetY = Math.sin(angle) * offset;
@@ -88,7 +94,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 <style>
   .bulldog-animated-container {
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -98,7 +104,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   .logo-image-floating-wrapper {
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 520px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,19 +112,19 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
   .bulldog-gold-emblem-img {
     width: 100%;
-    max-width: 440px;
+    max-width: 500px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 16px 40px rgba(232, 166, 61, 0.45));
+    filter: drop-shadow(0 20px 48px rgba(232, 166, 61, 0.5));
     transition: transform 0.4s var(--ease-out), filter 0.4s ease;
   }
 
   .bulldog-gold-emblem-img:hover {
-    transform: scale(1.03) translateY(-4px);
-    filter: drop-shadow(0 24px 55px rgba(232, 166, 61, 0.65));
+    transform: scale(1.03) translateY(-6px);
+    filter: drop-shadow(0 28px 65px rgba(232, 166, 61, 0.7));
   }
 
-  /* Capa de cuencas de ojos interactivos posicionadas sobre la foto */
+  /* Capa de cuencas de ojos exóticos interactivos */
   .eye-tracker-overlay {
     position: absolute;
     top: 0;
@@ -131,8 +137,8 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
   .photo-eye-socket {
     position: absolute;
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -152,8 +158,8 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   }
 
   .photo-pupil {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -162,27 +168,53 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     will-change: transform;
   }
 
-  .pupil-dot {
-    width: 12px;
-    height: 12px;
-    background: var(--amber);
+  /* Anillo del Iris Exótico Dorado Sol brillante */
+  .iris-ring {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fef08a 0%, #f59e0b 55%, #b45309 100%);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.95), inset 0 0 4px rgba(0, 0, 0, 0.6);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+  }
+
+  :root.light-theme .iris-ring {
+    background: radial-gradient(circle at 35% 35%, #fbbf24 0%, #d97706 70%, #92400e 100%);
+  }
+
+  /* Centro de la Pupila Oscura */
+  .pupil-center {
+    width: 11px;
+    height: 11px;
+    background: #0f172a;
     border-radius: 50%;
     display: block;
-    box-shadow: 0 0 8px rgba(232, 166, 61, 0.9);
   }
 
-  :root.light-theme .pupil-dot {
-    background: #d97706;
-  }
-
-  .pupil-shine {
+  /* Destello Principal */
+  .pupil-shine-main {
     position: absolute;
-    top: 1px;
-    left: 1px;
+    top: 2px;
+    left: 3px;
     width: 5px;
     height: 5px;
     background: #ffffff;
     border-radius: 50%;
     opacity: 0.95;
+  }
+
+  /* Destello Secundario */
+  .pupil-shine-sec {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 2.5px;
+    height: 2.5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
   }
 </style>
