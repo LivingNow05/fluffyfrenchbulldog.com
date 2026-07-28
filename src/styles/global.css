@@ -152,10 +152,35 @@ a:hover { color: var(--amber-bright); }
   padding: 15px 32px;
   border: none;
   cursor: pointer;
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0) scale(0.98); }
+.btn:hover { 
+  transform: translateY(-4px) scale(1.02); 
+}
+.btn:active { 
+  transform: translateY(0) scale(0.97); 
+}
+
+/* Shimmer Streak Effect en Hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.btn:hover::before {
+  left: 140%;
+}
+
 .btn--amber,
 .btn-amber,
 .btn-primary,
@@ -167,7 +192,9 @@ a:hover { color: var(--amber-bright); }
 .btn--amber:hover,
 .btn-amber:hover,
 .btn-primary:hover,
-.btn--primary:hover { box-shadow: 0 14px 38px var(--amber-glow), 0 0 20px rgba(246, 201, 109, 0.4); }
+.btn--primary:hover { 
+  box-shadow: 0 16px 42px var(--amber-glow), 0 0 30px rgba(246, 201, 109, 0.55); 
+}
 
 :root.light-theme .btn--amber:not(.hero *):not(.cta-box *):not(.site-footer *),
 :root.light-theme .btn-amber:not(.hero *):not(.cta-box *):not(.site-footer *),
@@ -181,7 +208,7 @@ a:hover { color: var(--amber-bright); }
 :root.light-theme .btn-amber:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
 :root.light-theme .btn-primary:not(.hero *):not(.cta-box *):not(.site-footer *):hover,
 :root.light-theme .btn--primary:not(.hero *):not(.cta-box *):not(.site-footer *):hover {
-  box-shadow: 0 14px 36px rgba(217, 119, 6, 0.48), 0 0 24px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 16px 40px rgba(217, 119, 6, 0.52), 0 0 28px rgba(245, 158, 11, 0.4);
 }
 
 .btn--ghost,
@@ -198,7 +225,8 @@ a:hover { color: var(--amber-bright); }
 .btn--secondary:hover {
   border-color: var(--amber);
   color: var(--amber-bright) !important;
-  background: rgba(232, 166, 61, 0.12);
+  background: rgba(232, 166, 61, 0.14);
+  box-shadow: 0 10px 30px rgba(232, 166, 61, 0.25);
 }
 
 /* Forzar contraste claro impecable cuando los botones secundarios están en secciones fijas oscuras (Hero, CTA, Footer) */
@@ -232,8 +260,8 @@ a:hover { color: var(--amber-bright); }
 .site-footer .btn--secondary:hover {
   color: var(--amber-bright) !important;
   border-color: var(--amber) !important;
-  background: rgba(232, 166, 61, 0.18) !important;
-  box-shadow: 0 0 18px rgba(232, 166, 61, 0.3) !important;
+  background: rgba(232, 166, 61, 0.2) !important;
+  box-shadow: 0 12px 32px rgba(232, 166, 61, 0.4) !important;
 }
 
 :root.light-theme .btn--ghost:not(.hero *):not(.cta-box *):not(.site-footer *),
@@ -250,7 +278,7 @@ a:hover { color: var(--amber-bright); }
 :root.light-theme .btn--secondary:not(.hero *):not(.cta-box *):not(.site-footer *):hover {
   border-color: #d97706;
   color: #d97706 !important;
-  background: rgba(217, 119, 6, 0.06);
+  background: rgba(217, 119, 6, 0.08);
 }
 
 .btn--whatsapp {
@@ -260,7 +288,7 @@ a:hover { color: var(--amber-bright); }
 }
 .btn--whatsapp:hover {
   background: #1cb051;
-  box-shadow: 0 14px 38px rgba(31, 179, 85, 0.55);
+  box-shadow: 0 16px 42px rgba(31, 179, 85, 0.6), 0 0 25px rgba(34, 197, 94, 0.4);
 }
 
 .theme-toggle-btn {
@@ -1958,19 +1986,20 @@ table.price-table {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: #1fb355;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(31, 179, 85, 0.45);
+  box-shadow: 0 10px 28px rgba(34, 197, 94, 0.45);
   animation: pulse-whatsapp 2.5s infinite;
   text-decoration: none;
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.3s ease;
 }
 .whatsapp-float:hover {
-  transform: scale(1.1);
-  background: #189846;
+  transform: scale(1.14) rotate(6deg);
+  background: linear-gradient(135deg, #4ade80, #15803d);
+  box-shadow: 0 16px 45px rgba(34, 197, 94, 0.65), 0 0 30px rgba(74, 222, 128, 0.5);
 }
 
 .whatsapp-float-tooltip {
