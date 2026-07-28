@@ -7,17 +7,17 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Noche Profunda */
-  --night: #090c15;
-  --night-2: #111827;
-  --night-3: #1e293b;
-  --night-line: #334155;
+  /* Noche Profunda Velvet */
+  --night: #0b0914;
+  --night-2: #131024;
+  --night-3: #1c1836;
+  --night-line: #2d2754;
 
-  /* Royal Cobalt & Sapphire Blue (En reemplazo total del dorado/amarillo) */
-  --brand: #3b82f6;
-  --brand-bright: #60a5fa;
-  --brand-deep: #2563eb;
-  --brand-soft: rgba(59, 130, 246, 0.08);
+  /* Royal Amethyst Velvet & Platinum (Exótico Fluffy Lilac & Isabella - Alta Costura) */
+  --brand: #8b5cf6;
+  --brand-bright: #a78bfa;
+  --brand-deep: #7c3aed;
+  --brand-soft: rgba(139, 92, 246, 0.08);
   --brand-glow: transparent; /* CERO BRILLOS NEÓN */
 
   /* Mapeo para compatibilidad total en todo el sitio */
@@ -28,15 +28,15 @@
   --amber-glow: transparent; /* CERO BRILLOS NEÓN */
 
   /* Papel (Modo Oscuro Predeterminado) */
-  --paper: #090c15;
-  --surface: #0f172a;
+  --paper: #0b0914;
+  --surface: #131024;
   --border: rgba(255, 255, 255, 0.08);
-  --ink: #f8fafc;
-  --ink-soft: rgba(248, 250, 252, 0.7);
+  --ink: #f5f3ff;
+  --ink-soft: rgba(245, 243, 255, 0.7);
 
   /* Texto sobre noche */
-  --moon: #f8fafc;
-  --moon-soft: rgba(248, 250, 252, 0.7);
+  --moon: #f5f3ff;
+  --moon-soft: rgba(245, 243, 255, 0.7);
 
   --whatsapp: #16a34a;
   --radius: 14px;
@@ -53,37 +53,37 @@
 }
 
 :root.light-theme {
-  --paper: #f8fafc;
+  --paper: #faf5ff;
   --surface: #ffffff;
-  --border: rgba(15, 23, 42, 0.09);
-  --ink: #0f172a;
-  --ink-soft: #475569;
-  --moon: #0f172a;
-  --moon-soft: #475569;
-  --brand: #2563eb;
-  --brand-deep: #1d4ed8;
-  --brand-bright: #3b82f6;
-  --brand-soft: rgba(37, 99, 235, 0.07);
+  --border: rgba(124, 58, 237, 0.09);
+  --ink: #1e1b4b;
+  --ink-soft: #4c1d95;
+  --moon: #1e1b4b;
+  --moon-soft: #4c1d95;
+  --brand: #7c3aed;
+  --brand-deep: #6d28d9;
+  --brand-bright: #8b5cf6;
+  --brand-soft: rgba(124, 58, 237, 0.07);
   --brand-glow: transparent;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
   --amber-soft: var(--brand-soft);
   --amber-glow: transparent;
-  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
-  --shadow-night: 0 24px 60px -12px rgba(15, 23, 42, 0.12);
+  --shadow-sm: 0 2px 8px rgba(30, 27, 75, 0.04);
+  --shadow-md: 0 12px 32px -4px rgba(30, 27, 75, 0.08);
+  --shadow-night: 0 24px 60px -12px rgba(30, 27, 75, 0.12);
 }
 
 .hero, .cta-box, .site-footer {
-  --moon: #f8fafc;
-  --moon-soft: rgba(248, 250, 252, 0.7);
-  --ink: #f8fafc;
-  --ink-soft: rgba(248, 250, 252, 0.7);
-  --brand: #3b82f6;
-  --brand-deep: #2563eb;
-  --brand-bright: #60a5fa;
-  --brand-soft: rgba(59, 130, 246, 0.12);
+  --moon: #f5f3ff;
+  --moon-soft: rgba(245, 243, 255, 0.7);
+  --ink: #f5f3ff;
+  --ink-soft: rgba(245, 243, 255, 0.7);
+  --brand: #8b5cf6;
+  --brand-deep: #7c3aed;
+  --brand-bright: #a78bfa;
+  --brand-soft: rgba(139, 92, 246, 0.12);
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
@@ -802,7 +802,7 @@ a:hover { color: var(--amber-bright); }
 /* ─── NEW BENTO LUXURY HERO ARCHITECTURE ─────────────────────────────────────── */
 .hero--bento-luxury {
   position: relative;
-  background: linear-gradient(180deg, #090c15 0%, #0f172a 100%);
+  background: linear-gradient(180deg, #0b0914 0%, #131024 100%);
   color: var(--moon);
   padding: 190px 0 100px;
   margin-top: -98px;
@@ -834,7 +834,7 @@ a:hover { color: var(--amber-bright); }
 }
 
 .hero-title-highlight {
-  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ddd6fe 50%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -904,7 +904,7 @@ a:hover { color: var(--amber-bright); }
   align-items: center;
   justify-content: space-between;
   padding: 14px 22px;
-  background: #2563eb;
+  background: #7c3aed;
   color: #ffffff !important;
   font-weight: 750;
   font-size: 0.98rem;
@@ -916,7 +916,7 @@ a:hover { color: var(--amber-bright); }
 }
 
 .btn-dock-primary:hover {
-  background: #1d4ed8;
+  background: #6d28d9;
   transform: translateY(-2px);
   box-shadow: none !important;
 }
