@@ -881,22 +881,22 @@ a:hover { color: var(--amber-bright); }
   transform: translateY(-2px);
 }
 
-/* ─── HIGH-END AGENCY ACTION DOCK (Stitch Design Taste) ────────────────────── */
+/* ─── FLAT MINIMALIST HERO ACTION DOCK (/minimalist) ───────────────────────── */
 .hero-action-dock {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin: 32px 0;
-  max-width: 520px;
-  animation: heroFade 1s var(--ease-out) 0.35s both;
+  gap: 10px;
+  margin: 28px 0 32px;
+  max-width: 480px;
+  animation: heroFade 0.9s var(--ease-out) 0.3s both;
 }
 
 @media (max-width: 920px) {
   .hero-action-dock {
     margin-left: auto;
     margin-right: auto;
-    align-items: center;
     width: 100%;
+    align-items: center;
   }
 }
 
@@ -904,57 +904,39 @@ a:hover { color: var(--amber-bright); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+  padding: 14px 22px;
+  background: var(--amber);
   color: #0c0c0e !important;
-  font-weight: 850;
-  font-size: 1.05rem;
-  border-radius: 20px;
+  font-weight: 750;
+  font-size: 0.98rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: none !important;
   text-decoration: none !important;
-  box-shadow: 0 12px 36px rgba(245, 158, 11, 0.45);
-  position: relative;
-  overflow: hidden;
-  will-change: transform;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-}
-
-.btn-dock-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.btn-dock-primary:hover::before {
-  left: 140%;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-dock-primary:hover {
-  transform: translateY(-4px) scale(1.015);
-  box-shadow: 0 18px 48px rgba(245, 158, 11, 0.65), 0 0 30px rgba(254, 240, 138, 0.5);
+  background: var(--amber-bright);
+  transform: translateY(-2px);
+  box-shadow: none !important;
 }
 
 .btn-dock-primary:active {
-  transform: translateY(0) scale(0.97);
+  transform: translateY(0) scale(0.98);
 }
 
 .dock-icon {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .dock-arrow {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
 }
 
 .btn-dock-primary:hover .dock-arrow {
-  transform: translateX(6px);
+  transform: translateX(4px);
 }
 
 .btn-dock-whatsapp {
@@ -962,45 +944,45 @@ a:hover { color: var(--amber-bright); }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 24px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  padding: 13px 22px;
+  background: #16a34a;
   color: #ffffff !important;
-  font-weight: 800;
-  font-size: 0.98rem;
-  border-radius: 18px;
+  font-weight: 750;
+  font-size: 0.94rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: none !important;
   text-decoration: none !important;
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-dock-whatsapp:hover {
-  transform: translateY(-3px) scale(1.01);
-  background: linear-gradient(135deg, #4ade80, #15803d);
-  box-shadow: 0 16px 42px rgba(34, 197, 94, 0.6);
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: none !important;
 }
 
 .btn-dock-ghost {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 13px 24px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--moon) !important;
-  font-weight: 750;
-  font-size: 0.92rem;
-  border: 1.5px solid rgba(244, 242, 236, 0.18);
-  border-radius: 18px;
+  gap: 8px;
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--moon-soft) !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 1px solid rgba(244, 242, 236, 0.2);
+  border-radius: 12px;
+  box-shadow: none !important;
   text-decoration: none !important;
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-dock-ghost:hover {
   border-color: var(--amber);
   color: var(--amber-bright) !important;
-  background: rgba(232, 166, 61, 0.12);
-  box-shadow: 0 8px 24px rgba(232, 166, 61, 0.25);
+  background: rgba(232, 166, 61, 0.08);
   transform: translateY(-2px);
 }
 
