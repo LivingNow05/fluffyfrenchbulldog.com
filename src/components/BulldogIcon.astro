@@ -88,7 +88,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 <style>
   .bulldog-animated-container {
     width: 100%;
-    max-width: 360px;
+    max-width: 480px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -98,7 +98,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   .logo-image-floating-wrapper {
     position: relative;
     width: 100%;
-    max-width: 340px;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,16 +106,16 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
   .bulldog-gold-emblem-img {
     width: 100%;
-    max-width: 320px;
+    max-width: 440px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.45));
+    filter: drop-shadow(0 16px 40px rgba(232, 166, 61, 0.45));
     transition: transform 0.4s var(--ease-out), filter 0.4s ease;
   }
 
   .bulldog-gold-emblem-img:hover {
     transform: scale(1.03) translateY(-4px);
-    filter: drop-shadow(0 20px 45px rgba(232, 166, 61, 0.65));
+    filter: drop-shadow(0 24px 55px rgba(232, 166, 61, 0.65));
   }
 
   /* Capa de cuencas de ojos interactivos posicionadas sobre la foto */
@@ -131,8 +131,8 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
   .photo-eye-socket {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -152,8 +152,8 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   }
 
   .photo-pupil {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -163,12 +163,12 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   }
 
   .pupil-dot {
-    width: 9px;
-    height: 9px;
+    width: 12px;
+    height: 12px;
     background: var(--amber);
     border-radius: 50%;
     display: block;
-    box-shadow: 0 0 6px rgba(232, 166, 61, 0.9);
+    box-shadow: 0 0 8px rgba(232, 166, 61, 0.9);
   }
 
   :root.light-theme .pupil-dot {
@@ -179,10 +179,10 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     position: absolute;
     top: 1px;
     left: 1px;
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
     background: #ffffff;
     border-radius: 50%;
-    opacity: 0.9;
+    opacity: 0.95;
   }
 </style>
