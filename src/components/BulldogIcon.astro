@@ -7,81 +7,45 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 ---
 
 <div class={`bulldog-animated-container ${className}`}>
-  <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulldog-svg-element" id="bulldog-eye-tracker-svg">
-    <defs>
-      <radialGradient id="amber-glow-friendly" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) scale(230)">
-        <stop stop-color="#e8a63d" stop-opacity="0.45"/>
-        <stop offset="0.75" stop-color="#f6c96d" stop-opacity="0.12"/>
-        <stop offset="1" stop-color="#e8a63d" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-
-    <!-- Resplandor Dorado de Fondo -->
-    <circle cx="256" cy="256" r="220" fill="url(#amber-glow-friendly)" opacity="0.65" />
-
-    <g stroke="#e8a63d" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" class="logo-gold-stroke">
-      <!-- Oreja Izquierda -->
-      <path d="M 200 170 C 180 120 142 80 115 85 C 92 90 90 120 108 152 C 122 178 135 198 145 220" />
-      <path d="M 118 108 Q 88 100 98 120 Q 75 135 94 150 Q 72 168 96 182 Q 82 200 110 208" />
-      <path d="M 178 150 C 158 120 135 98 122 102 C 114 105 115 125 128 152" stroke-width="11" opacity="0.85" />
-
-      <!-- Oreja Derecha -->
-      <path d="M 312 170 C 332 120 370 80 397 85 C 420 90 422 120 404 152 C 390 178 377 198 367 220" />
-      <path d="M 394 108 Q 424 100 414 120 Q 437 135 418 150 Q 440 168 416 182 Q 430 200 402 208" />
-      <path d="M 334 150 C 354 120 377 98 390 102 C 398 105 397 125 384 152" stroke-width="11" opacity="0.85" />
-
-      <!-- Puente de la Cabeza -->
-      <path d="M 200 170 C 220 162 292 162 312 170" />
-
-      <!-- Contorno de la Cabeza -->
-      <path d="M 145 220 C 120 270 125 385 256 425 C 387 385 392 270 367 220" />
-
-      <!-- OJOS AMIGABLES CON SEGUIMIENTO DE CURSOR -->
-      <!-- Ojo Izquierdo -->
-      <g class="eye-socket-left">
-        <!-- Cuenca del Ojo -->
-        <circle cx="192" cy="265" r="26" fill="#121316" stroke="#e8a63d" stroke-width="6" />
-        <!-- Pupila animada seguidora de cursor -->
-        <g class="js-pupil-interactive" id="pupil-left">
-          <circle cx="192" cy="265" r="16" fill="#e8a63d" stroke="none" class="eye-fill" />
-          <circle cx="187" cy="260" r="5.5" fill="#ffffff" stroke="none" />
-        </g>
-      </g>
-
-      <!-- Ojo Derecho -->
-      <g class="eye-socket-right">
-        <!-- Cuenca del Ojo -->
-        <circle cx="320" cy="265" r="26" fill="#121316" stroke="#e8a63d" stroke-width="6" />
-        <!-- Pupila animada seguidora de cursor -->
-        <g class="js-pupil-interactive" id="pupil-right">
-          <circle cx="320" cy="265" r="16" fill="#e8a63d" stroke="none" class="eye-fill" />
-          <circle cx="315" cy="260" r="5.5" fill="#ffffff" stroke="none" />
-        </g>
-      </g>
-
-      <!-- Hocico y Mofletes -->
-      <path d="M 256 295 C 205 295 174 325 174 368 C 174 412 215 425 256 425 C 297 425 338 412 338 368 C 338 325 307 295 256 295 Z" fill="none" />
-
-      <!-- Trufa / Nariz -->
-      <path d="M 226 325 C 238 315 274 315 286 325 C 298 335 294 358 278 365 C 266 370 246 370 234 365 C 218 358 214 335 226 325 Z" fill="#e8a63d" stroke="none" class="nose-fill" />
-      <path d="M 256 365 L 256 385" stroke-width="14" />
-
-      <!-- Sonrisa Curva Feliz -->
-      <path d="M 220 385 Q 256 410 292 385" stroke-width="14" fill="none" />
-    </g>
-  </svg>
+  <div class="logo-image-floating-wrapper">
+    <!-- Foto PNG Base del Bulldog (Sin recuadro, transparente) -->
+    <img 
+      src="/images/fluffy_logo.png" 
+      alt="Dinastía Bulldog Fluffy Emblem" 
+      class="bulldog-gold-emblem-img"
+      loading="eager"
+      width="340"
+      height="340"
+    />
+    
+    <!-- Capa de Ojos Interactivos Seguidora de Cursor sobre la Foto -->
+    <div class="eye-tracker-overlay">
+      <div class="photo-eye-socket eye-socket-left">
+        <div class="photo-pupil js-photo-pupil" id="photo-pupil-l">
+          <span class="pupil-dot"></span>
+          <span class="pupil-shine"></span>
+        </div>
+      </div>
+      <div class="photo-eye-socket eye-socket-right">
+        <div class="photo-pupil js-photo-pupil" id="photo-pupil-r">
+          <span class="pupil-dot"></span>
+          <span class="pupil-shine"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-  function initEyeTracking() {
-    const pupils = document.querySelectorAll('.js-pupil-interactive');
+  function setupPhotoEyeTracking() {
+    const pupils = document.querySelectorAll('.js-photo-pupil');
     if (!pupils.length) return;
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let ticking = false;
 
-    function updatePupils() {
+    function updatePhotoPupils() {
       pupils.forEach((pupil) => {
         const rect = pupil.getBoundingClientRect();
         const eyeCenterX = rect.left + rect.width / 2;
@@ -91,10 +55,10 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
         const dy = mouseY - eyeCenterY;
         const dist = Math.hypot(dx, dy);
 
-        // Máximo desplazamiento en píxeles dentro de la cuenca
-        const maxOffset = 9;
+        // Máximo desplazamiento permitido dentro del ojo (7px)
+        const maxOffset = 7;
         const angle = Math.atan2(dy, dx);
-        const offset = Math.min(dist / 15, maxOffset);
+        const offset = Math.min(dist / 16, maxOffset);
 
         const offsetX = Math.cos(angle) * offset;
         const offsetY = Math.sin(angle) * offset;
@@ -108,16 +72,16 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
       mouseX = e.clientX;
       mouseY = e.clientY;
       if (!ticking) {
-        requestAnimationFrame(updatePupils);
+        requestAnimationFrame(updatePhotoPupils);
         ticking = true;
       }
     }, { passive: true });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEyeTracking);
+    document.addEventListener('DOMContentLoaded', setupPhotoEyeTracking);
   } else {
-    initEyeTracking();
+    setupPhotoEyeTracking();
   }
 </script>
 
@@ -129,29 +93,96 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.35));
   }
 
-  .bulldog-svg-element {
+  .logo-image-floating-wrapper {
+    position: relative;
     width: 100%;
-    height: auto;
-    overflow: visible;
+    max-width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .js-pupil-interactive {
+  .bulldog-gold-emblem-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.45));
+    transition: transform 0.4s var(--ease-out), filter 0.4s ease;
+  }
+
+  .bulldog-gold-emblem-img:hover {
+    transform: scale(1.03) translateY(-4px);
+    filter: drop-shadow(0 20px 45px rgba(232, 166, 61, 0.65));
+  }
+
+  /* Capa de cuencas de ojos interactivos posicionadas sobre la foto */
+  .eye-tracker-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .photo-eye-socket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .eye-socket-left {
+    top: 51.8%;
+    left: 39.5%;
+    transform: translate(-50%, -50%);
+  }
+
+  .eye-socket-right {
+    top: 51.8%;
+    left: 60.5%;
+    transform: translate(-50%, -50%);
+  }
+
+  .photo-pupil {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.08s ease-out;
     will-change: transform;
-    transform-origin: center;
   }
 
-  .logo-gold-stroke {
-    color: var(--amber);
+  .pupil-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--amber);
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 0 6px rgba(232, 166, 61, 0.9);
   }
-  :root.light-theme .logo-gold-stroke {
-    stroke: #d97706;
+
+  :root.light-theme .pupil-dot {
+    background: #d97706;
   }
-  :root.light-theme .eye-fill,
-  :root.light-theme .nose-fill {
-    fill: #d97706;
+
+  .pupil-shine {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0.9;
   }
 </style>
