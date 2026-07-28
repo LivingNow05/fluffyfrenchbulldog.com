@@ -8,71 +8,86 @@
 
 :root {
   /* Noche Profunda */
-  --night: #0c0c0e;
-  --night-2: #151518;
-  --night-3: #1e1e23;
-  --night-line: #2a2a30;
+  --night: #090c15;
+  --night-2: #111827;
+  --night-3: #1e293b;
+  --night-line: #334155;
 
-  /* Dorado Rey / Ámbar Fluffy */
-  --amber: #e8a63d;
-  --amber-bright: #f6c96d;
-  --amber-deep: #d49228;
-  --amber-soft: rgba(232, 166, 61, 0.08);
-  --amber-glow: rgba(232, 166, 61, 0.28);
+  /* Royal Cobalt & Sapphire Blue (En reemplazo total del dorado/amarillo) */
+  --brand: #3b82f6;
+  --brand-bright: #60a5fa;
+  --brand-deep: #2563eb;
+  --brand-soft: rgba(59, 130, 246, 0.08);
+  --brand-glow: transparent; /* CERO BRILLOS NEÓN */
+
+  /* Mapeo para compatibilidad total en todo el sitio */
+  --amber: var(--brand);
+  --amber-bright: var(--brand-bright);
+  --amber-deep: var(--brand-deep);
+  --amber-soft: var(--brand-soft);
+  --amber-glow: transparent; /* CERO BRILLOS NEÓN */
 
   /* Papel (Modo Oscuro Predeterminado) */
-  --paper: #0c0c0e;
-  --surface: #131316;
-  --border: rgba(244, 242, 236, 0.08);
-  --ink: #f4f2ec;
-  --ink-soft: rgba(244, 242, 236, 0.68);
+  --paper: #090c15;
+  --surface: #0f172a;
+  --border: rgba(255, 255, 255, 0.08);
+  --ink: #f8fafc;
+  --ink-soft: rgba(248, 250, 252, 0.7);
 
   /* Texto sobre noche */
-  --moon: #f4f2ec;
-  --moon-soft: rgba(244, 242, 236, 0.68);
+  --moon: #f8fafc;
+  --moon-soft: rgba(248, 250, 252, 0.7);
 
-  --whatsapp: #1fb355;
-  --radius: 16px;
+  --whatsapp: #16a34a;
+  --radius: 14px;
   --max: 1240px;
 
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --shadow-sm: 0 1px 3px rgba(12, 12, 14, 0.06);
-  --shadow-md: 0 12px 32px rgba(12, 12, 14, 0.1);
-  --shadow-night: 0 24px 70px rgba(12, 12, 14, 0.45);
-  --shadow-glow: 0 8px 30px rgba(232, 166, 61, 0.25);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --shadow-night: 0 20px 50px rgba(0, 0, 0, 0.4);
+  --shadow-glow: none; /* CERO BRILLOS NEÓN */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root.light-theme {
-  --paper: #faf9f6;
+  --paper: #f8fafc;
   --surface: #ffffff;
   --border: rgba(15, 23, 42, 0.09);
   --ink: #0f172a;
   --ink-soft: #475569;
   --moon: #0f172a;
   --moon-soft: #475569;
-  --amber: #d97706;
-  --amber-deep: #b45309;
-  --amber-bright: #f59e0b;
-  --amber-soft: rgba(217, 119, 6, 0.07);
-  --amber-glow: rgba(217, 119, 6, 0.22);
-  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
-  --shadow-night: 0 24px 60px -12px rgba(15, 23, 42, 0.16);
+  --brand: #2563eb;
+  --brand-deep: #1d4ed8;
+  --brand-bright: #3b82f6;
+  --brand-soft: rgba(37, 99, 235, 0.07);
+  --brand-glow: transparent;
+  --amber: var(--brand);
+  --amber-deep: var(--brand-deep);
+  --amber-bright: var(--brand-bright);
+  --amber-soft: var(--brand-soft);
+  --amber-glow: transparent;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+  --shadow-night: 0 24px 60px -12px rgba(15, 23, 42, 0.12);
 }
 
-/* Evitar que las secciones con fondo oscuro fijo hereden variables incompletas del tema claro */
 .hero, .cta-box, .site-footer {
-  --moon: #fcfbfa;
-  --moon-soft: rgba(244, 242, 236, 0.65);
-  --ink: #fcfbfa;
-  --ink-soft: rgba(244, 242, 236, 0.65);
-  --amber: #e8a63d;
-  --amber-deep: #e8a63d;
-  --amber-bright: #fcd53f;
-  --amber-soft: rgba(232, 166, 61, 0.15);
+  --moon: #f8fafc;
+  --moon-soft: rgba(248, 250, 252, 0.7);
+  --ink: #f8fafc;
+  --ink-soft: rgba(248, 250, 252, 0.7);
+  --brand: #3b82f6;
+  --brand-deep: #2563eb;
+  --brand-bright: #60a5fa;
+  --brand-soft: rgba(59, 130, 246, 0.12);
+  --amber: var(--brand);
+  --amber-deep: var(--brand-deep);
+  --amber-bright: var(--brand-bright);
+  --amber-soft: var(--brand-soft);
 }
 
 * { box-sizing: border-box; }
@@ -767,14 +782,13 @@ a:hover { color: var(--amber-bright); }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: rgba(232, 166, 61, 0.1);
-  background-image: linear-gradient(135deg, rgba(232, 166, 61, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(246, 201, 109, 0.4);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.3);
   border-radius: 999px;
   padding: 8px 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 20px rgba(232, 166, 61, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: none !important;
   margin-bottom: 24px;
   animation: heroFade 0.8s var(--ease-out) both;
 }
@@ -782,10 +796,7 @@ a:hover { color: var(--amber-bright); }
 /* ─── NEW BENTO LUXURY HERO ARCHITECTURE ─────────────────────────────────────── */
 .hero--bento-luxury {
   position: relative;
-  background: 
-    radial-gradient(1000px 500px at 78% 18%, rgba(232, 166, 61, 0.18), transparent 60%),
-    radial-gradient(850px 550px at 12% 85%, rgba(34, 197, 94, 0.08), transparent 70%),
-    linear-gradient(180deg, #090a0c 0%, #111216 100%);
+  background: linear-gradient(180deg, #090c15 0%, #0f172a 100%);
   color: var(--moon);
   padding: 190px 0 100px;
   margin-top: -98px;
@@ -793,25 +804,7 @@ a:hover { color: var(--amber-bright); }
 }
 
 .hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(70px);
-  z-index: 1;
-}
-.hero-orb-gold {
-  top: 10%;
-  right: 5%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(232, 166, 61, 0.25) 0%, transparent 70%);
-}
-.hero-orb-emerald {
-  bottom: 5%;
-  left: 2%;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.14) 0%, transparent 70%);
+  display: none; /* CERO BRILLOS O GLOWS EN EL FONDO */
 }
 
 .hero--bento-luxury .wrap { position: relative; z-index: 3; }
@@ -830,12 +823,12 @@ a:hover { color: var(--amber-bright); }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--amber-bright);
-  box-shadow: 0 0 12px var(--amber-glow);
+  background: var(--brand-bright);
+  box-shadow: none !important;
 }
 
 .hero-title-highlight {
-  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -905,8 +898,8 @@ a:hover { color: var(--amber-bright); }
   align-items: center;
   justify-content: space-between;
   padding: 14px 22px;
-  background: var(--amber);
-  color: #0c0c0e !important;
+  background: #2563eb;
+  color: #ffffff !important;
   font-weight: 750;
   font-size: 0.98rem;
   border-radius: 12px;
@@ -917,7 +910,7 @@ a:hover { color: var(--amber-bright); }
 }
 
 .btn-dock-primary:hover {
-  background: var(--amber-bright);
+  background: #1d4ed8;
   transform: translateY(-2px);
   box-shadow: none !important;
 }
