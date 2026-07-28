@@ -478,6 +478,10 @@ a:hover { color: var(--amber-bright); }
   border-radius: 8px;
   display: block;
 }
+.logo-img-blend {
+  mix-blend-mode: lighten;
+  object-fit: cover;
+}
 
 .logo-text {
   color: var(--moon);
