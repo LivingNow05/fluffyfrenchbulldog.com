@@ -9,7 +9,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 <div class={`bulldog-animated-container ${className}`}>
   <div class="logo-image-floating-wrapper">
     <img 
-      src="/images/fluffy_logo.jpg" 
+      src="/images/fluffy_logo.png" 
       alt="Dinastía Bulldog Fluffy Emblem" 
       class="bulldog-gold-emblem-img"
       loading="eager"
@@ -42,13 +42,12 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     max-width: 320px;
     height: auto;
     display: block;
-    mix-blend-mode: lighten;
     filter: drop-shadow(0 14px 35px rgba(232, 166, 61, 0.45));
     transition: transform 0.4s var(--ease-out), filter 0.4s ease;
   }
 
   .bulldog-gold-emblem-img:hover {
     transform: scale(1.04) translateY(-4px);
-    filter: drop-shadow(0 20px 45px rgba(232, 166, 61, 0.65));
+    filter: drop-shadow(0 22px 50px rgba(232, 166, 61, 0.65));
   }
 </style>
