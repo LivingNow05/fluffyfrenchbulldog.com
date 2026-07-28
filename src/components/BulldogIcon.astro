@@ -8,6 +8,10 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
 <div class={`bulldog-animated-container ${className}`}>
   <div class="logo-image-floating-wrapper">
+    <!-- Halo Aura Glow de Fondo -->
+    <div class="emblem-halo-ring"></div>
+    <div class="emblem-pulse-ring"></div>
+
     <!-- Foto PNG Base del Bulldog (Sin recuadro, transparente) -->
     <img 
       src="/images/fluffy_logo.png" 
@@ -61,7 +65,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
         const dy = mouseY - eyeCenterY;
         const dist = Math.hypot(dx, dy);
 
-        // Máximo desplazamiento suave dentro del ojo
+        // Máximo desplazamiento suave dentro del ojo (360º tracking)
         const maxOffset = 10;
         const angle = Math.atan2(dy, dx);
         const offset = Math.min(dist / 14, maxOffset);
@@ -89,6 +93,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
   } else {
     setupPhotoEyeTracking();
   }
+  document.addEventListener('astro:page-load', setupPhotoEyeTracking);
 </script>
 
 <style>
@@ -108,9 +113,46 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: emblemFloat 7s ease-in-out infinite alternate;
+  }
+
+  @keyframes emblemFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(4px); }
+  }
+
+  .emblem-halo-ring {
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 166, 61, 0.28) 0%, rgba(212, 146, 40, 0.08) 55%, transparent 75%);
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .emblem-pulse-ring {
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    border: 1px solid rgba(232, 166, 61, 0.25);
+    box-shadow: 0 0 35px rgba(232, 166, 61, 0.2);
+    pointer-events: none;
+    z-index: 0;
+    animation: ringPulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes ringPulse {
+    0% { transform: scale(0.95); opacity: 0.4; }
+    100% { transform: scale(1.08); opacity: 0.8; }
   }
 
   .bulldog-gold-emblem-img {
+    position: relative;
+    z-index: 2;
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -121,7 +163,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
 
   .bulldog-gold-emblem-img:hover {
     transform: scale(1.03) translateY(-6px);
-    filter: drop-shadow(0 28px 65px rgba(232, 166, 61, 0.7));
+    filter: drop-shadow(0 28px 65px rgba(232, 166, 61, 0.75));
   }
 
   /* Capa de cuencas de ojos exóticos interactivos */
@@ -174,7 +216,7 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     height: 20px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #fef08a 0%, #f59e0b 55%, #b45309 100%);
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.95), inset 0 0 4px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.95), inset 0 0 4px rgba(0, 0, 0, 0.6);
     position: relative;
     display: flex;
     justify-content: center;
@@ -218,3 +260,4 @@ const { className = 'bulldog-hero-svg' } = Astro.props;
     border-radius: 50%;
   }
 </style>
+
