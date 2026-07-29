@@ -512,7 +512,7 @@ a:hover { color: var(--amber-bright); }
   letter-spacing: -0.02em;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   flex-shrink: 0;
   border-bottom: none !important;
 }
@@ -522,17 +522,27 @@ a:hover { color: var(--amber-bright); }
 }
 
 .logo-icon-svg {
-  width: 60px !important;
-  height: 60px !important;
-  min-width: 60px !important;
-  min-height: 60px !important;
-  max-width: 60px !important;
-  max-height: 60px !important;
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
   flex-shrink: 0;
-  border-radius: 14px;
+  border-radius: 0 !important;
   display: block;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+:root.light-theme .logo-icon-svg {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .logo-text {
