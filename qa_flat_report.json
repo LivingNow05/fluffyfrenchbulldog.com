@@ -1,0 +1,379 @@
+{
+  "serverStatus": true,
+  "heroSwitch": true,
+  "glassmorphismAudit": true,
+  "animationAudit": true,
+  "overflowAudit": true,
+  "screenshots": [
+    {
+      "filename": "screenshot_hero_vista1_foto_dark_desktop.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista1_foto_dark_desktop.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista1_foto_dark_desktop.png",
+      "theme": "dark",
+      "viewport": "desktop",
+      "vista": "vista1_foto"
+    },
+    {
+      "filename": "screenshot_hero_vista2_centrada_dark_desktop.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista2_centrada_dark_desktop.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista2_centrada_dark_desktop.png",
+      "theme": "dark",
+      "viewport": "desktop",
+      "vista": "vista2_centrada"
+    },
+    {
+      "filename": "screenshot_hero_vista1_foto_dark_mobile.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista1_foto_dark_mobile.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista1_foto_dark_mobile.png",
+      "theme": "dark",
+      "viewport": "mobile",
+      "vista": "vista1_foto"
+    },
+    {
+      "filename": "screenshot_hero_vista2_centrada_dark_mobile.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista2_centrada_dark_mobile.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista2_centrada_dark_mobile.png",
+      "theme": "dark",
+      "viewport": "mobile",
+      "vista": "vista2_centrada"
+    },
+    {
+      "filename": "screenshot_hero_vista1_foto_light_desktop.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista1_foto_light_desktop.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista1_foto_light_desktop.png",
+      "theme": "light",
+      "viewport": "desktop",
+      "vista": "vista1_foto"
+    },
+    {
+      "filename": "screenshot_hero_vista2_centrada_light_desktop.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista2_centrada_light_desktop.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista2_centrada_light_desktop.png",
+      "theme": "light",
+      "viewport": "desktop",
+      "vista": "vista2_centrada"
+    },
+    {
+      "filename": "screenshot_hero_vista1_foto_light_mobile.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista1_foto_light_mobile.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista1_foto_light_mobile.png",
+      "theme": "light",
+      "viewport": "mobile",
+      "vista": "vista1_foto"
+    },
+    {
+      "filename": "screenshot_hero_vista2_centrada_light_mobile.png",
+      "localPath": "/Users/anthony/Downloads/Bulldog Fluffy/screenshot_hero_vista2_centrada_light_mobile.png",
+      "artifactPath": "/Users/anthony/.gemini/antigravity/brain/1926d953-8962-4c51-aad6-37cdb0e063f4/screenshot_hero_vista2_centrada_light_mobile.png",
+      "theme": "light",
+      "viewport": "mobile",
+      "vista": "vista2_centrada"
+    }
+  ],
+  "cardAuditDetails": [
+    {
+      "theme": "dark",
+      "index": 0,
+      "className": "hero-centered-card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(19, 16, 36)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 1,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 2,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 3,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 4,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 5,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 6,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 7,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 8,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 9,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 10,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 11,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 12,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 13,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 14,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 15,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 16,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 17,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "dark",
+      "index": 18,
+      "className": "qm-card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(23, 20, 46)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 0,
+      "className": "hero-centered-card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 1,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 2,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 3,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 4,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 5,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 6,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 7,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 8,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 9,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 10,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 11,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 12,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 13,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 14,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 15,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 16,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 17,
+      "className": "card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(209, 209, 214)",
+      "hasGlass": false
+    },
+    {
+      "theme": "light",
+      "index": 18,
+      "className": "qm-card",
+      "backdropFilter": "none",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "hasGlass": false
+    }
+  ]
+}

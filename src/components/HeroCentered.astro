@@ -1,0 +1,295 @@
+---
+// Opción 2: Hero Centrado Tipográfico Minimalista
+// Dinastía Bulldog Fluffy — Sistema FLAT (Cero Glassmorfismo)
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import fluffy from '../data/fluffy.json';
+
+const { site } = fluffy;
+const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Hola Dinastía Bulldog Fluffy, me gustaría consultar la disponibilidad de cachorros con pedigree AKC/FCI.')}`;
+---
+
+<div class="hero-centered-card" id="hero-centered-content">
+  <!-- Insignias AKC / FCI Certificadas -->
+  <div class="centered-badge-strip">
+    <span class="badge-item">
+      <span class="badge-icon">📜</span>
+      <span>Pedigree Oficial AKC & FCI</span>
+    </span>
+    <span class="badge-dot">•</span>
+    <span class="badge-item">
+      <span class="badge-icon">🧬</span>
+      <span>ADN 100% Pura Raza</span>
+    </span>
+    <span class="badge-dot">•</span>
+    <span class="badge-item">
+      <span class="badge-icon">🏥</span>
+      <span>Garantía Genética 2 Años</span>
+    </span>
+  </div>
+
+  <!-- Titular Masivo en 4.5rem con Tipografía Outfit -->
+  <h1 class="hero-centered-title">
+    Criadero de Elite en <br class="title-br" />
+    <span class="title-gradient">Bulldog Francés Fluffy</span>
+  </h1>
+
+  <!-- Párrafo Descriptivo Editorial -->
+  <p class="hero-centered-lead">
+    Especialistas en la crianza de linajes puros de pelaje afelpado exótico. Variedades Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con pedigree internacional y protocolo de entrega VIP con niñera aérea en cabina.
+  </p>
+
+  <!-- Botones de Acción Principales -->
+  <div class="hero-centered-actions">
+    <a class="btn-whatsapp-hero" href={waHref} target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+      <WhatsAppIcon size={22} class="wa-icon" />
+      <span>Consultar Disponibilidad por WhatsApp</span>
+    </a>
+    <a class="btn-secondary-hero" href="/precios-bulldog-fluffy/">
+      <span>Ver Catálogo & Precios 2026</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <!-- Grid de Contador Estadístico -->
+  <div class="hero-stats-grid">
+    <div class="stat-flat-card">
+      <span class="stat-number">5</span>
+      <span class="stat-text">Variedades Exóticas</span>
+    </div>
+    <div class="stat-flat-card">
+      <span class="stat-number">+100</span>
+      <span class="stat-text">Ciudades con Niñera Aérea</span>
+    </div>
+    <div class="stat-flat-card">
+      <span class="stat-number">100%</span>
+      <span class="stat-text">Garantía Genética Certificada</span>
+    </div>
+    <div class="stat-flat-card">
+      <span class="stat-number">+12</span>
+      <span class="stat-text">Países con Envíos VIP</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-centered-card {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    background: #131024;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
+    padding: 48px 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  :root.light-theme .hero-centered-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 12px 32px rgba(30, 27, 75, 0.06);
+  }
+
+  .centered-badge-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 999px;
+    padding: 8px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  :root.light-theme .centered-badge-strip {
+    background: rgba(124, 58, 237, 0.06);
+    border-color: rgba(124, 58, 237, 0.2);
+  }
+
+  .badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .badge-dot {
+    color: var(--brand-bright);
+    opacity: 0.6;
+    font-size: 0.8rem;
+  }
+
+  .hero-centered-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .title-gradient {
+    color: var(--brand-bright);
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6, #c4b5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :root.light-theme .title-gradient {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-centered-lead {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0;
+  }
+
+  .hero-centered-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .btn-whatsapp-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #16a34a !important;
+    color: #ffffff !important;
+    font-weight: 750;
+    font-size: 1.05rem;
+    padding: 16px 32px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    box-shadow: 0 8px 24px rgba(22, 163, 74, 0.35);
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .btn-whatsapp-hero:hover {
+    background: #15803d;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(22, 163, 74, 0.45);
+    color: #ffffff;
+  }
+
+  .btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139, 92, 246, 0.12);
+    color: var(--ink);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  :root.light-theme .btn-secondary-hero {
+    background: rgba(124, 58, 237, 0.08);
+    border-color: rgba(124, 58, 237, 0.25);
+    color: #1e1b4b;
+  }
+
+  .btn-secondary-hero:hover {
+    background: rgba(139, 92, 246, 0.22);
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .stat-flat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 14px;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  :root.light-theme .stat-flat-card {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+
+  .stat-flat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 850;
+    color: var(--brand-bright);
+    line-height: 1;
+  }
+
+  :root.light-theme .stat-number {
+    color: #7c3aed;
+  }
+
+  .stat-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    line-height: 1.35;
+  }
+
+  @media (max-width: 840px) {
+    .hero-centered-card {
+      padding: 32px 20px;
+      gap: 22px;
+    }
+    .hero-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .title-br {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .btn-whatsapp-hero, .btn-secondary-hero {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

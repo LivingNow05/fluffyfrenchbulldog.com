@@ -1,0 +1,192 @@
+---
+// HeroSwitcher: Conmutador Interactivo de Variante Hero en Tiempo Real
+---
+
+<div class="hero-switcher-wrapper">
+  <div class="hero-switcher-container">
+    <span class="switcher-label">⚡ Vista Hero:</span>
+    <div class="switcher-buttons" role="tablist" aria-label="Variantes de Hero">
+      <button
+        type="button"
+        id="btn-hero-centered"
+        class="switcher-btn active"
+        role="tab"
+        aria-selected="true"
+        data-variant="centered"
+      >
+        <span class="switcher-icon">✦</span>
+        <span>Opción 2: Centrado Minimalista</span>
+      </button>
+
+      <button
+        type="button"
+        id="btn-hero-showcase"
+        class="switcher-btn"
+        role="tab"
+        aria-selected="false"
+        data-variant="showcase"
+      >
+        <span class="switcher-icon">📸</span>
+        <span>Opción 3: Ficha Fotográfica</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  function initHeroSwitcher() {
+    const btnCentered = document.getElementById('btn-hero-centered');
+    const btnShowcase = document.getElementById('btn-hero-showcase');
+    const sectionCentered = document.getElementById('hero-variant-centered');
+    const sectionShowcase = document.getElementById('hero-variant-showcase');
+
+    if (!btnCentered || !btnShowcase || !sectionCentered || !sectionShowcase) return;
+
+    function setHeroVariant(variant: 'centered' | 'showcase') {
+      if (variant === 'centered') {
+        sectionCentered.style.display = 'block';
+        sectionShowcase.style.display = 'none';
+        btnCentered.classList.add('active');
+        btnCentered.setAttribute('aria-selected', 'true');
+        btnShowcase.classList.remove('active');
+        btnShowcase.setAttribute('aria-selected', 'false');
+      } else {
+        sectionCentered.style.display = 'none';
+        sectionShowcase.style.display = 'block';
+        btnShowcase.classList.add('active');
+        btnShowcase.setAttribute('aria-selected', 'true');
+        btnCentered.classList.remove('active');
+        btnCentered.setAttribute('aria-selected', 'false');
+      }
+
+      localStorage.setItem('fluffy_hero_variant', variant);
+
+      // Recalcular disparadores de GSAP ScrollTrigger
+      setTimeout(() => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      }, 50);
+    }
+
+    btnCentered.addEventListener('click', () => setHeroVariant('centered'));
+    btnShowcase.addEventListener('click', () => setHeroVariant('showcase'));
+
+    // Cargar variante guardada
+    const saved = localStorage.getItem('fluffy_hero_variant');
+    if (saved === 'showcase') {
+      setHeroVariant('showcase');
+    } else {
+      setHeroVariant('centered');
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSwitcher);
+  } else {
+    initHeroSwitcher();
+  }
+</script>
+
+<style>
+  .hero-switcher-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 20;
+  }
+
+  .hero-switcher-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #17142e;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  :root.light-theme .hero-switcher-container {
+    background: #ffffff;
+    border-color: rgba(124, 58, 237, 0.2);
+    box-shadow: 0 8px 24px rgba(30, 27, 75, 0.08);
+  }
+
+  .switcher-label {
+    font-size: 0.76rem;
+    font-weight: 750;
+    color: var(--amber-bright);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .switcher-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .switcher-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--moon-soft);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .switcher-btn:hover {
+    color: var(--moon);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .switcher-btn.active {
+    background: var(--brand);
+    color: #ffffff !important;
+    border-color: var(--brand-bright);
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+  }
+
+  :root.light-theme .switcher-btn.active {
+    background: var(--brand-deep);
+    color: #ffffff !important;
+    border-color: var(--brand);
+  }
+
+  .switcher-icon {
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero-switcher-container {
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .switcher-buttons {
+      width: 100%;
+      justify-content: center;
+    }
+    .switcher-btn {
+      font-size: 0.74rem;
+      padding: 5px 10px;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+</style>
