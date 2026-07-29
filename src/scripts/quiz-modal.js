@@ -122,7 +122,7 @@
         <h3 class="qm-question" style="text-align:center; margin-bottom:6px;">${step.question}</h3>
         ${step.subtitle ? `<p class="qm-subtitle" style="text-align:center; margin-bottom:14px;">${step.subtitle}</p>` : ''}
         ${step.note ? `
-          <div class="qm-note-box" style="background: rgba(232, 166, 61, 0.08); border: 1.5px solid rgba(232, 166, 61, 0.25); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; line-height: 1.55; margin-bottom: 16px; color: var(--moon);">
+          <div class="qm-note-box" style="background: rgba(139, 92, 246, 0.08); border: 1.5px solid rgba(139, 92, 246, 0.25); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; line-height: 1.55; margin-bottom: 16px; color: var(--moon);">
             ${step.note}
           </div>
         ` : ''}
