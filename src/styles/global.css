@@ -2445,6 +2445,37 @@ table.price-table {
   box-shadow: 0 6px 18px var(--amber-glow);
 }
 
+/* ─── MengTo Animation On Scroll Skill ─────────────────────────────────────── */
+@keyframes animationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-on-scroll {
+  animation: animationIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-play-state: paused !important;
+  will-change: transform, opacity, filter;
+}
+
+.animate-on-scroll.animate {
+  animation-play-state: running !important;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s !important; }
+.delay-2 { animation-delay: 0.2s !important; }
+.delay-3 { animation-delay: 0.3s !important; }
+.delay-4 { animation-delay: 0.4s !important; }
+.delay-5 { animation-delay: 0.5s !important; }
+
 .qm-opt:hover .qm-opt-icon {
   transform: scale(1.1);
   background: rgba(139, 92, 246, 0.22);

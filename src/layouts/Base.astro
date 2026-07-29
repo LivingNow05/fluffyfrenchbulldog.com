@@ -58,6 +58,34 @@ const allSchema = [localBusiness, ...schema];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline>
+      (function () {
+        const once = true;
+        if (!window.__inViewIO) {
+          window.__inViewIO = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+                if (once) window.__inViewIO.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+        }
+
+        window.initInViewAnimations = function (selector = ".animate-on-scroll, .card, .city-card, .review-card, .calc-box, .faq details, .cta-box") {
+          document.querySelectorAll(selector).forEach((el) => {
+            el.classList.add("animate-on-scroll");
+            window.__inViewIO.observe(el);
+          });
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", () => window.initInViewAnimations());
+        } else {
+          window.initInViewAnimations();
+        }
+      })();
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
