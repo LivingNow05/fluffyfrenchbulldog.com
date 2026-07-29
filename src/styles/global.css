@@ -499,32 +499,32 @@ a:hover { color: var(--amber-bright); }
 
 .logo {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.22rem;
+  font-weight: 850;
+  font-size: 1.38rem;
   text-decoration: none !important;
   color: var(--moon) !important;
   white-space: nowrap;
   letter-spacing: -0.015em;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
   border-bottom: none !important;
 }
 .logo:hover {
   text-decoration: none !important;
-  opacity: 0.92;
+  opacity: 0.94;
 }
 
 .logo-icon-svg {
-  width: 28px !important;
-  height: 28px !important;
-  min-width: 28px !important;
-  min-height: 28px !important;
-  max-width: 28px !important;
-  max-height: 28px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 9px;
   display: block;
 }
 .logo-img-blend {
@@ -534,7 +534,8 @@ a:hover { color: var(--amber-bright); }
 
 .logo-text {
   color: var(--moon);
-  font-weight: 800;
+  font-size: 1.35rem;
+  font-weight: 850;
   text-decoration: none !important;
 }
 :root.light-theme .logo-text {
