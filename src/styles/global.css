@@ -500,14 +500,14 @@ a:hover { color: var(--amber-bright); }
 .logo {
   font-family: var(--font-display);
   font-weight: 850;
-  font-size: 1.38rem;
+  font-size: 1.55rem;
   text-decoration: none !important;
   color: var(--moon) !important;
   white-space: nowrap;
   letter-spacing: -0.015em;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-shrink: 0;
   border-bottom: none !important;
 }
@@ -517,14 +517,14 @@ a:hover { color: var(--amber-bright); }
 }
 
 .logo-icon-svg {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  min-height: 36px !important;
-  max-width: 36px !important;
-  max-height: 36px !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
   flex-shrink: 0;
-  border-radius: 9px;
+  border-radius: 12px;
   display: block;
 }
 .logo-img-blend {
@@ -534,7 +534,7 @@ a:hover { color: var(--amber-bright); }
 
 .logo-text {
   color: var(--moon);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 850;
   text-decoration: none !important;
 }
