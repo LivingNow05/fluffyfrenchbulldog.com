@@ -1909,21 +1909,21 @@ table.price-table {
 
 /* ─── FAQ ──────────────────────────────────────────────────────────────────── */
 .faq details {
-  background: rgba(21, 21, 25, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(244, 242, 236, 0.08);
+  background: #1d1536 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(192, 132, 252, 0.2);
   border-radius: 16px;
   padding: 6px 24px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 .faq details:hover, .faq details[open] {
   transform: translateY(-2px);
-  border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.3), 0 0 18px var(--amber-glow);
-  background: rgba(25, 25, 30, 0.7);
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.4);
+  background: #251c45 !important;
 }
 .faq summary {
   font-weight: 700;
@@ -1943,61 +1943,62 @@ table.price-table {
   translate: 0 -50%;
   font-size: 1.55rem;
   font-weight: 300;
-  color: var(--amber-deep);
+  color: #c084fc;
   transition: rotate 0.28s var(--ease-out);
 }
 .faq details[open] summary::after { rotate: 45deg; }
 .faq p { margin: 2px 0 16px; color: var(--ink-soft); line-height: 1.7; }
 
 :root.light-theme .faq details {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #e9d5ff !important;
+  box-shadow: 0 4px 16px -2px rgba(30, 16, 53, 0.05) !important;
 }
 :root.light-theme .faq details:hover,
 :root.light-theme .faq details[open] {
   transform: translateY(-2px);
-  border-color: rgba(124, 58, 237, 0.45);
-  box-shadow: 0 10px 28px -4px rgba(124, 58, 237, 0.12), 0 0 16px rgba(124, 58, 237, 0.08);
-  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(147, 51, 234, 0.4) !important;
+  box-shadow: 0 10px 28px -4px rgba(147, 51, 234, 0.12) !important;
+  background: #ffffff !important;
 }
 :root.light-theme .faq summary {
-  color: #0f172a;
+  color: #1e1035 !important;
 }
 :root.light-theme .faq summary::after {
-  color: #7c3aed;
+  color: #9333ea !important;
+}
+:root.light-theme .faq p {
+  color: #5b21b6 !important;
 }
 
-/* ─── CTA WhatsApp (panel nocturno con huellas) ────────────────────────────── */
+/* ─── CTA WhatsApp (panel nocturno aterciopelado) ─────────────────────────── */
 .cta-box {
   position: relative;
-  background:
-    radial-gradient(700px 320px at 85% -20%, rgba(139, 92, 246, 0.1), transparent 60%),
-    linear-gradient(135deg, rgba(24, 24, 27, 0.8) 0%, rgba(12, 12, 14, 0.9) 100%);
-  color: var(--moon);
+  background: #1d1536 !important;
+  color: #f5f3ff;
   border-radius: 20px;
   padding: 46px 34px 42px;
   margin: 52px 0;
   text-align: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(192, 132, 252, 0.25) !important;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
-.cta-box h2 { margin: 0 0 10px; color: var(--moon); }
-.cta-box p { color: var(--moon-soft); max-width: 42rem; margin: 0 auto 8px; }
+.cta-box h2 { margin: 0 0 10px; color: #f5f3ff; }
+.cta-box p { color: rgba(245, 243, 255, 0.8); max-width: 42rem; margin: 0 auto 8px; }
 
 :root.light-theme .cta-box {
-  background:
-    radial-gradient(700px 320px at 85% -20%, rgba(124, 58, 237, 0.06), transparent 60%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(254, 243, 199, 0.25) 100%);
-  color: #0f172a;
-  border: 1px solid rgba(124, 58, 237, 0.08);
-  box-shadow: 0 20px 40px -15px rgba(124, 58, 237, 0.08);
+  background: #ffffff !important;
+  color: #1e1035 !important;
+  border: 1px solid #e9d5ff !important;
+  box-shadow: 0 20px 40px -15px rgba(30, 16, 53, 0.08) !important;
 }
-:root.light-theme .cta-box h2 { color: #0f172a; }
-:root.light-theme .cta-box p { color: #475569; }
+:root.light-theme .cta-box h2 { color: #1e1035 !important; }
+:root.light-theme .cta-box p { color: #5b21b6 !important; }
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;

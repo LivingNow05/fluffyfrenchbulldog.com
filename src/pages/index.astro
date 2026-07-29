@@ -180,58 +180,71 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
 
   <main class="wrap">
     <!-- SECCIÓN DE CIUDADES DESTACADAS -->
-    <h2 id="cobertura" class="reveal">📍 Entregas y Cobertura por Ciudad</h2>
-    <p class="lead reveal">Realizamos envíos seguros con niñera aérea en cabina climatizada a más de 100 ciudades. Haz clic en tu ciudad para conocer el protocolo de llegada y la historia local.</p>
-    
-    <div class="grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
-      {[
-        { city: 'Bogotá', country: 'Colombia', airport: 'El Dorado (BOG)', slug: 'bulldog-frances-fluffy-bogota' },
-        { city: 'Medellín', country: 'Colombia', airport: 'José María Córdova (MDE)', slug: 'bulldog-frances-fluffy-medellin' },
-        { city: 'Cali', country: 'Colombia', airport: 'Alfonso Bonilla (CLO)', slug: 'bulldog-frances-fluffy-cali' },
-        { city: 'Barranquilla', country: 'Colombia', airport: 'Ernesto Cortissoz (BAQ)', slug: 'bulldog-frances-fluffy-barranquilla' },
-        { city: 'CDMX', country: 'México', airport: 'Benito Juárez (MEX)', slug: 'bulldog-frances-fluffy-cdmx' },
-        { city: 'Guadalajara', country: 'México', airport: 'Guadalajara (GDL)', slug: 'bulldog-frances-fluffy-guadalajara' },
-        { city: 'Monterrey', country: 'México', airport: 'Monterrey (MTY)', slug: 'bulldog-frances-fluffy-monterrey' },
-        { city: 'Buenos Aires', country: 'Argentina', airport: 'Ezeiza (EZE)', slug: 'bulldog-frances-fluffy-buenos-aires' },
-        { city: 'Santiago', country: 'Chile', airport: 'Arturo Merino (SCL)', slug: 'bulldog-frances-fluffy-santiago' },
-        { city: 'Lima', country: 'Perú', airport: 'Jorge Chávez (LIM)', slug: 'bulldog-frances-fluffy-lima' },
-        { city: 'São Paulo', country: 'Brasil', airport: 'Guarulhos (GRU)', slug: 'bulldog-frances-fluffy-sao-paulo' },
-        { city: 'Panamá', country: 'Panamá', airport: 'Tocumen (PTY)', slug: 'bulldog-frances-fluffy-panama' }
-      ].map((item) => (
-        <a class="card" href={`/${item.slug}/`} style="padding: 18px;">
-          <div class="card-header-icon" style="margin-bottom: 4px;">
-            <span style="font-size: 1.2rem;">📍</span>
-            <strong style="color: var(--amber); font-size: 0.95rem;">{item.city}</strong>
-          </div>
-          <p style="font-size: 0.8rem; margin: 2px 0; color: var(--ink-soft);">{item.country} · Aeropuerto {item.airport}</p>
-          <span class="btn-card-cta">Ver Protocolo de Envío →</span>
-        </a>
-      ))}
-    </div>
+    <section style="margin: 60px 0 40px;">
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 36px;">
+        <span style="display: inline-block; padding: 4px 14px; background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.25); border-radius: 999px; font-size: 0.8rem; font-weight: 800; color: var(--brand-bright); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">📍 COBERTURA INTERNACIONAL VIP</span>
+        <h2 id="cobertura" class="reveal" style="font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 850; margin: 0 0 12px; color: var(--ink);">Entregas y Cobertura por Ciudad</h2>
+        <p class="lead reveal" style="font-size: 1.05rem; color: var(--ink-soft); margin: 0;">Realizamos envíos personales con niñera aérea en cabina climatizada a más de 100 ciudades en todo el mundo. Haz clic en tu ciudad para conocer el protocolo local.</p>
+      </div>
+      
+      <div class="grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;">
+        {[
+          { city: 'Bogotá', country: 'Colombia', airport: 'El Dorado (BOG)', slug: 'bulldog-frances-fluffy-bogota' },
+          { city: 'Medellín', country: 'Colombia', airport: 'José María Córdova (MDE)', slug: 'bulldog-frances-fluffy-medellin' },
+          { city: 'Cali', country: 'Colombia', airport: 'Alfonso Bonilla (CLO)', slug: 'bulldog-frances-fluffy-cali' },
+          { city: 'Barranquilla', country: 'Colombia', airport: 'Ernesto Cortissoz (BAQ)', slug: 'bulldog-frances-fluffy-barranquilla' },
+          { city: 'CDMX', country: 'México', airport: 'Benito Juárez (MEX)', slug: 'bulldog-frances-fluffy-cdmx' },
+          { city: 'Guadalajara', country: 'México', airport: 'Guadalajara (GDL)', slug: 'bulldog-frances-fluffy-guadalajara' },
+          { city: 'Monterrey', country: 'México', airport: 'Monterrey (MTY)', slug: 'bulldog-frances-fluffy-monterrey' },
+          { city: 'Buenos Aires', country: 'Argentina', airport: 'Ezeiza (EZE)', slug: 'bulldog-frances-fluffy-buenos-aires' },
+          { city: 'Santiago', country: 'Chile', airport: 'Arturo Merino (SCL)', slug: 'bulldog-frances-fluffy-santiago' },
+          { city: 'Lima', country: 'Perú', airport: 'Jorge Chávez (LIM)', slug: 'bulldog-frances-fluffy-lima' },
+          { city: 'São Paulo', country: 'Brasil', airport: 'Guarulhos (GRU)', slug: 'bulldog-frances-fluffy-sao-paulo' },
+          { city: 'Panamá', country: 'Panamá', airport: 'Tocumen (PTY)', slug: 'bulldog-frances-fluffy-panama' }
+        ].map((item) => (
+          <a class="card city-card" href={`/${item.slug}/`} style="padding: 20px; text-decoration: none; border-radius: 16px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 1.3rem;">✈️</span>
+              <span style="font-size: 0.72rem; font-weight: 800; background: rgba(147, 51, 234, 0.12); color: var(--brand-bright); padding: 2px 8px; border-radius: 999px;">VIP CABIN</span>
+            </div>
+            <strong style="display: block; font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 4px;">{item.city}</strong>
+            <p style="font-size: 0.82rem; margin: 0 0 14px; color: var(--ink-soft);">{item.country} · Aeropuerto {item.airport}</p>
+            <span class="btn-card-cta" style="font-size: 0.85rem; font-weight: 750; color: var(--brand-bright); display: inline-flex; align-items: center; gap: 4px;">Ver Protocolo →</span>
+          </a>
+        ))}
+      </div>
 
-    <div style="text-align: center; margin-top: 24px;">
-      <a class="btn btn--secondary" href="/destinos/">Ver la Lista Completa de +100 Ciudades →</a>
-    </div>
+      <div style="text-align: center; margin-top: 28px;">
+        <a class="btn btn--secondary" href="/destinos/" style="padding: 14px 28px; font-weight: 750;">Ver la Lista Completa de +100 Ciudades →</a>
+      </div>
+    </section>
 
     <!-- SECCIÓN DE VARIEDADES EXÓTICAS -->
-    <h2 id="variedades" class="reveal">Variedades de Bulldog Francés Fluffy</h2>
-    <p class="lead reveal">Crianza de linajes puros en los colores más exclusivos y codiciados del mundo.</p>
-    
-    <div class="grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-      {variedades.map((v) => (
-        <a class="card" href={`/colores/${v.slug}/`}>
-          <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés ${v.nombre}`} loading="lazy" />
-          <div class="card-body">
-            <h3>{v.nombre}</h3>
-            <p>{v.resumen}</p>
-            <div style="margin-top: 12px; font-weight: 700; color: var(--amber);">
-              Desde: ${v.variantes?.[0]?.precioUSD?.toLocaleString() || '2,300'} USD
+    <section style="margin: 80px 0 40px;">
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 36px;">
+        <span style="display: inline-block; padding: 4px 14px; background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.25); border-radius: 999px; font-size: 0.8rem; font-weight: 800; color: var(--brand-bright); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">👑 LINAGE EXCLUSIVO AKC / FCI</span>
+        <h2 id="variedades" class="reveal" style="font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 850; margin: 0 0 12px; color: var(--ink);">Variedades de Bulldog Francés Fluffy</h2>
+        <p class="lead reveal" style="font-size: 1.05rem; color: var(--ink-soft); margin: 0;">Crianza de linajes puros en las variedades exóticas de pelaje afelpado largo más exclusivas del mundo.</p>
+      </div>
+      
+      <div class="grid reveal" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+        {variedades.map((v) => (
+          <a class="card" href={`/colores/${v.slug}/`} style="text-decoration: none; border-radius: 18px; overflow: hidden;">
+            <div style="position: relative; overflow: hidden; height: 220px;">
+              <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés ${v.nombre}`} loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" />
+              <div style="position: absolute; top: 12px; right: 12px; background: rgba(20, 14, 38, 0.85); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 999px; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; color: #c084fc;">
+                Desde ${v.variantes?.[0]?.precioUSD?.toLocaleString() || '2,300'} USD
+              </div>
             </div>
-            <span class="btn-card-cta" style="margin-top: 10px;">Ver Ficha Técnica y Fotos →</span>
-          </div>
-        </a>
-      ))}
-    </div>
+            <div class="card-body" style="padding: 20px;">
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0 0 8px; color: var(--ink);">{v.nombre}</h3>
+              <p style="font-size: 0.88rem; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.5;">{v.resumen}</p>
+              <span class="btn-card-cta" style="font-size: 0.88rem; font-weight: 750; color: var(--brand-bright); display: inline-flex; align-items: center; gap: 4px;">Ver Ficha Técnica y Fotos →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <!-- RESEÑAS DE CLIENTES REALES -->
     <ReviewsSection />

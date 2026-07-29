@@ -103,26 +103,56 @@ const { variedad = 'general' } = Astro.props;
 <style>
   .calc-box {
     margin: 40px auto;
-    max-width: 740px;
+    max-width: 760px;
+    background: #1d1536 !important;
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  :root.light-theme .calc-box {
+    background: #ffffff !important;
+    border-color: #e9d5ff !important;
+    box-shadow: 0 12px 36px rgba(30, 16, 53, 0.06) !important;
   }
   .calc-header {
     display: flex;
     gap: 16px;
     align-items: center;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 18px;
-    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  :root.light-theme .calc-header {
+    border-bottom-color: #e9d5ff;
+  }
+  .calc-icon {
+    width: 32px;
+    height: 32px;
+    color: #c084fc;
+    flex-shrink: 0;
+  }
+  :root.light-theme .calc-icon {
+    color: #9333ea;
   }
   .calc-header h4 {
-    margin: 0 0 2px;
-    font-size: 1.22rem;
-    font-weight: 700;
-    color: var(--ink);
+    margin: 0 0 4px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f5f3ff;
+  }
+  :root.light-theme .calc-header h4 {
+    color: #1e1035 !important;
   }
   .calc-header p {
     margin: 0;
-    font-size: 0.86rem;
-    color: var(--ink-soft);
+    font-size: 0.88rem;
+    color: rgba(245, 243, 255, 0.72);
+  }
+  :root.light-theme .calc-header p {
+    color: #5b21b6 !important;
   }
   .calc-body {
     display: grid;
@@ -131,6 +161,9 @@ const { variedad = 'general' } = Astro.props;
     align-items: center;
   }
   @media (max-width: 640px) {
+    .calc-box {
+      padding: 20px;
+    }
     .calc-body {
       grid-template-columns: 1fr;
       gap: 20px;
@@ -149,7 +182,10 @@ const { variedad = 'general' } = Astro.props;
   .input-group label {
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--ink);
+    color: #f5f3ff;
+  }
+  :root.light-theme .input-group label {
+    color: #1e1035 !important;
   }
   .range-container {
     display: flex;
@@ -158,67 +194,97 @@ const { variedad = 'general' } = Astro.props;
   }
   .range-container input {
     flex-grow: 1;
-    accent-color: var(--amber);
+    accent-color: #a855f7;
     cursor: pointer;
   }
   .range-val {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 800;
-    color: var(--amber);
+    color: #c084fc;
     min-width: 65px;
     text-align: right;
   }
+  :root.light-theme .range-val {
+    color: #9333ea !important;
+  }
   select {
-    padding: 11px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--ink);
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    background: #140e26;
+    color: #f5f3ff;
     font-size: 0.92rem;
+    font-weight: 600;
     cursor: pointer;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   select option {
-    background: #151518;
-    color: #f4f2ec;
+    background: #1d1536;
+    color: #f5f3ff;
   }
   :root.light-theme select {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(15, 23, 42, 0.12);
+    background: #fbf7fe;
+    border-color: #e9d5ff;
+    color: #1e1035 !important;
   }
   :root.light-theme select option {
     background: #ffffff;
-    color: #0f172a;
+    color: #1e1035;
   }
   select:focus {
-    border-color: var(--amber);
-    box-shadow: 0 0 12px var(--amber-glow);
+    border-color: #a855f7;
+    box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+  }
+  .calc-results {
+    background: #140e26;
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  :root.light-theme .calc-results {
+    background: #fbf7fe !important;
+    border-color: #e9d5ff !important;
   }
   .result-label {
     font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--ink-soft);
+    color: rgba(245, 243, 255, 0.7);
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  :root.light-theme .result-label {
+    color: #5b21b6 !important;
   }
   .result-number {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 850;
-    color: var(--ink);
+    color: #c084fc;
     margin-bottom: 8px;
     font-family: var(--font-display);
+    line-height: 1;
+  }
+  :root.light-theme .result-number {
+    color: #9333ea !important;
   }
   .result-number .unit {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--ink-soft);
+    color: rgba(245, 243, 255, 0.72);
+  }
+  :root.light-theme .result-number .unit {
+    color: #5b21b6 !important;
   }
   .result-disclaimer {
     margin: 0;
-    font-size: 0.74rem;
-    color: var(--ink-soft);
+    font-size: 0.78rem;
+    color: rgba(245, 243, 255, 0.65);
+    line-height: 1.4;
+  }
+  :root.light-theme .result-disclaimer {
+    color: #5b21b6 !important;
   }
 </style>

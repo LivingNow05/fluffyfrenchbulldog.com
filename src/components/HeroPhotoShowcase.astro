@@ -179,12 +179,13 @@ const varieties = [
 
   :root.light-theme .hero-photo-bento-card {
     background: #ffffff !important;
-    border-color: #e2e8f0;
-    box-shadow: 0 12px 32px rgba(30, 27, 75, 0.06);
+    border-color: #e9d5ff !important;
+    box-shadow: 0 12px 32px rgba(30, 16, 53, 0.08) !important;
+    color: #1e1035 !important;
   }
 
   .hero-photo-bento-card:hover {
-    border-color: rgba(139, 92, 246, 0.6);
+    border-color: rgba(168, 85, 247, 0.6);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
   }
 
@@ -199,17 +200,21 @@ const varieties = [
     font-weight: 850;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #0c0c0e;
-    background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+    color: #ffffff;
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
     padding: 5px 14px;
     border-radius: 999px;
-    box-shadow: 0 4px 14px rgba(167, 139, 250, 0.4);
+    box-shadow: 0 4px 14px rgba(147, 51, 234, 0.35);
   }
 
   .showcase-status {
     font-size: 0.76rem;
     font-weight: 700;
-    color: #4ade80;
+    color: #16a34a;
+  }
+
+  :root.light-theme .showcase-status {
+    color: #15803d !important;
   }
 
   .photo-showcase-frame {
@@ -265,7 +270,7 @@ const varieties = [
     font-size: 0.82rem;
     font-weight: 800;
     color: #ffffff;
-    background: #7c3aed;
+    background: #9333ea;
     padding: 4px 14px;
     border-radius: 999px;
     box-shadow: none !important;
@@ -283,21 +288,33 @@ const varieties = [
     gap: 6px;
     font-size: 0.76rem;
     font-weight: 750;
-    color: var(--moon-soft);
+    color: rgba(245, 243, 255, 0.8);
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(192, 132, 252, 0.2);
     padding: 6px 12px;
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
+  :root.light-theme .photo-select-btn {
+    background: #fbf7fe !important;
+    border-color: #e9d5ff !important;
+    color: #5b21b6 !important;
+  }
+
   .photo-select-btn:hover,
   .photo-select-btn.active {
     color: #ffffff !important;
-    background: #7c3aed;
-    border-color: #8b5cf6;
+    background: #9333ea !important;
+    border-color: #a855f7 !important;
     box-shadow: none !important;
+  }
+
+  :root.light-theme .photo-select-btn:hover,
+  :root.light-theme .photo-select-btn.active {
+    color: #ffffff !important;
+    background: #9333ea !important;
   }
 
   .btn-dot {
@@ -312,7 +329,11 @@ const varieties = [
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     padding-top: 12px;
-    border-top: 1px solid rgba(244, 242, 236, 0.1);
+    border-top: 1px solid rgba(192, 132, 252, 0.15);
+  }
+
+  :root.light-theme .photo-card-footer {
+    border-top-color: #e9d5ff !important;
   }
 
   .footer-spec-item {
@@ -322,7 +343,12 @@ const varieties = [
     background: rgba(255, 255, 255, 0.03);
     padding: 8px 12px;
     border-radius: 14px;
-    border: 1px solid rgba(244, 242, 236, 0.08);
+    border: 1px solid rgba(192, 132, 252, 0.18);
+  }
+
+  :root.light-theme .footer-spec-item {
+    background: #fbf7fe !important;
+    border-color: #e9d5ff !important;
   }
 
   .spec-icon {
@@ -333,13 +359,21 @@ const varieties = [
     display: block;
     font-size: 0.78rem;
     font-weight: 750;
-    color: var(--moon);
+    color: #f5f3ff;
     line-height: 1.2;
+  }
+
+  :root.light-theme .footer-spec-item strong {
+    color: #1e1035 !important;
   }
 
   .footer-spec-item small {
     display: block;
     font-size: 0.68rem;
-    color: var(--moon-soft);
+    color: rgba(245, 243, 255, 0.72);
+  }
+
+  :root.light-theme .footer-spec-item small {
+    color: #5b21b6 !important;
   }
 </style>
