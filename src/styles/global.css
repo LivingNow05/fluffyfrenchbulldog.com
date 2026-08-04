@@ -7,72 +7,86 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Noche Profunda Lilac Velvet (Púrpura Imperial Exótico) */
-  --night: #140e26;
-  --night-2: #1d1536;
-  --night-3: #271c49;
-  --night-line: #3b2a6b;
+  /* Tokens — Drop Style Reference (Editorial Magazine System) */
+  --color-obsidian: #101010;
+  --color-carbon: #1a1a1a;
+  --color-pure-white: #ffffff;
+  --color-lavender-mist: #b8afda;
+  --color-ember-orange: #eb652b;
+  --color-electric-yellow: #f6f361;
+  --color-sage-mist: #c7d8c5;
+  --color-ash-gray: #9b9b9b;
 
-  /* Royal Lilac Velvet & Violet Platinum (Fluffy Lilac Exótico) */
-  --brand: #a855f7;
-  --brand-bright: #c084fc;
-  --brand-deep: #9333ea;
-  --brand-soft: rgba(168, 85, 247, 0.1);
-  --brand-glow: transparent; /* CERO BRILLOS NEÓN */
+  /* Noche Profunda & Obsidian Editorial Fills */
+  --night: #101010;
+  --night-2: #1a1a1a;
+  --night-3: #262626;
+  --night-line: #333333;
 
-  /* Mapeo para compatibilidad total en todo el sitio */
+  /* Royal Lavender Mist & Accent Tokens */
+  --brand: #b8afda;
+  --brand-bright: #d8b4fe;
+  --brand-deep: #7e22ce;
+  --brand-soft: rgba(184, 175, 218, 0.15);
+  --brand-glow: transparent;
+
   --amber: var(--brand);
   --amber-bright: var(--brand-bright);
   --amber-deep: var(--brand-deep);
   --amber-soft: var(--brand-soft);
   --amber-glow: transparent;
 
-  /* Papel (Modo Oscuro Predeterminado - Fondo Lila Nocturno) */
-  --paper: #140e26;
-  --surface: #1d1536;
-  --border: rgba(192, 132, 252, 0.16);
-  --ink: #f5f3ff;
-  --ink-soft: rgba(245, 243, 255, 0.72);
+  /* Modos de Superficie (Fondo Predeterminado Oscuro Obsidiana) */
+  --paper: #101010;
+  --surface: #1a1a1a;
+  --border: rgba(184, 175, 218, 0.2);
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.75);
 
-  /* Texto sobre noche */
-  --moon: #f5f3ff;
-  --moon-soft: rgba(245, 243, 255, 0.72);
+  --moon: #ffffff;
+  --moon-soft: rgba(255, 255, 255, 0.75);
 
   --whatsapp: #16a34a;
-  --radius: 14px;
+  --radius: 16px;
+  --radius-full: 9999px;
   --max: 1240px;
 
-  --font-display: 'Outfit', 'Space Grotesk Variable', 'Space Grotesk', -apple-system, sans-serif;
-  --font-body: 'Inter', 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Tipografía Drop Editorial: Ivar Display (Playfair) + ABC Normal (Outfit/Inter 300) */
+  --font-ivar-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-abc-normal: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 10px 25px rgba(20, 14, 38, 0.35);
-  --shadow-night: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --font-display: var(--font-ivar-display);
+  --font-body: var(--font-abc-normal);
+
+  /* CERO SOMBRAS (Estética Flat Editorial Impresa) */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-night: none;
   --shadow-glow: none;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root.light-theme {
-  --paper: #fbf7fe;
+  --paper: #ffffff;
   --surface: #ffffff;
-  --border: rgba(147, 51, 234, 0.12);
-  --ink: #1e1035;
-  --ink-soft: #5b21b6;
-  --moon: #1e1035;
-  --moon-soft: #5b21b6;
-  --brand: #9333ea;
-  --brand-deep: #7e22ce;
-  --brand-bright: #a855f7;
-  --brand-soft: rgba(147, 51, 234, 0.08);
+  --border: rgba(16, 16, 16, 0.12);
+  --ink: #101010;
+  --ink-soft: #4b5563;
+  --moon: #101010;
+  --moon-soft: #4b5563;
+  --brand: #7e22ce;
+  --brand-deep: #6b21a8;
+  --brand-bright: #9333ea;
+  --brand-soft: rgba(126, 34, 206, 0.08);
   --brand-glow: transparent;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
   --amber-soft: var(--brand-soft);
   --amber-glow: transparent;
-  --shadow-sm: 0 2px 8px rgba(30, 16, 53, 0.04);
-  --shadow-md: 0 12px 32px -4px rgba(30, 16, 53, 0.08);
-  --shadow-night: 0 24px 60px -12px rgba(30, 16, 53, 0.12);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-night: none;
 }
 
 .hero, .cta-box, .site-footer {
