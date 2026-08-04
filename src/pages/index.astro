@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import HeroCentered from '../components/HeroCentered.astro';
+import BentoFeatures from '../components/BentoFeatures.astro';
 import CalculadoraComida from '../components/CalculadoraComida.astro';
 import FaqSection from '../components/FaqSection.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
@@ -26,6 +27,9 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
       <HeroCentered />
     </div>
   </section>
+
+  <!-- SECCIÓN BENTO 3D DE CARACTERÍSTICAS -->
+  <BentoFeatures />
 
   <section id="ciudades" class="seccion-ciudades scroll-mt">
     <!-- SECCIÓN DE CIUDADES DESTACADAS -->
