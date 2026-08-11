@@ -1,35 +1,61 @@
 ---
+import { LampContainer } from '@/components/ui/lamp';
+import { BackgroundBeams } from '@/components/ui/background-beams';
+import { Button as MovingBorderButton } from '@/components/ui/moving-border';
 import WhatsAppIcon from './WhatsAppIcon.astro';
 import fluffy from '../data/fluffy.json';
 
 export interface Props {
   /** Texto contextual, ej. "un Bulldog Francés Fluffy Blue" */
   contexto?: string;
+  title?: string;
+  subtitle?: string;
 }
 
-const { contexto = 'tu cachorro Bulldog Fluffy' } = Astro.props;
+const { 
+  contexto = 'tu cachorro Bulldog Fluffy',
+  title,
+  subtitle
+} = Astro.props;
+
+const headerTitle = title || `¿Buscas ${contexto}?`;
+const headerSubtitle = subtitle || `Escríbenos directamente por WhatsApp y te compartiremos fotos, videos en vivo, certificados de pedigree y detalles del envío seguro a tu ciudad (el valor del transporte suele rondar los $1.000 USD según la ubicación).`;
+
 const { site } = fluffy;
 const numero = site.whatsapp.replace(/[^\d]/g, '');
 const mensaje = encodeURIComponent(`Hola, me interesa ${contexto}. Quisiera ver fotos y detalles.`);
+const waHref = `https://wa.me/${numero}?text=${mensaje}`;
 ---
 
-<div class="cta-box reveal">
-  <h2>¿Buscas {contexto}?</h2>
-  <p>
-    Escríbenos directamente por WhatsApp y te compartiremos fotos, videos en vivo, certificados de pedigree y detalles del envío seguro a tu ciudad (el valor del transporte suele rondar los $1.000 USD según la ubicación).
-  </p>
-  <a class="btn-whatsapp" href={`https://wa.me/${numero}?text=${mensaje}`} rel="noopener" target="_blank">
-    <WhatsAppIcon size={22} class="btn-wa-icon" />
-    <span>Consultar disponibilidad inmediata por WhatsApp</span>
-  </a>
-  <div class="badges" style="justify-content:center;">
-    {fluffy.site.afiliaciones.map((a) => <span class="badge">Registro {a}</span>)}
-  </div>
+<section class="whatsapp-cta-section relative w-full overflow-hidden my-16 rounded-3xl bg-[#121215] border border-[#27272a] p-8 md:p-12 text-center">
+  <div class="relative z-20 flex flex-col items-center text-center max-w-3xl mx-auto gap-6">
+    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white m-0">
+      {headerTitle}
+    </h2>
+    <p class="text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl m-0">
+      {headerSubtitle}
+    </p>
 
-  <div class="paw-trail" aria-hidden="true">
-    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
-    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
-    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
-    <svg viewBox="0 0 24 24"><path d="M12 14c-2.5 0-4.5 1.5-4.5 3.5S9.5 21 12 21s4.5-1.5 4.5-3.5S14.5 14 12 14zM6.5 11.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm11 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm-7.5-3c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8zm4 0c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z"/></svg>
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener"
+      class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base md:text-lg border border-emerald-500 rounded-2xl cursor-pointer text-decoration-none transition-colors duration-200 flex items-center justify-center gap-3 shadow-md"
+    >
+      <WhatsAppIcon size={24} class="w-6 h-6 fill-current text-white inline-block" />
+      <span>Consultar disponibilidad inmediata por WhatsApp</span>
+    </a>
+
+    <div class="flex flex-wrap justify-center gap-2 mt-2">
+      {site.afiliaciones.map((a) => (
+        <span class="px-3 py-1 rounded-md bg-[#271219] border border-[#4c1d28] text-xs font-extrabold text-rose-400 uppercase tracking-wider">
+          Registro {a}
+        </span>
+      ))}
+    </div>
   </div>
-</div>
+</section>
+
+  <!-- Ambient Vector Rays Background -->
+  <BackgroundBeams client:load className="z-0 opacity-40 pointer-events-none" />
+</section>

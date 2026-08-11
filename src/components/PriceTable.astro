@@ -8,7 +8,7 @@ export interface Props {
   pais?: string;
 }
 
-const { filas, caption, conVariedad = false } = Astro.props;
+const { filas = [], caption = 'Tabla de Precios Oficial', conVariedad = false } = Astro.props;
 
 const mxn = (n?: number) => n ? `$${n.toLocaleString('es-MX')} MXN` : 'N/A';
 const usd = (n: number) => `$${n.toLocaleString('en-US')} USD`;

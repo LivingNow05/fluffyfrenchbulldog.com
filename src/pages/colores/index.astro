@@ -1,0 +1,135 @@
+---
+import Base from '../../layouts/Base.astro';
+import PriceTable from '../../components/PriceTable.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
+import fluffy from '../../data/fluffy.json';
+import faqsData from '../../data/faqs.json';
+
+import { ColorHoverGrid } from '../../components/colores/ColorHoverGrid';
+import { ColorBentoGrid } from '../../components/colores/ColorBentoGrid';
+import { Button as MovingBorderButton } from '../../components/ui/moving-border';
+
+const variedades = fluffy.variedades;
+const faqs = faqsData.faqsGenerales ?? [];
+
+const todasLasFilas = fluffy.variedades.flatMap((v) =>
+  v.variantes.map((v2) => ({
+    variedad: v.nombreCorto,
+    tipo: v2.tipo,
+    registro: v2.registro,
+    precioMXN: v2.precioMXN,
+    precioUSD: v2.precioUSD
+  }))
+);
+
+const caracteristicasGenerales = {
+  genetica: 'Gen de Pelo Largo (lh1/lh2) 100% verificado por prueba de laboratorio.',
+  pelaje: 'Manto suave, denso y esponjoso en cuello, orejas y cuerpo.',
+  ojos: 'Tonalidades exóticas cobalto, avellana, verde esmeralda y ámbar.',
+  pedigree: 'Registro oficial de pureza AKC / FCI / ACCC.',
+  salud: 'Garantía genética de 2 años contra afecciones hereditarias.',
+  temperamento: 'Carácter dócil, cariñoso y extremadamente juguetón.'
+};
+
+const specLabels = {
+  genetica: 'Certificación Genética',
+  pelaje: 'Estructura de Pelaje',
+  ojos: 'Pigmentación Ocular',
+  pedigree: 'Respaldo de Registro',
+  salud: 'Protocolo Médico',
+  temperamento: 'Comportamiento'
+};
+
+const specIcons = {
+  genetica: '🧬',
+  pelaje: '🦁',
+  ojos: '👁️',
+  pedigree: '📜',
+  salud: '🏥',
+  temperamento: '❤️'
+};
+---
+
+<Base
+  title="Variedades y Colores Exóticos del Bulldog Francés Fluffy | Catálogo 2026"
+  description="Explora las 5 variedades exóticas de Bulldog Francés Fluffy: Fluffy Blue, Visual Isabella, Lilac Platinum, Cocoa y Merlé con pedigree AKC y prueba de ADN."
+>
+  <div class="color-page" style="background: #09090b; color: #fcfcfd; min-height: 100vh; padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <div style="max-width: 1240px; margin: 0 auto; padding: 1.5rem 1rem 0;">
+      <Breadcrumbs items={[{ label: 'Inicio', href: '/' }, { label: 'Variedades de Colores', href: '/colores/' }]} />
+    </div>
+
+    <!-- Header Principal -->
+    <header style="max-width: 1100px; margin: 0 auto; text-align: center; padding: 3rem 1rem 2rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(225, 29, 72, 0.12); border: 1px solid rgba(225, 29, 72, 0.3); padding: 0.4rem 1.2rem; border-radius: 999px; font-size: 0.875rem; color: #f43f5e; margin-bottom: 1.25rem;">
+        <span>🧬 Genética Exótica L4 Pura & Certificada</span>
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; color: #fcfcfd;">
+        Variedades y Colores de <span style="background: linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bulldog Francés Fluffy</span>
+      </h1>
+      <p style="font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(252, 252, 253, 0.75); max-width: 800px; margin: 0 auto 2rem; line-height: 1.6;">
+        Descubre las características genéticas, tonos de pelaje afelpado, colores de ojos y valores de linaje de las variedades más codiciadas a nivel mundial.
+      </p>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#catalogo-colores" style="text-decoration: none;">
+          <MovingBorderButton
+            client:idle
+            borderRadius="1rem"
+            className="bg-rose-950/60 text-white border-rose-800/40 hover:border-rose-600/80 font-bold px-6 py-3"
+          >
+             Explorar 5 Variedades Exóticas
+          </MovingBorderButton>
+        </a>
+        <a href="https://wa.me/573128375043?text=Hola,%20quisiera%20consultar%20disponibilidad%20de%20cachorros%20Fluffy%20por%20color" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; background: #16a34a; color: #fff; font-weight: 700; padding: 0.85rem 1.5rem; border-radius: 1rem; transition: transform 0.2s;">
+            💬 Consultar Disponibilidad por WhatsApp
+          </span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Bento Grid de Variedades -->
+    <section id="catalogo-colores" style="max-width: 1240px; margin: 2rem auto; padding: 0 1rem;">
+      <h2 style="font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; text-align: center; margin-bottom: 2rem;">
+        Catálogo Interactivo de Linajes Exóticos 2026
+      </h2>
+      <ColorBentoGrid client:visible caracteristicas={caracteristicasGenerales} specLabels={specLabels} specIcons={specIcons} />
+    </section>
+
+    <!-- Hover Grid de Seleccionables -->
+    <section style="max-width: 1240px; margin: 4rem auto; padding: 0 1rem;">
+      <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 1rem;">
+        Selecciona un Color para Ver Ficha Técnica y Precio
+      </h2>
+      <p style="text-align: center; color: rgba(245, 243, 255, 0.7); max-width: 600px; margin: 0 auto 2rem;">
+        Pasa el cursor sobre cada variedad para ver detalles específicos de registro, genética y disponibilidad de camada.
+      </p>
+      <ColorHoverGrid client:visible variedades={variedades} />
+    </section>
+
+    <!-- Tabla de Precios -->
+    <section style="max-width: 1240px; margin: 4rem auto; padding: 0 1rem;">
+      <PriceTable filas={todasLasFilas} caption="Lista Completa de Precios por Variedad de Color 2026" conVariedad={true} />
+    </section>
+
+    <!-- Reseñas -->
+    <section style="max-width: 1240px; margin: 4rem auto; padding: 0 1rem;">
+      <ReviewsSection />
+    </section>
+
+    <!-- FAQs -->
+    <section style="max-width: 1240px; margin: 4rem auto; padding: 0 1rem;">
+      <FaqSection faqs={faqs} title="Preguntas Frecuentes sobre Colores y Genética Fluffy" />
+    </section>
+
+    <!-- CTA Final -->
+    <section style="max-width: 1240px; margin: 4rem auto; padding: 0 1rem;">
+      <WhatsAppCTA />
+    </section>
+  </div>
+</Base>

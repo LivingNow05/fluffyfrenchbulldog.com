@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
+import { MovingBorderBox } from '../../components/colores/MovingBorderBox';
 
 export async function getStaticPaths() {
   const posts = await Astro.glob('../../data/blog/*.md');
@@ -26,6 +27,11 @@ const articleSchema = {
   author: { '@type': 'Organization', name: author },
   datePublished: date,
 };
+
+// Calculate reading time roughly based on raw content length
+const rawText = post.rawContent ? post.rawContent() : '';
+const wordCount = rawText.split(/\s+/).length;
+const readTimeMinutes = Math.max(2, Math.ceil(wordCount / 180));
 ---
 
 <Base title={`${title} | Dinastía Bulldog Fluffy`} description={description} schema={[articleSchema]}>
@@ -38,18 +44,108 @@ const articleSchema = {
       ]}
     />
 
-    <article class="blog-post-content" style="max-width: 800px; margin: 32px auto 0;">
-      <span class="badge">{category}</span>
-      <h1 style="margin-top: 12px;">{title}</h1>
-      <div style="font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 24px;">
-        <span>Publicado el {date}</span> · <span>Por {author}</span>
-      </div>
+    <article class="blog-post-content max-w-3xl mx-auto mt-8 bg-[#121215] border border-[#27272a] rounded-3xl p-6 sm:p-10">
+      <header class="mb-8 border-b border-[#27272a] pb-6">
+        <span class="inline-block px-3.5 py-1.5 rounded-md text-xs font-extrabold bg-[#271219] text-rose-400 border border-[#4c1d28] tracking-wide uppercase mb-4">
+          {category}
+        </span>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
+          {title}
+        </h1>
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6 font-normal">
+          {description}
+        </p>
+        <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-zinc-400">
+          <span class="flex items-center gap-1.5">
+            📅 Publicado el <time datetime={date}>{date}</time>
+          </span>
+          <span>•</span>
+          <span class="flex items-center gap-1.5">
+            ✍️ Por {author}
+          </span>
+          <span>•</span>
+          <span class="flex items-center gap-1.5 text-rose-400 font-semibold">
+            ⏱️ {readTimeMinutes} min de lectura
+          </span>
+        </div>
+      </header>
 
-      <div class="post-body" style="font-size: 1.05rem; line-height: 1.8;">
+      <div class="post-body text-zinc-200 text-base sm:text-lg leading-relaxed">
         <Content />
       </div>
+
+      <footer class="mt-10 pt-6 border-t border-[#27272a]">
+        <div class="p-6 rounded-2xl bg-[#18181b] border border-[#27272a]">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-2">
+            <div>
+              <h4 class="text-lg font-bold text-white mb-1 m-0">🐾 ¿Tienes dudas sobre este tema?</h4>
+              <p class="text-xs sm:text-sm text-zinc-400 m-0 mt-1">
+                Habla directamente con nuestro equipo de genetistas y criadores para resolver cualquier consulta sobre tu cachorro Fluffy.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/573128375043?text=Hola,%20tengo%20dudas%20sobre%20el%20art%C3%ADculo:%20${encodeURIComponent(title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="shrink-0 px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition-colors no-underline text-xs sm:text-sm shadow-sm"
+            >
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </footer>
     </article>
 
-    <WhatsAppCTA contexto={`dudas sobre: ${title}`} />
+    <div class="max-w-3xl mx-auto mt-8">
+      <WhatsAppCTA contexto={`dudas sobre: ${title}`} />
+    </div>
   </main>
 </Base>
+
+<style is:global>
+  .post-body h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #f3e8ff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  }
+  .post-body h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e9d5ff;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-body p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+  .post-body ul, .post-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .post-body li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+  .post-body strong {
+    color: #f3e8ff;
+    font-weight: 700;
+  }
+  .post-body em {
+    color: #c084fc;
+    font-style: italic;
+  }
+  .post-body blockquote {
+    border-left: 4px solid #c084fc;
+    background: rgba(168, 85, 247, 0.08);
+    padding: 1rem 1.25rem;
+    border-radius: 0 1rem 1rem 0;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #e9d5ff;
+  }
+</style>

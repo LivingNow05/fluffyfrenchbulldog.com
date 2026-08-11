@@ -1,0 +1,30 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import fluffy from '../data/fluffy.json';
+
+export interface Props {
+  phone?: string;
+  tooltipText?: string;
+}
+
+const { 
+  phone = fluffy.site.whatsapp,
+  tooltipText = '💬 ¿Hablamos por WhatsApp?' 
+} = Astro.props;
+
+const cleanPhone = phone.replace(/[^\d]/g, '');
+const waHref = `https://wa.me/${cleanPhone}`;
+---
+
+<a 
+  class="whatsapp-float group fixed bottom-7 right-7 z-[999] flex items-center justify-center p-3.5 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 text-white shadow-[0_0_25px_rgba(34,197,94,0.5)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] transition-all duration-300 hover:scale-114 hover:rotate-6 text-decoration-none"
+  href={waHref} 
+  target="_blank" 
+  rel="noopener" 
+  aria-label="Hablar por WhatsApp"
+>
+  <span class="whatsapp-float-tooltip">
+    {tooltipText}
+  </span>
+  <WhatsAppIcon size={28} class="w-7 h-7 fill-current text-white relative z-10" />
+</a>

@@ -5,6 +5,9 @@ import Base from '../layouts/Base.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ShippingAccordion from '../components/ShippingAccordion.astro';
+import { CardContainer, CardBody, CardItem } from '../components/ui/3d-card';
+import { HubCard3D } from '../components/destinos/HubCard3D';
+import { HoverEffect } from '../components/ui/card-hover-effect';
 
 function parseRow(rowStr: string): string[] {
   const values: string[] = [];
@@ -138,6 +141,19 @@ const FLAG_MAP: Record<string, string> = {
   'EE.UU.': '🇺🇸',
   'USA': '🇺🇸'
 };
+
+// Hubs internacionales destacados para la sección 3D Card
+const HUB_TARGETS = ['bogota', 'bogotá', 'cdmx', 'ciudad de méxico', 'miami', 'madrid', 'lima', 'santiago'];
+const featuredHubs = locations.filter((loc) =>
+  HUB_TARGETS.some((target) => loc.ciudad.toLowerCase().includes(target))
+).reduce((unique: typeof locations, loc) => {
+  if (!unique.some((item) => item.ciudad === loc.ciudad)) {
+    unique.push(loc);
+  }
+  return unique;
+}, []).slice(0, 6);
+
+const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0, 6);
 ---
 
 <Base
@@ -150,8 +166,8 @@ const FLAG_MAP: Record<string, string> = {
 
   <section class="hero" style="padding: 60px 0 50px; margin-top: 0;">
     <div class="wrap text-center">
-      <p class="hero-kicker">Entrega VIP Presencial · Niñera Aérea</p>
-      <h1>Destinos & Cobertura de <em>Entregas por Ciudad</em></h1>
+      <p class="hero-kicker" style="color: #f43f5e; background: rgba(225, 29, 72, 0.12); border-color: rgba(225, 29, 72, 0.3);">Entrega VIP Presencial · Niñera Aérea</p>
+      <h1>Destinos & Cobertura de <em style="color: #f43f5e;">Entregas por Ciudad</em></h1>
       <p class="lead" style="margin: 0 auto 28px;">
         Entregamos nuestros cachorros <strong>Bulldog Francés Fluffy</strong> con transporte climatizado presencial en más de 100 ciudades. Selecciona tu ubicación para conocer la historia local, aeropuerto y protocolo de llegada.
       </p>
@@ -162,49 +178,71 @@ const FLAG_MAP: Record<string, string> = {
           type="text"
           id="city-search"
           placeholder="🔍 Escribe tu ciudad (ej. Bogotá, CDMX, Lima, Madrid)..."
-          style="width: 100%; padding: 18px 24px; border-radius: 999px; border: 2px solid var(--amber); background: var(--surface); color: var(--ink); font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.15); outline: none; transition: border-color 0.2s, background 0.2s;"
+          style="width: 100%; padding: 18px 24px; border-radius: 999px; border: 2px solid rgba(225, 29, 72, 0.4); background: rgba(18, 18, 21, 0.95); color: #fcfcfd; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5); outline: none; transition: border-color 0.2s, background 0.2s;"
         />
-        <div id="search-results" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: var(--surface); border: 1.5px solid var(--amber); border-radius: 18px; max-height: 320px; overflow-y: auto; z-index: 200; box-shadow: var(--shadow-night); text-align: left;"></div>
+        <div id="search-results" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: rgba(18, 18, 21, 0.98); backdrop-filter: blur(16px); border: 1.5px solid rgba(225, 29, 72, 0.4); border-radius: 18px; max-height: 320px; overflow-y: auto; z-index: 200; box-shadow: 0 16px 40px rgba(0,0,0,0.8); text-align: left;"></div>
       </div>
     </div>
   </section>
 
   <main class="wrap" style="padding-top: 40px;">
-    <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; justify-content: center;">
+    {/* Sección Hubs Internacionales Destacados con 3D Cards */}
+    <section class="featured-hubs-section mb-16">
+      <div class="text-center mb-8">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-rose-950/40 text-rose-300 border border-rose-800/40 text-xs font-extrabold uppercase tracking-widest mb-3">
+          🛫 Hubs Internacionales Destacados
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Ciudades con Cobertura VIP Preferencial
+        </h2>
+        <p class="text-zinc-400 text-sm max-w-2xl mx-auto mt-2">
+          Puntos estratégicos de conexión internacional con atención médica veterinaria y niñera aérea dedicada.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+        {hubLocations.map((loc) => (
+          <HubCard3D
+            client:load
+            ciudad={loc.ciudad}
+            pais={loc.pais}
+            flag={FLAG_MAP[loc.pais] || '📍'}
+            aeropuerto={loc.aeropuerto}
+            moneda={loc.moneda}
+            url={loc.url}
+          />
+        ))}
+      </div>
+    </section>
+
+    {/* Navegación rápida por países */}
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; justify-content: center;">
       {countries.map((c) => (
-        <a href={`#pais-${c.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn--ghost" style="padding: 8px 20px; font-size: 0.9rem;">
+        <a href={`#pais-${c.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn--ghost" style="padding: 8px 20px; font-size: 0.9rem; border-color: rgba(225, 29, 72, 0.35); color: #fcfcfd;">
           {FLAG_MAP[c] || '📍'} {c} ({groupedByCountry[c].length})
         </a>
       ))}
     </div>
 
-    {countries.map((country) => (
-      <section id={`pais-${country.toLowerCase().replace(/\s+/g, '-')}`} style="margin-bottom: 56px;">
-        <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--amber); padding-bottom: 10px; margin-bottom: 24px;">
-          <h2 style="margin: 0; font-size: 1.7rem;">{FLAG_MAP[country] || '📍'} {country}</h2>
-          <span class="badge">{groupedByCountry[country].length} ciudades</span>
-        </div>
+    {/* Secciones por país con HoverEffect */}
+    {countries.map((country) => {
+      const cityItems = groupedByCountry[country].map((loc) => ({
+        title: `${loc.ciudad} ${FLAG_MAP[country] || ''}`,
+        description: `✈️ Aeropuerto: ${loc.aeropuerto} · Moneda: ${loc.moneda}\nVer disponibilidad & historia local →`,
+        link: loc.url
+      }));
 
-        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-          {groupedByCountry[country].map((loc) => (
-            <a class="card" href={loc.url}>
-              <div class="card-header-icon">
-                <h3 style="font-size: 1.15rem;">{loc.ciudad}</h3>
-                <span class="badge">USD</span>
-              </div>
-              <div class="card-body">
-                <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 4px;">
-                  ✈️ <strong>{loc.aeropuerto}</strong>
-                </p>
-                <p style="font-size: 0.82rem; color: var(--amber-deep); margin-top: 8px; font-weight: 700;">
-                  Ver disponibilidad & historia local →
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-    ))}
+      return (
+        <section id={`pais-${country.toLowerCase().replace(/\s+/g, '-')}`} style="margin-bottom: 56px;">
+          <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(225, 29, 72, 0.4); padding-bottom: 10px; margin-bottom: 16px;">
+            <h2 style="margin: 0; font-size: 1.7rem; color: #fcfcfd;">{FLAG_MAP[country] || '📍'} {country}</h2>
+            <span class="badge" style="background: rgba(225, 29, 72, 0.2); color: #f43f5e; border-color: rgba(225, 29, 72, 0.4);">{groupedByCountry[country].length} ciudades</span>
+          </div>
+
+          <HoverEffect client:load items={cityItems} />
+        </section>
+      );
+    })}
 
     <ShippingAccordion ciudad="tu ciudad de residencia" />
     <WhatsAppCTA contexto="envíos internacionales de Bulldog Fluffy" />
@@ -234,9 +272,9 @@ const FLAG_MAP: Record<string, string> = {
           resultsContainer.innerHTML = '<div style="padding: 16px; color: var(--ink-soft); text-align: center;">No se encontraron ciudades con ese nombre.</div>';
         } else {
           resultsContainer.innerHTML = matches.map((m) => `
-            <a href="${m.url}" style="display: block; padding: 14px 20px; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--ink); transition: background 0.2s;">
-              <strong style="color: var(--amber-deep);">${m.ciudad}</strong>, ${m.pais}
-              <div style="font-size: 0.8rem; color: var(--ink-soft);">✈️ ${m.aeropuerto}</div>
+            <a href="${m.url}" style="display: block; padding: 14px 20px; border-bottom: 1px solid rgba(225, 29, 72, 0.2); text-decoration: none; color: #fcfcfd; transition: background 0.2s;">
+              <strong style="color: #f43f5e;">${m.ciudad}</strong>, ${m.pais}
+              <div style="font-size: 0.8rem; color: #a1a1aa;">✈️ ${m.aeropuerto}</div>
             </a>
           `).join('');
         }

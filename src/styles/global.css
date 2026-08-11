@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ═══════════════════════════════════════════════════════════════════════════
    Dinastía Bulldog Fluffy — System Design "LUJO CANINO NOCTURNO & EDITORIAL EDIT"
    Concepto: Melena y mirada majestuosa de la raza canina más exótica del mundo.
@@ -7,36 +11,36 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Noche Profunda Lilac Velvet (Púrpura Imperial Exótico) */
-  --night: #140e26;
-  --night-2: #1d1536;
-  --night-3: #271c49;
-  --night-line: #3b2a6b;
+  /* Noche Profunda Rojo Toro (Obsidiana Granate Imperial) */
+  --night: #09090b;
+  --night-2: #121215;
+  --night-3: #18181b;
+  --night-line: #27272a;
 
-  /* Royal Lilac Velvet & Violet Platinum (Fluffy Lilac Exótico) */
-  --brand: #a855f7;
-  --brand-bright: #c084fc;
-  --brand-deep: #9333ea;
-  --brand-soft: rgba(168, 85, 247, 0.1);
-  --brand-glow: transparent; /* CERO BRILLOS NEÓN */
+  /* Rojo Toro Imperial Premium */
+  --brand: #e11d48;
+  --brand-bright: #f43f5e;
+  --brand-deep: #be123c;
+  --brand-soft: rgba(225, 29, 72, 0.12);
+  --brand-glow: transparent; /* CERO BRILLOS NEÓN TIPIQUITOS */
 
-  /* Mapeo para compatibilidad total en todo el sitio */
+  /* Mapeo para compatibilidad total */
   --amber: var(--brand);
   --amber-bright: var(--brand-bright);
   --amber-deep: var(--brand-deep);
   --amber-soft: var(--brand-soft);
   --amber-glow: transparent;
 
-  /* Papel (Modo Oscuro Predeterminado - Fondo Lila Nocturno) */
-  --paper: #140e26;
-  --surface: #1d1536;
-  --border: rgba(192, 132, 252, 0.16);
-  --ink: #f5f3ff;
-  --ink-soft: rgba(245, 243, 255, 0.72);
+  /* Papel & Superficies (Modo Oscuro Predeterminado - Obsidiana Lujo) */
+  --paper: #09090b;
+  --surface: #121215;
+  --border: rgba(225, 29, 72, 0.2);
+  --ink: #fcfcfd;
+  --ink-soft: rgba(252, 252, 253, 0.75);
 
   /* Texto sobre noche */
-  --moon: #f5f3ff;
-  --moon-soft: rgba(245, 243, 255, 0.72);
+  --moon: #fcfcfd;
+  --moon-soft: rgba(252, 252, 253, 0.75);
 
   --whatsapp: #16a34a;
   --radius: 14px;
@@ -45,9 +49,9 @@
   --font-display: 'Outfit', 'Space Grotesk Variable', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter', 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 10px 25px rgba(20, 14, 38, 0.35);
-  --shadow-night: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 25px rgba(9, 9, 11, 0.5);
+  --shadow-night: 0 20px 50px rgba(0, 0, 0, 0.7);
   --shadow-glow: none;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -76,14 +80,14 @@
 }
 
 .hero, .cta-box, .site-footer {
-  --moon: #f5f3ff;
-  --moon-soft: rgba(245, 243, 255, 0.72);
-  --ink: #f5f3ff;
-  --ink-soft: rgba(245, 243, 255, 0.72);
-  --brand: #a855f7;
-  --brand-deep: #9333ea;
-  --brand-bright: #c084fc;
-  --brand-soft: rgba(168, 85, 247, 0.14);
+  --moon: #fcfcfd;
+  --moon-soft: rgba(252, 252, 253, 0.75);
+  --ink: #fcfcfd;
+  --ink-soft: rgba(252, 252, 253, 0.75);
+  --brand: #e11d48;
+  --brand-deep: #be123c;
+  --brand-bright: #f43f5e;
+  --brand-soft: rgba(225, 29, 72, 0.14);
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
@@ -334,20 +338,20 @@ a:hover { color: var(--amber-bright); }
 
 /* ─── Header flotante (.site-header) ───────────────────────────────────────── */
 .site-header {
-  --moon: #f8fafc;
-  --moon-soft: rgba(248, 250, 252, 0.7);
-  --ink: #f8fafc;
-  --ink-soft: rgba(248, 250, 252, 0.7);
-  --brand: #3b82f6;
-  --brand-deep: #2563eb;
-  --brand-bright: #60a5fa;
+  --moon: #fcfcfd;
+  --moon-soft: rgba(252, 252, 253, 0.75);
+  --ink: #fcfcfd;
+  --ink-soft: rgba(252, 252, 253, 0.75);
+  --brand: #e11d48;
+  --brand-deep: #be123c;
+  --brand-bright: #f43f5e;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(20px) saturate(1.3);
-  -webkit-backdrop-filter: blur(20px) saturate(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(18, 18, 21, 0.92);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(225, 29, 72, 0.35);
   border-radius: 999px;
   position: sticky;
   top: 16px;
@@ -355,11 +359,16 @@ a:hover { color: var(--amber-bright); }
   width: calc(100% - 32px);
   max-width: calc(var(--max) - 44px);
   margin: 16px auto 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(225, 29, 72, 0.15);
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               width 0.3s ease, margin 0.3s ease;
+}
+
+.site-header:hover {
+  border-color: rgba(244, 63, 94, 0.6);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(225, 29, 72, 0.25);
 }
 
 :root.light-theme .site-header {
@@ -367,17 +376,22 @@ a:hover { color: var(--amber-bright); }
   --moon-soft: #475569;
   --ink: #0f172a;
   --ink-soft: #475569;
-  --brand: #2563eb;
-  --brand-deep: #1d4ed8;
-  --brand-bright: #3b82f6;
+  --brand: #e11d48;
+  --brand-deep: #be123c;
+  --brand-bright: #f43f5e;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(15, 23, 42, 0.09);
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(225, 29, 72, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.12);
+}
+
+:root.light-theme .site-header:hover {
+  border-color: rgba(225, 29, 72, 0.4);
+  box-shadow: 0 14px 35px -5px rgba(225, 29, 72, 0.2);
 }
 
 .site-header .wrap {
@@ -422,14 +436,14 @@ a:hover { color: var(--amber-bright); }
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(12px);
-  width: 620px;
-  background: rgba(15, 23, 42, 0.96);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  width: 640px;
+  background: rgba(18, 18, 21, 0.98);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  border: 1px solid rgba(225, 29, 72, 0.4);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(225, 29, 72, 0.2);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -445,8 +459,8 @@ a:hover { color: var(--amber-bright); }
 
 :root.light-theme .megamenu-cities {
   background: rgba(255, 255, 255, 0.97);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(225, 29, 72, 0.25);
+  box-shadow: 0 16px 40px rgba(225, 29, 72, 0.15);
 }
 
 .megamenu-grid {
@@ -465,26 +479,34 @@ a:hover { color: var(--amber-bright); }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--amber);
+  color: var(--amber-bright);
   margin-bottom: 4px;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  border-bottom: 1px solid rgba(225, 29, 72, 0.25);
 }
 .megamenu-col a {
   font-size: 0.85rem;
   color: var(--ink-soft);
   text-decoration: none;
-  transition: color 0.15s ease, transform 0.15s ease;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
 }
 .megamenu-col a:hover {
-  color: var(--ink);
-  transform: translateX(3px);
+  color: #fff;
+  background: rgba(225, 29, 72, 0.18);
+  transform: translateX(4px);
+}
+:root.light-theme .megamenu-col a:hover {
+  color: #be123c;
+  background: rgba(225, 29, 72, 0.08);
 }
 
 .megamenu-col.col-cta {
-  background: rgba(139, 92, 246, 0.08);
-  border-radius: 12px;
-  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.15), rgba(18, 18, 21, 0.6));
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  border-radius: 14px;
+  padding: 12px 14px;
 }
 .megamenu-col.col-cta p {
   font-size: 0.78rem;
@@ -494,12 +516,16 @@ a:hover { color: var(--amber-bright); }
 }
 .btn-all-cities {
   font-size: 0.78rem !important;
-  font-weight: 600;
-  color: var(--amber) !important;
+  font-weight: 700;
+  color: var(--amber-bright) !important;
   text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
 .btn-all-cities:hover {
-  text-decoration: underline !important;
+  color: #f59e0b !important;
+  text-decoration: none !important;
+  transform: translateX(4px);
 }
 
 .logo {
@@ -2722,6 +2748,11 @@ table.price-table {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   pointer-events: none;
 }
+@media (max-width: 640px) {
+  .whatsapp-float-tooltip {
+    display: none !important;
+  }
+}
 :root.light-theme .whatsapp-float-tooltip {
   background: rgba(255, 255, 255, 0.95);
   border-color: rgba(124, 58, 237, 0.25);
@@ -2943,6 +2974,37 @@ p strong, li strong, td strong {
 :root.light-theme .spec-list li {
   background-color: #ffffff;
 }
+
+/* ─── Site-Wide Hover Polish Standardization (Milestone 6) ─────────────────── */
+.btn, .nav-cta, .theme-toggle-btn, .menu-toggle-btn, .whatsapp-float, .btn-whatsapp, .qm-opt, .qm-rec, .qm-next, .shipping-summary, .calc-box {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shipping-summary:hover {
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--amber-bright);
+}
+
+:root.light-theme .shipping-summary:hover {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+}
+
+.faq details summary:hover {
+  background: rgba(168, 85, 247, 0.1);
+  color: var(--amber-bright);
+}
+
+:root.light-theme .faq details summary:hover {
+  background: rgba(124, 58, 237, 0.06);
+  color: #7c3aed;
+}
+
+.tab-btn:hover, .filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+}
+
 
 
 

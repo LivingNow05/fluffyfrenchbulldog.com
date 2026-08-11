@@ -1,4 +1,6 @@
 ---
+import { MovingBorderBox } from './colores/MovingBorderBox';
+
 interface Props {
   ciudad?: string;
   aeropuerto?: string;
@@ -31,42 +33,44 @@ const pasosLogistica = [
 ---
 
 <div class="shipping-accordion-wrapper">
-  <div class="shipping-header">
-    <span class="shipping-badge">🛫 PROTOCOLO DE VIAJE SEGURO</span>
-    <h3>Logística y Garantías de Entrega para {ciudad}</h3>
-    <p>Conoce paso a paso cómo garantizamos la llegada de tu cachorro en óptimas condiciones de salud y confort.</p>
-  </div>
+  <MovingBorderBox client:load containerClassName="w-full h-auto my-0" borderRadius="1.5rem" borderGradient="#e11d48" className="p-6 md:p-8 bg-zinc-950/90 backdrop-blur-md border border-zinc-800">
+    <div class="shipping-header">
+      <span class="shipping-badge">🛫 PROTOCOLO DE VIAJE SEGURO</span>
+      <h3>Logística y Garantías de Entrega para {ciudad}</h3>
+      <p>Conoce paso a paso cómo garantizamos la llegada de tu cachorro en óptimas condiciones de salud y confort.</p>
+    </div>
 
-  <div class="accordion-list">
-    {pasosLogistica.map((item, index) => (
-      <details class="shipping-details" open={index === 0}>
-        <summary class="shipping-summary">
-          <span class="summary-title">{item.titulo}</span>
-          <span class="summary-icon">+</span>
-        </summary>
-        <div class="shipping-content">
-          <p class="resumen-text">{item.resumen}</p>
-          <p class="detalle-text">{item.detalle}</p>
-        </div>
-      </details>
-    ))}
-  </div>
+    <div class="accordion-list">
+      {pasosLogistica.map((item, index) => (
+        <details class="shipping-details" open={index === 0}>
+          <summary class="shipping-summary">
+            <span class="summary-title">{item.titulo}</span>
+            <span class="summary-icon">+</span>
+          </summary>
+          <div class="shipping-content">
+            <p class="resumen-text">{item.resumen}</p>
+            <p class="detalle-text">{item.detalle}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </MovingBorderBox>
 </div>
 
 <style>
   .shipping-accordion-wrapper {
-    background: rgba(21, 21, 26, 0.65);
+    background: rgba(20, 14, 38, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(139, 92, 246, 0.22);
+    border: 1px solid rgba(168, 85, 247, 0.3);
     border-radius: 24px;
     padding: 32px;
     margin: 40px 0;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(168, 85, 247, 0.15);
   }
   :root.light-theme .shipping-accordion-wrapper {
     background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(124, 58, 237, 0.18);
+    border: 1px solid rgba(168, 85, 247, 0.3);
     box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
   }
   .shipping-header {
@@ -74,8 +78,8 @@ const pasosLogistica = [
     margin-bottom: 28px;
   }
   .shipping-badge {
-    background: rgba(139, 92, 246, 0.15);
-    color: var(--amber-bright);
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--amber-bright, #c084fc);
     font-size: 0.78rem;
     font-weight: 800;
     padding: 4px 14px;
@@ -83,12 +87,12 @@ const pasosLogistica = [
     letter-spacing: 0.06em;
     display: inline-block;
     margin-bottom: 10px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid rgba(168, 85, 247, 0.3);
   }
   :root.light-theme .shipping-badge {
-    background: rgba(124, 58, 237, 0.1);
+    background: rgba(168, 85, 247, 0.1);
     color: #6d28d9;
-    border-color: rgba(124, 58, 237, 0.25);
+    border-color: rgba(168, 85, 247, 0.3);
   }
   .shipping-header h3 {
     font-size: 1.6rem;
@@ -108,22 +112,23 @@ const pasosLogistica = [
   }
   .shipping-details {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(244, 242, 236, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.2);
     border-radius: 16px;
     overflow: hidden;
-    transition: border-color 0.25s ease, background-color 0.25s ease;
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   }
   :root.light-theme .shipping-details {
     background: rgba(248, 250, 252, 0.8);
-    border: 1px solid rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(168, 85, 247, 0.2);
   }
   .shipping-details[open] {
-    border-color: rgba(139, 92, 246, 0.4);
-    background: rgba(139, 92, 246, 0.04);
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.08);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
   }
   :root.light-theme .shipping-details[open] {
-    border-color: rgba(124, 58, 237, 0.35);
-    background: rgba(124, 58, 237, 0.04);
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.06);
   }
   .shipping-summary {
     display: flex;
@@ -142,7 +147,7 @@ const pasosLogistica = [
   .summary-icon {
     font-size: 1.2rem;
     font-weight: 400;
-    color: var(--amber);
+    color: #c084fc;
     transition: transform 0.25s ease;
   }
   .shipping-details[open] .summary-icon {
@@ -156,7 +161,7 @@ const pasosLogistica = [
   }
   .resumen-text {
     font-weight: 600;
-    color: var(--amber-bright);
+    color: #c084fc;
     margin-bottom: 6px;
   }
   :root.light-theme .resumen-text {

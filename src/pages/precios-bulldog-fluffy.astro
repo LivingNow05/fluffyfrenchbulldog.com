@@ -1,11 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import PriceTable from '../components/PriceTable.astro';
+import ShippingAccordion from '../components/ShippingAccordion.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import FaqSection from '../components/FaqSection.astro';
 import fluffy from '../data/fluffy.json';
 import faqsData from '../data/faqs.json';
+import { MovingBorderBox } from '../components/colores/MovingBorderBox';
+import { Button as MovingBorderButton } from '../components/ui/moving-border';
+import { PriceFactorsHoverGrid } from '../components/precios/PriceFactorsHoverGrid';
 
 const todasLasFilas = fluffy.variedades.flatMap((v) =>
   v.variantes.map((varItem) => ({
@@ -31,11 +35,14 @@ const todasLasFilas = fluffy.variedades.flatMap((v) =>
     />
 
     <h1 style="margin-top: 24px;">🏷️ Precios de Bulldog Francés Fluffy 2026</h1>
-    <div class="answer-box">
-      <strong>⚡ Guía de Precios Oficial:</strong> El valor de un cachorro Bulldog Francés Fluffy en 2026 oscila entre
-      <strong>$2.300 USD</strong> para portadores genéticos de pelo largo y hasta
-      <strong>$6.800 USD</strong> para variedades Fluffy Visual Isabella con pedigree completo y derechos de cría.
-    </div>
+
+    <MovingBorderBox client:visible borderGradient="#e11d48">
+      <p class="m-0 text-zinc-300 text-base leading-relaxed">
+        <strong class="text-rose-400 font-bold">⚡ Guía de Precios Oficial:</strong> El valor de un cachorro Bulldog Francés Fluffy en 2026 oscila entre
+        <strong class="text-white font-extrabold">$2.300 USD</strong> para portadores genéticos de pelo largo y hasta
+        <strong class="text-rose-400 font-extrabold">$6.800 USD</strong> para variedades Fluffy Visual Isabella con pedigree completo y derechos de cría.
+      </p>
+    </MovingBorderBox>
 
     <p class="lead">
       En Dinastía Bulldog Fluffy publicamos nuestros precios con total transparencia. Cada ejemplar entregado incluye panel de ADN genético, esquema de vacunación al día, microchip de identificación ISO y garantía de salud genético firmada por contrato.
@@ -43,26 +50,26 @@ const todasLasFilas = fluffy.variedades.flatMap((v) =>
 
     <PriceTable filas={todasLasFilas} caption="Lista Completa de Precios Bulldog Francés Fluffy 2026" conVariedad={true} />
 
+    <div class="flex justify-center my-10">
+      <a
+        href="https://wa.me/573128375043?text=Hola,%20quisiera%20cotizar%20y%20reservar%20un%20Bulldog%20Franc%C3%A9s%20Fluffy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-base md:text-lg px-8 py-4 border border-rose-500 rounded-2xl cursor-pointer text-decoration-none transition-colors duration-200 flex items-center justify-center gap-3 shadow-md"
+      >
+        <span>💎 Cotizar & Reservar Cachorro Fluffy por WhatsApp</span>
+      </a>
+    </div>
+
     <section style="margin: 40px 0;">
       <h2>📊 Factores que Influyen en el Precio de un Fluffy</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>🧬 1. Genética de Color Exótico</h3>
-          <p>Combinaciones raras como Isabella (doble chocolate + azul) o Merlé arlequinado requieren generaciones de selección limpia.</p>
-        </div>
-        <div class="card">
-          <h3>✨ 2. Fluffy Visual vs Portador</h3>
-          <p>Un ejemplar Fluffy Visual (Lh/Lh) exhibe el manto largo sedoso. Un portador (Lh/n) transmite la genética sin mostrar el manto abullonado.</p>
-        </div>
-        <div class="card">
-          <h3>📜 3. Pedigree y Derechos de Cría</h3>
-          <p>Los ejemplares de compañía se entregan esterilizados. Los ejemplares con derechos de cría incluyen registro AKC/FCI completo.</p>
-        </div>
-      </div>
+      <PriceFactorsHoverGrid client:visible />
     </section>
+
+    <ShippingAccordion />
 
     <FaqSection faqs={faqsData.general} titulo="Dudas frecuentes sobre valores y formas de pago" />
 
-    <WhatsAppCTA contexto="tu Bulldog Fluffy con cotización personalizada" />
+    <WhatsAppCTA contexto="tu Bulldog Francés Fluffy con cotización personalizada" />
   </main>
 </Base>

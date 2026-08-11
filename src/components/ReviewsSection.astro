@@ -1,18 +1,21 @@
 ---
+import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import fluffy from '../data/fluffy.json';
 
 const { testimonios } = fluffy;
 
-// Asignamos una imagen específica a cada testimonio
-const reviews = testimonios.map((t, idx) => ({
-  ...t,
+const formattedReviews = testimonios.map((t, idx) => ({
+  quote: t.texto,
+  name: t.nombre,
+  title: `Recibido en ${t.ciudad}`,
   img: `/images/testimonios/testimonio_real_${idx + 1}.jpg`,
   avatar: t.nombre.charAt(0),
-  colorBg: idx === 0 ? 'var(--amber)' : idx === 1 ? '#8b5cf6' : '#8a77f0',
+  colorBg: idx === 0 ? '#f59e0b' : idx === 1 ? '#8b5cf6' : '#9333ea',
+  ciudad: t.ciudad,
+  variedad: t.variedad,
+  rating: 5,
+  verified: true,
 }));
-
-// Duplicamos el set de testimonios para asegurar fluidez en el marquee infinito
-const duplicatedReviews = [...reviews, ...reviews, ...reviews];
 
 const reviewsSchema = {
   '@context': 'https://schema.org',
@@ -22,11 +25,11 @@ const reviewsSchema = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    reviewCount: reviews.length.toString(),
+    reviewCount: testimonios.length.toString(),
     bestRating: '5',
     worstRating: '1'
   },
-  review: reviews.map((r) => ({
+  review: testimonios.map((r) => ({
     '@type': 'Review',
     author: { '@type': 'Person', name: r.nombre },
     reviewBody: r.texto,
@@ -37,200 +40,25 @@ const reviewsSchema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
 
-<section id="reviews" class="reviews-section reveal">
-  <h2 class="section-title">⭐ Opiniones de la Familia Dinastía</h2>
-  <p class="lead" style="text-align:center; margin-bottom:30px;">
-    Conoce la experiencia de familias reales en Colombia e Hispanoamérica que ya disfrutan de la compañía y pureza de nuestros Bulldog Francés Fluffy.
-  </p>
-
-  <div class="marquee-container fade-edges">
-    <div class="marquee-track pause-animation">
-      {duplicatedReviews.map((r, idx) => (
-        <div class="review-card" key={idx}>
-          <div class="review-image">
-            <img src={r.img} alt={`Bulldog Fluffy de ${r.nombre} en ${r.ciudad}`} loading="lazy" />
-          </div>
-          <div class="review-header">
-            <div class="avatar" style={`background-color: ${r.colorBg};`}>{r.avatar}</div>
-            <div class="user-info">
-              <div class="name-badge">
-                <span class="username">{r.nombre}</span>
-                <span class="verified-badge">✓ Verificado</span>
-              </div>
-              <span class="user-city">Recibido en {r.ciudad}</span>
-            </div>
-          </div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"{r.texto}"</p>
-          <span class="review-tag">Variedad: {r.variedad}</span>
-        </div>
-      ))}
-    </div>
+<section id="reviews" class="reviews-section reveal py-16 overflow-hidden relative">
+  <div class="text-center max-w-2xl mx-auto mb-8 px-4">
+    <span class="inline-block px-3.5 py-1 rounded-full bg-rose-950/40 border border-rose-800/40 text-xs font-extrabold text-rose-300 uppercase tracking-wider mb-3">
+      ⭐ FAMILIAS SATISFECHAS
+    </span>
+    <h2 class="section-title text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">
+      Opiniones de la Familia Dinastía
+    </h2>
+    <p class="lead text-base text-zinc-300 m-0">
+      Conoce la experiencia de familias reales en Colombia e Hispanoamérica que ya disfrutan de la compañía y pureza de nuestros Bulldog Francés Fluffy.
+    </p>
   </div>
+
+  <InfiniteMovingCards
+    client:load
+    items={formattedReviews}
+    direction="left"
+    speed="slow"
+    pauseOnHover={true}
+    className="w-full"
+  />
 </section>
-
-<style>
-  .reviews-section {
-    margin: 80px 0;
-    overflow: hidden;
-  }
-  .section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    font-weight: 850;
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
-  }
-  .marquee-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 16px 0;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 24px;
-    width: max-content;
-    animation: marquee 35s linear infinite;
-  }
-  .pause-animation:hover {
-    animation-play-state: paused;
-  }
-  .review-card {
-    width: 380px;
-    flex-shrink: 0;
-    background: #1d1536 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(192, 132, 252, 0.2);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
-    transition: transform 0.35s var(--ease-out), border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .review-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(168, 85, 247, 0.45);
-    box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.5);
-  }
-  :root.light-theme .review-card {
-    background: #ffffff !important;
-    border: 1px solid #e9d5ff !important;
-    box-shadow: 0 8px 24px -4px rgba(30, 16, 53, 0.06) !important;
-    color: #1e1035 !important;
-  }
-  :root.light-theme .review-card:hover {
-    border-color: rgba(147, 51, 234, 0.4) !important;
-    box-shadow: 0 18px 38px -8px rgba(147, 51, 234, 0.15) !important;
-  }
-  .review-image {
-    width: 100%;
-    height: 180px;
-    border-radius: calc(var(--radius) - 4px);
-    overflow: hidden;
-  }
-  .review-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s var(--ease-out);
-  }
-  .review-card:hover .review-image img {
-    transform: scale(1.06);
-  }
-  .review-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: #ffffff;
-  }
-  .user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .name-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .username {
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--ink);
-  }
-  :root.light-theme .username {
-    color: #1e1035 !important;
-  }
-  .verified-badge {
-    background: rgba(16, 185, 129, 0.12);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .user-city {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-  }
-  :root.light-theme .user-city {
-    color: #5b21b6 !important;
-  }
-  .stars {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-  }
-  .review-text {
-    font-size: 0.92rem;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    font-style: italic;
-    margin: 0;
-    flex-grow: 1;
-  }
-  :root.light-theme .review-text {
-    color: #3b2a6b !important;
-  }
-  .review-tag {
-    align-self: flex-start;
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    color: var(--amber-bright);
-    font-size: 0.78rem;
-    font-weight: 750;
-    padding: 4px 12px;
-    border-radius: 999px;
-  }
-  :root.light-theme .review-tag {
-    background: rgba(124, 58, 237, 0.08);
-    border-color: rgba(124, 58, 237, 0.22);
-    color: #6d28d9;
-  }
-
-  @media (max-width: 640px) {
-    .review-card {
-      width: 320px;
-      padding: 18px;
-    }
-    .review-image {
-      height: 140px;
-    }
-  }
-</style>

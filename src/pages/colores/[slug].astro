@@ -8,6 +8,11 @@ import ReviewsSection from '../../components/ReviewsSection.astro';
 import fluffy from '../../data/fluffy.json';
 import faqsData from '../../data/faqs.json';
 
+import { MovingBorderBox } from '../../components/colores/MovingBorderBox';
+import { ColorHoverGrid } from '../../components/colores/ColorHoverGrid';
+import { ColorBentoGrid } from '../../components/colores/ColorBentoGrid';
+import { Button as MovingBorderButton } from '../../components/ui/moving-border';
+
 export function getStaticPaths() {
   return fluffy.variedades.map((v) => ({
     params: { slug: v.slug },
@@ -65,6 +70,17 @@ const productSchema = {
 };
 
 const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
+
+const otrasFormatted = otras.map((r) => {
+  const minVal = Math.min(...r.variantes.map((v2) => v2.precioUSD));
+  return {
+    slug: r.slug,
+    nombre: r.nombre,
+    nombreCorto: r.nombreCorto,
+    minPrecioUSD: minVal,
+    tagline: r.perfil.tagline,
+  };
+});
 ---
 
 <Base
@@ -85,13 +101,17 @@ const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
     <div class="breed-hero">
       <div>
         <h1 style="margin-bottom: 20px;">{v.titulo}</h1>
-        <div class="answer-box">
-          <strong>Respuesta rápida:</strong> un <strong>{v.nombre}</strong> de Dinastía cuesta <strong>{rangoUSD}</strong> en 2026, según la variante (portador o visual) y derechos de cría. Incluye registro de pedigree internacional, microchip ISO, vacunas completas y garantía médica por escrito.
-        </div>
+
+        <MovingBorderBox client:visible borderGradient="#e11d48">
+          <p class="m-0">
+            <strong class="text-rose-400">Respuesta rápida:</strong> un <strong class="text-white">{v.nombre}</strong> de Dinastía cuesta <strong class="text-rose-400">{rangoUSD}</strong> en 2026, según la variante (portador o visual) y derechos de cría. Incluye registro de pedigree internacional, microchip ISO, vacunas completas y garantía médica por escrito.
+          </p>
+        </MovingBorderBox>
+
         <p class="lead" style="margin-top: 20px;">{v.resumen}</p>
       </div>
       <div class="breed-hero-image">
-        <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés Fluffy variedad ${v.nombre}`} class="reveal" />
+        <img src={`/images/variedades/${v.slug}.jpg`} alt={`Bulldog Francés Fluffy variedad ${v.nombre}`} class="reveal rounded-2xl border border-[#27272a]" />
       </div>
     </div>
 
@@ -99,44 +119,33 @@ const otras = fluffy.variedades.filter((r) => r.slug !== v.slug).slice(0, 4);
     <PriceTable filas={v.variantes} caption={`Tabla de precios para el ${v.nombre}`} />
 
     <h2>📊 Características de la variedad {v.nombreCorto}</h2>
-    <ul class="spec-list" style="margin-bottom: 40px;">
-      {Object.entries(v.caracteristicas).map(([k, val]) => (
-        <li>
-          <div class="spec-icon-badge">{specIcons[k] || '🐾'}</div>
-          <div class="spec-info">
-            <span class="spec-label">{specLabels[k] ?? k}</span>
-            <span class="spec-value">{val}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <ColorBentoGrid
+      caracteristicas={v.caracteristicas}
+      specLabels={specLabels}
+      specIcons={specIcons}
+    />
 
     <h2>🎨 Detalles de la variedad y cuidados</h2>
     <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 50px;">{v.contenido}</p>
 
     <FaqSection faqs={faqs} titulo={`❓ Preguntas frecuentes sobre el ${v.nombreCorto}`} />
 
+    <div class="flex justify-center my-8">
+      <a
+        href={`https://wa.me/573000000000?text=Hola,%20busco%20información%20sobre%20el%20Bulldog%20Fluffy%20${encodeURIComponent(v.nombreCorto)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-base px-8 py-4 border border-rose-500 rounded-2xl cursor-pointer text-decoration-none transition-colors duration-200 flex items-center justify-center gap-3 shadow-md"
+      >
+        <span>📱 Consultar Disponibilidad de {v.nombreCorto} por WhatsApp</span>
+      </a>
+    </div>
+
     <WhatsAppCTA contexto={`un cachorro ${v.nombre}`} />
 
     <ReviewsSection />
 
     <h2>🐾 Otras variedades exclusivas</h2>
-    <div class="grid">
-      {otras.map((r) => {
-        const minVal = Math.min(...r.variantes.map((v2) => v2.precioUSD));
-        return (
-          <a class="card" href={`/colores/${r.slug}/`}>
-            <div class="card-image">
-              <img src={`/images/variedades/${r.slug}.jpg`} alt={`Bulldog Francés Fluffy - ${r.nombre}`} loading="lazy" />
-            </div>
-            <div class="card-body">
-              <h3>{r.nombre}</h3>
-              <span class="desde">Desde ${minVal.toLocaleString('en-US')} USD</span>
-              <p style="margin-top: 4px; font-weight: bold;">{r.perfil.tagline}</p>
-            </div>
-          </a>
-        );
-      })}
-    </div>
+    <ColorHoverGrid client:visible variedades={otrasFormatted} />
   </main>
 </Base>
