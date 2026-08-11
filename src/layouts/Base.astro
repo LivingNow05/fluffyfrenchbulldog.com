@@ -6,6 +6,8 @@ import fluffy from '../data/fluffy.json';
 import QuizModal from '../components/QuizModal.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import BulldogIcon from '../components/BulldogIcon.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { BackgroundBeams } from '../components/ui/background-beams';
 
 export interface Props {
   title: string;
@@ -126,8 +128,8 @@ const allSchema = [localBusiness, ...schema];
     <header class="site-header">
       <div class="wrap">
         <a class="logo" href="/" aria-label="Dinastía Bulldog Fluffy — Inicio">
-          <img width="56" height="56" src="/images/fluffy_logo.png" alt="Logo Emblem" class="logo-icon-svg logo-dark-img" />
-          <img width="56" height="56" src="/images/fluffy_logo_purple.png" alt="Logo Emblem" class="logo-icon-svg logo-light-img" />
+          <img width="56" height="56" src="/images/fluffy_logo.png" alt="" class="logo-icon-svg logo-dark-img" />
+          <img width="56" height="56" src="/images/fluffy_logo_purple.png" alt="" class="logo-icon-svg logo-light-img" />
           <span class="logo-text">Dinastía Bulldog <span>Fluffy</span></span>
         </a>
         <nav class="site-nav" aria-label="Navegación principal">
@@ -198,8 +200,9 @@ const allSchema = [localBusiness, ...schema];
 
     <slot />
 
-    <footer class="site-footer">
-      <div class="wrap cols">
+    <footer class="site-footer relative overflow-hidden">
+      <BackgroundBeams client:load className="z-0 opacity-30 pointer-events-none" />
+      <div class="wrap cols relative z-10">
         <div>
           <h4>{site.brand}</h4>
           <p>
@@ -234,8 +237,8 @@ const allSchema = [localBusiness, ...schema];
             <li><a href="/sobre-nosotros/">Garantías y Metodología</a></li>
           </ul>
         </div>
-        </div>
-      <div class="wrap fine">
+      </div>
+      <div class="wrap fine relative z-10">
         <p>
           © {new Date().getFullYear()} {site.brand}. Promovemos la crianza ética y la tenencia responsable de mascotas (Cumplimiento Ley 1774 de 2016 y normativas internacionales). Todos los derechos reservados.
         </p>
@@ -298,10 +301,7 @@ const allSchema = [localBusiness, ...schema];
       }, observerOptions);
       document.querySelectorAll('.reveal, .cta-box').forEach((el) => observer.observe(el));
     </script>
-    <a class="whatsapp-float" href={`https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`} target="_blank" rel="noopener" aria-label="Hablar por WhatsApp">
-      <span class="whatsapp-float-tooltip">💬 ¿Hablamos por WhatsApp?</span>
-      <WhatsAppIcon size={28} />
-    </a>
+    <WhatsAppFloat />
 
     <style is:global>
       .header-controls { display: flex; align-items: center; gap: 16px; }

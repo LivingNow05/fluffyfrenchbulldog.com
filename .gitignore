@@ -14,6 +14,7 @@ pnpm-debug.log*
 
 # screenshots & test outputs
 *.png
+!public/**/*.png
 screenshot_*.png
 scratch_*.png
 test_*.js
