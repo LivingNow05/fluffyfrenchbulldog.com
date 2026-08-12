@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
-import HeroCentered from '../components/HeroCentered.astro';
+import { HeroParallax } from '@/components/ui/hero-parallax';
 import BentoFeatures from '../components/BentoFeatures.astro';
 import CalculadoraComida from '../components/CalculadoraComida.astro';
 import CalculadoraEdad from '../components/CalculadoraEdad.astro';
@@ -37,15 +37,8 @@ const heroProducts = [
   title="Dinastía Bulldog Fluffy | Criadero de Bulldog Francés Fluffy con Pedigree"
   description="Criadero especializado en Bulldog Francés Fluffy de raza pura. Variedades Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con registro AKC, FCI y garantía genética."
 >
-  <section class="hero hero--centered-only">
-    <!-- Ambient Backdrop Light Orbs -->
-    <div class="hero-orb hero-orb-gold"></div>
-    <div class="hero-orb hero-orb-emerald"></div>
-
-    <div class="wrap">
-      <HeroCentered />
-    </div>
-  </section>
+  {/* HERO PARALLAX REDESIGN */}
+  <HeroParallax client:load products={heroProducts} whatsappHref={waHref} />
 
   <!-- SECCIÓN BENTO 3D DE CARACTERÍSTICAS -->
   <BentoFeatures />
