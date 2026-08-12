@@ -1,0 +1,100 @@
+[
+  {
+    "route": "home",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_home_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_home_desktop_full.png"
+  },
+  {
+    "route": "destinos",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_destinos_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_destinos_desktop_full.png"
+  },
+  {
+    "route": "colores",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_colores_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_colores_desktop_full.png"
+  },
+  {
+    "route": "precios",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_precios_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_precios_desktop_full.png"
+  },
+  {
+    "route": "sobre_nosotros",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_sobre_nosotros_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_sobre_nosotros_desktop_full.png"
+  },
+  {
+    "route": "blog",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_blog_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_blog_desktop_full.png"
+  },
+  {
+    "route": "color_lilac",
+    "viewport": "desktop",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_color_lilac_desktop.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_color_lilac_desktop_full.png"
+  },
+  {
+    "route": "home",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_home_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_home_mobile_full.png"
+  },
+  {
+    "route": "destinos",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_destinos_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_destinos_mobile_full.png"
+  },
+  {
+    "route": "colores",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_colores_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_colores_mobile_full.png"
+  },
+  {
+    "route": "precios",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_precios_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_precios_mobile_full.png"
+  },
+  {
+    "route": "sobre_nosotros",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_sobre_nosotros_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_sobre_nosotros_mobile_full.png"
+  },
+  {
+    "route": "blog",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_blog_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_blog_mobile_full.png"
+  },
+  {
+    "route": "color_lilac",
+    "viewport": "mobile",
+    "status": "SUCCESS",
+    "path": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_color_lilac_mobile.png",
+    "fullPath": "/Users/anthony/Downloads/Bulldog Fluffy/scratch/qa_screenshots/qa_color_lilac_mobile_full.png"
+  }
+]
