@@ -105,17 +105,17 @@ export const Header = ({ whatsappHref }: { whatsappHref?: string }) => {
   return (
     <div className="max-w-7xl relative mx-auto py-10 md:py-20 px-4 w-full left-0 top-0 flex flex-col items-center text-center">
       {/* Insignias AKC / FCI Certificadas */}
-      <div className="inline-flex items-center gap-2 bg-rose-950/40 border border-rose-800/40 rounded-full px-5 py-2 mb-6 flex-wrap justify-center text-xs md:text-sm font-bold text-rose-300">
+      <div className="inline-flex items-center gap-2 bg-purple-950/40 border border-purple-800/40 rounded-full px-5 py-2 mb-6 flex-wrap justify-center text-xs md:text-sm font-bold text-purple-300">
         <span>📜 Pedigree Oficial AKC & FCI</span>
-        <span className="text-rose-400 opacity-60">•</span>
+        <span className="text-purple-400 opacity-60">•</span>
         <span>🧬 ADN 100% Pura Raza</span>
-        <span className="text-rose-400 opacity-60">•</span>
+        <span className="text-purple-400 opacity-60">•</span>
         <span>🏥 Garantía Genética 2 Años</span>
       </div>
 
       {/* Titular Masivo */}
       <h1 className="text-3xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 font-display">
-        Perros <span className="bg-gradient-to-r from-rose-400 via-rose-500 to-rose-600 bg-clip-text text-transparent">Bulldog Francés Fluffy</span>
+        Perros <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">Bulldog Francés Fluffy</span>
       </h1>
 
       {/* Párrafo Descriptivo Editorial */}
@@ -137,7 +137,7 @@ export const Header = ({ whatsappHref }: { whatsappHref?: string }) => {
         </a>
         <a
           href="/precios-bulldog-fluffy/"
-          className="inline-flex items-center gap-2 bg-rose-950/50 hover:bg-rose-900/60 text-white font-bold px-6 py-4 rounded-full border border-rose-800/50 transition duration-200 hover:-translate-y-0.5 text-decoration-none"
+          className="inline-flex items-center gap-2 bg-purple-950/50 hover:bg-purple-900/60 text-white font-bold px-6 py-4 rounded-full border border-purple-800/50 transition duration-200 hover:-translate-y-0.5 text-decoration-none"
         >
           <span>Ver Catálogo & Precios 2026</span>
           <span>→</span>
@@ -147,19 +147,19 @@ export const Header = ({ whatsappHref }: { whatsappHref?: string }) => {
       {/* Grid de Contador Estadístico */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl mt-4">
         <div className="bg-[#121215] border border-[#27272a] rounded-2xl p-4 flex flex-col items-center">
-          <span className="text-3xl font-extrabold text-rose-500 font-display">5</span>
+          <span className="text-3xl font-extrabold text-purple-400 font-display">5</span>
           <span className="text-xs md:text-sm font-medium text-zinc-400">Variedades Exóticas</span>
         </div>
         <div className="bg-[#121215] border border-[#27272a] rounded-2xl p-4 flex flex-col items-center">
-          <span className="text-3xl font-extrabold text-rose-500 font-display">+100</span>
+          <span className="text-3xl font-extrabold text-purple-400 font-display">+100</span>
           <span className="text-xs md:text-sm font-medium text-zinc-400">Ciudades con Niñera Aérea</span>
         </div>
         <div className="bg-[#121215] border border-[#27272a] rounded-2xl p-4 flex flex-col items-center">
-          <span className="text-3xl font-extrabold text-rose-500 font-display">100%</span>
+          <span className="text-3xl font-extrabold text-purple-400 font-display">100%</span>
           <span className="text-xs md:text-sm font-medium text-zinc-400">Garantía Genética Certificada</span>
         </div>
         <div className="bg-[#121215] border border-[#27272a] rounded-2xl p-4 flex flex-col items-center">
-          <span className="text-3xl font-extrabold text-rose-500 font-display">+12</span>
+          <span className="text-3xl font-extrabold text-purple-400 font-display">+12</span>
           <span className="text-xs md:text-sm font-medium text-zinc-400">Países con Envíos VIP</span>
         </div>
       </div>

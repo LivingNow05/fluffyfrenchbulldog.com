@@ -24,9 +24,9 @@ export const PriceFactorsHoverGrid: React.FC = () => {
       {FACTORS.map((card) => (
         <div
           key={card.title}
-          className="h-full w-full p-6 rounded-2xl bg-[#121215] border border-[#27272a] hover:border-rose-600 hover:bg-[#18181b] transition-colors duration-200 flex flex-col"
+          className="h-full w-full p-6 rounded-2xl bg-[#121215] border border-[#27272a] hover:border-purple-500 hover:bg-[#18181b] transition-colors duration-200 flex flex-col"
         >
-          <h3 className="text-lg font-bold text-white group-hover:text-rose-400 transition-colors mb-2 flex items-center gap-2 m-0">
+          <h3 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors mb-2 flex items-center gap-2 m-0">
             <span>{card.icon}</span>
             <span>{card.title}</span>
           </h3>

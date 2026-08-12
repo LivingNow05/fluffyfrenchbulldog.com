@@ -45,11 +45,13 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-5 bg-[#121215] border border-[#27272a] group-hover:border-rose-600 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col justify-between",
+        "rounded-2xl h-full w-full p-5 bg-[#121215] border border-[#27272a] group-hover:border-purple-500 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col justify-between",
         className
       )}
     >
-      {children}
+      <div className="relative z-50">
+        <div className="p-4">{children}</div>
+      </div>
     </div>
   );
 };
@@ -62,7 +64,7 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-white group-hover:text-rose-400 font-extrabold tracking-tight text-lg mb-2 transition-colors m-0", className)}>
+    <h4 className={cn("text-white group-hover:text-purple-400 font-extrabold tracking-tight text-lg mb-2 transition-colors m-0", className)}>
       {children}
     </h4>
   );

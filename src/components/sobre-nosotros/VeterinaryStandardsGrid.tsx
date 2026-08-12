@@ -33,10 +33,10 @@ export const VeterinaryStandardsGrid: React.FC = () => {
       {standards.map((std) => (
         <div
           key={std.label}
-          className="w-full h-auto p-6 bg-[#121215] border border-[#27272a] hover:border-rose-600 hover:bg-[#18181b] rounded-2xl flex flex-col justify-between transition-colors duration-200"
+          className="w-full h-auto p-6 bg-[#121215] border border-[#27272a] hover:border-purple-500 hover:bg-[#18181b] rounded-2xl flex flex-col justify-between transition-colors duration-200"
         >
           <div className="flex items-start gap-4">
-            <div className="text-3xl p-3 bg-[#271219] rounded-xl border border-[#4c1d28] shrink-0 text-rose-400">
+            <div className="text-3xl p-3 bg-[#1f1032] rounded-xl border border-[#3b1964] shrink-0 text-purple-400">
               {std.icon}
             </div>
             <div>

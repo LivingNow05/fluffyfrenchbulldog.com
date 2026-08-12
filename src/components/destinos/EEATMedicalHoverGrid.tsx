@@ -33,7 +33,7 @@ export const EEATMedicalHoverGrid: React.FC<EEATMedicalHoverGridProps> = ({
   return (
     <section className={cn('my-10 p-6 md:p-8 rounded-2xl bg-[#121215] border border-[#27272a]', className)}>
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 pb-6 border-b border-[#27272a]">
-        <div className="w-14 h-14 rounded-2xl bg-[#271219] border border-[#4c1d28] text-rose-400 flex items-center justify-center font-black text-2xl shrink-0">
+        <div className="w-14 h-14 rounded-2xl bg-[#1f1032] border border-[#3b1964] text-purple-400 flex items-center justify-center font-black text-2xl shrink-0">
           🩺
         </div>
         <div>
@@ -42,7 +42,7 @@ export const EEATMedicalHoverGrid: React.FC<EEATMedicalHoverGridProps> = ({
           </h3>
           <p className="m-0 mt-1 text-sm text-zinc-400 leading-relaxed">
             Supervisión profesional garantizada para entregas en{' '}
-            <strong className="text-rose-400 font-semibold">{ciudad}, {pais}</strong> · Reg. Prof. M.V. 14892 · Certificación ACCC / AKC / FCI
+            <strong className="text-purple-400 font-semibold">{ciudad}, {pais}</strong> · Reg. Prof. M.V. 14892 · Certificación ACCC / AKC / FCI
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export const EEATMedicalHoverGrid: React.FC<EEATMedicalHoverGridProps> = ({
             key={card.title}
             className="p-5 rounded-2xl bg-[#18181b] border border-[#27272a] flex flex-col"
           >
-            <div className="font-extrabold text-base mb-2 text-rose-400 flex items-center gap-2">
+            <div className="font-extrabold text-base mb-2 text-purple-400 flex items-center gap-2">
               <span>{card.icon}</span>
               <span>{card.title}</span>
             </div>

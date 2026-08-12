@@ -34,7 +34,7 @@ export const ColorHoverGrid: React.FC<ColorHoverGridProps> = ({
             key={r.slug}
             className="group block h-full w-full text-decoration-none"
           >
-            <div className="h-full w-full rounded-2xl overflow-hidden bg-[#121215] border border-[#27272a] group-hover:border-rose-600 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col">
+            <div className="h-full w-full rounded-2xl overflow-hidden bg-[#121215] border border-[#27272a] group-hover:border-purple-500 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col">
               <div className="w-full h-44 overflow-hidden relative bg-black">
                 <img
                   src={`/images/variedades/${r.slug}.jpg`}
@@ -42,13 +42,13 @@ export const ColorHoverGrid: React.FC<ColorHoverGridProps> = ({
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
                 />
-                <span className="absolute top-2.5 right-2.5 bg-[#121215] border border-[#27272a] text-rose-400 font-semibold text-xs px-2.5 py-1 rounded-md">
+                <span className="absolute top-2.5 right-2.5 bg-[#121215] border border-[#27272a] text-purple-400 font-semibold text-xs px-2.5 py-1 rounded-md">
                   Desde ${minUSD.toLocaleString('en-US')} USD
                 </span>
               </div>
 
               <div className="p-4 flex flex-col flex-grow">
-                <h3 className="text-lg font-bold text-white group-hover:text-rose-400 transition-colors mb-1 m-0">
+                <h3 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors mb-1 m-0">
                   {r.nombre}
                 </h3>
                 <p className="text-xs text-zinc-400 font-medium mt-auto leading-relaxed m-0">

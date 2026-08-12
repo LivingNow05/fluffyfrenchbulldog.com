@@ -10,7 +10,7 @@ const formattedReviews = testimonios.map((t, idx) => ({
   title: `Recibido en ${t.ciudad}`,
   img: `/images/testimonios/testimonio_real_${idx + 1}.jpg`,
   avatar: t.nombre.charAt(0),
-  colorBg: idx === 0 ? '#f59e0b' : idx === 1 ? '#8b5cf6' : '#9333ea',
+  colorBg: idx % 3 === 0 ? '#9333ea' : idx % 3 === 1 ? '#8b5cf6' : '#7e22ce',
   ciudad: t.ciudad,
   variedad: t.variedad,
   rating: 5,
@@ -42,7 +42,7 @@ const reviewsSchema = {
 
 <section id="reviews" class="reviews-section reveal py-16 overflow-hidden relative">
   <div class="text-center max-w-2xl mx-auto mb-8 px-4">
-    <span class="inline-block px-3.5 py-1 rounded-full bg-rose-950/40 border border-rose-800/40 text-xs font-extrabold text-rose-300 uppercase tracking-wider mb-3">
+    <span class="inline-block px-3.5 py-1 rounded-full bg-purple-950/40 border border-purple-800/40 text-xs font-extrabold text-purple-300 uppercase tracking-wider mb-3">
       ⭐ FAMILIAS SATISFECHAS
     </span>
     <h2 class="section-title text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">

@@ -17,7 +17,7 @@ export const Affiliations3DGrid: React.FC<Affiliations3DGridProps> = ({ afiliaci
       {afiliaciones.map((a) => (
         <div
           key={a}
-          className="w-full h-auto p-6 bg-[#121215] border border-[#27272a] hover:border-rose-600 hover:bg-[#18181b] rounded-2xl flex flex-col justify-between transition-colors duration-200"
+          className="w-full h-auto p-6 bg-[#121215] border border-[#27272a] hover:border-purple-500 hover:bg-[#18181b] rounded-2xl flex flex-col justify-between transition-colors duration-200"
         >
           <div>
             <span className="text-4xl mb-3 block">📜</span>
@@ -28,7 +28,7 @@ export const Affiliations3DGrid: React.FC<Affiliations3DGridProps> = ({ afiliaci
               {detailsMap[a] || 'Certificación genética y pedigree oficial verificado.'}
             </p>
           </div>
-          <span className="mt-4 inline-flex items-center text-xs font-semibold text-rose-400">
+          <span className="mt-4 inline-flex items-center text-xs font-semibold text-purple-400">
             Verificado por laboratorio ✓
           </span>
         </div>

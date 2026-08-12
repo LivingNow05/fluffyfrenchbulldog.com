@@ -22,12 +22,12 @@ export const BlogHoverGrid: React.FC<BlogHoverGridProps> = ({ posts }) => {
           key={post.slug}
           className="group block h-full w-full text-decoration-none"
         >
-          <div className="h-full w-full p-6 rounded-2xl bg-[#121215] border border-[#27272a] group-hover:border-rose-600 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col justify-between">
+          <div className="h-full w-full p-6 rounded-2xl bg-[#121215] border border-[#27272a] group-hover:border-purple-500 group-hover:bg-[#18181b] transition-colors duration-200 flex flex-col justify-between">
             <div>
-              <span className="inline-block px-3 py-1 rounded-md text-xs font-bold bg-[#271219] text-rose-400 border border-[#4c1d28] mb-4">
+              <span className="inline-block px-3 py-1 rounded-md text-xs font-bold bg-[#1f1032] text-purple-400 border border-[#3b1964] mb-4">
                 {post.category}
               </span>
-              <h3 className="text-xl font-bold text-white group-hover:text-rose-400 transition-colors mb-3 leading-snug m-0">
+              <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-3 leading-snug m-0">
                 {post.title}
               </h3>
               <p className="text-xs text-zinc-400 leading-relaxed line-clamp-3 mb-4 m-0">

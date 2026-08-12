@@ -37,16 +37,16 @@ export const ColorBentoGrid: React.FC<ColorBentoGridProps> = ({
           <div
             key={item.key}
             className={cn(
-              'rounded-2xl p-6 transition-colors duration-200 bg-[#121215] border border-[#27272a] hover:border-rose-600 hover:bg-[#18181b]',
+              'rounded-2xl p-6 transition-colors duration-200 bg-[#121215] border border-[#27272a] hover:border-purple-500 hover:bg-[#18181b]',
               isFeatured ? 'md:col-span-2 lg:col-span-2' : 'col-span-1'
             )}
           >
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#271219] border border-[#4c1d28] flex items-center justify-center text-2xl shrink-0 text-rose-400">
+              <div className="w-12 h-12 rounded-xl bg-[#1f1032] border border-[#3b1964] flex items-center justify-center text-2xl shrink-0 text-purple-400">
                 {item.icon}
               </div>
               <div className="flex-grow">
-                <span className="text-xs font-semibold uppercase tracking-wider text-rose-400 block mb-1">
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-400 block mb-1">
                   {item.label}
                 </span>
                 <span
