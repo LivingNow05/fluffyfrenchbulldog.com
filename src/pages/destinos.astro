@@ -166,8 +166,8 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
 
   <section class="hero" style="padding: 60px 0 50px; margin-top: 0;">
     <div class="wrap text-center">
-      <p class="hero-kicker" style="color: #f43f5e; background: rgba(225, 29, 72, 0.12); border-color: rgba(225, 29, 72, 0.3);">Entrega VIP Presencial · Niñera Aérea</p>
-      <h1>Destinos & Cobertura de <em style="color: #f43f5e;">Entregas por Ciudad</em></h1>
+      <p class="hero-kicker" style="color: #a855f7; background: rgba(147, 51, 234, 0.14); border-color: rgba(168, 85, 247, 0.35);">Entrega VIP Presencial · Niñera Aérea</p>
+      <h1>Destinos & Cobertura de <em style="color: #a855f7;">Entregas por Ciudad</em></h1>
       <p class="lead" style="margin: 0 auto 28px;">
         Entregamos nuestros cachorros <strong>Bulldog Francés Fluffy</strong> con transporte climatizado presencial en más de 100 ciudades. Selecciona tu ubicación para conocer la historia local, aeropuerto y protocolo de llegada.
       </p>
@@ -178,9 +178,9 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
           type="text"
           id="city-search"
           placeholder="🔍 Escribe tu ciudad (ej. Bogotá, CDMX, Lima, Madrid)..."
-          style="width: 100%; padding: 18px 24px; border-radius: 999px; border: 2px solid rgba(225, 29, 72, 0.4); background: rgba(18, 18, 21, 0.95); color: #fcfcfd; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5); outline: none; transition: border-color 0.2s, background 0.2s;"
+          style="width: 100%; padding: 18px 24px; border-radius: 999px; border: 2px solid rgba(168, 85, 247, 0.4); background: rgba(18, 16, 32, 0.95); color: #fcfcfd; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5); outline: none; transition: border-color 0.2s, background 0.2s;"
         />
-        <div id="search-results" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: rgba(18, 18, 21, 0.98); backdrop-filter: blur(16px); border: 1.5px solid rgba(225, 29, 72, 0.4); border-radius: 18px; max-height: 320px; overflow-y: auto; z-index: 200; box-shadow: 0 16px 40px rgba(0,0,0,0.8); text-align: left;"></div>
+        <div id="search-results" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: rgba(18, 16, 32, 0.98); backdrop-filter: blur(16px); border: 1.5px solid rgba(168, 85, 247, 0.4); border-radius: 18px; max-height: 320px; overflow-y: auto; z-index: 200; box-shadow: 0 16px 40px rgba(0,0,0,0.8); text-align: left;"></div>
       </div>
     </div>
   </section>
@@ -189,7 +189,7 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
     {/* Sección Hubs Internacionales Destacados con 3D Cards */}
     <section class="featured-hubs-section mb-16">
       <div class="text-center mb-8">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-rose-950/40 text-rose-300 border border-rose-800/40 text-xs font-extrabold uppercase tracking-widest mb-3">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-purple-950/40 text-purple-300 border border-purple-800/40 text-xs font-extrabold uppercase tracking-widest mb-3">
           🛫 Hubs Internacionales Destacados
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -218,7 +218,7 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
     {/* Navegación rápida por países */}
     <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; justify-content: center;">
       {countries.map((c) => (
-        <a href={`#pais-${c.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn--ghost" style="padding: 8px 20px; font-size: 0.9rem; border-color: rgba(225, 29, 72, 0.35); color: #fcfcfd;">
+        <a href={`#pais-${c.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn--ghost" style="padding: 8px 20px; font-size: 0.9rem; border-color: rgba(168, 85, 247, 0.35); color: #fcfcfd;">
           {FLAG_MAP[c] || '📍'} {c} ({groupedByCountry[c].length})
         </a>
       ))}
@@ -234,9 +234,9 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
 
       return (
         <section id={`pais-${country.toLowerCase().replace(/\s+/g, '-')}`} style="margin-bottom: 56px;">
-          <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(225, 29, 72, 0.4); padding-bottom: 10px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid rgba(168, 85, 247, 0.4); padding-bottom: 10px; margin-bottom: 16px;">
             <h2 style="margin: 0; font-size: 1.7rem; color: #fcfcfd;">{FLAG_MAP[country] || '📍'} {country}</h2>
-            <span class="badge" style="background: rgba(225, 29, 72, 0.2); color: #f43f5e; border-color: rgba(225, 29, 72, 0.4);">{groupedByCountry[country].length} ciudades</span>
+            <span class="badge" style="background: rgba(147, 51, 234, 0.2); color: #a855f7; border-color: rgba(168, 85, 247, 0.4);">{groupedByCountry[country].length} ciudades</span>
           </div>
 
           <HoverEffect client:load items={cityItems} />
@@ -272,8 +272,8 @@ const hubLocations = featuredHubs.length >= 4 ? featuredHubs : locations.slice(0
           resultsContainer.innerHTML = '<div style="padding: 16px; color: var(--ink-soft); text-align: center;">No se encontraron ciudades con ese nombre.</div>';
         } else {
           resultsContainer.innerHTML = matches.map((m) => `
-            <a href="${m.url}" style="display: block; padding: 14px 20px; border-bottom: 1px solid rgba(225, 29, 72, 0.2); text-decoration: none; color: #fcfcfd; transition: background 0.2s;">
-              <strong style="color: #f43f5e;">${m.ciudad}</strong>, ${m.pais}
+            <a href="${m.url}" style="display: block; padding: 14px 20px; border-bottom: 1px solid rgba(168, 85, 247, 0.2); text-decoration: none; color: #fcfcfd; transition: background 0.2s;">
+              <strong style="color: #a855f7;">${m.ciudad}</strong>, ${m.pais}
               <div style="font-size: 0.8rem; color: #a1a1aa;">✈️ ${m.aeropuerto}</div>
             </a>
           `).join('');

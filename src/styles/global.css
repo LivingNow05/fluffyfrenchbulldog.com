@@ -11,18 +11,18 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Noche Profunda Rojo Toro (Obsidiana Granate Imperial) */
+  /* Noche Profunda Lila Imperial (Obsidiana Violeta) */
   --night: #09090b;
-  --night-2: #121215;
-  --night-3: #18181b;
-  --night-line: #27272a;
+  --night-2: #121020;
+  --night-3: #18142a;
+  --night-line: #2d224b;
 
-  /* Rojo Toro Imperial Premium */
-  --brand: #e11d48;
-  --brand-bright: #f43f5e;
-  --brand-deep: #be123c;
-  --brand-soft: rgba(225, 29, 72, 0.12);
-  --brand-glow: transparent; /* CERO BRILLOS NEÓN TIPIQUITOS */
+  /* Lila Imperial Premium */
+  --brand: #9333ea;
+  --brand-bright: #a855f7;
+  --brand-deep: #7e22ce;
+  --brand-soft: rgba(147, 51, 234, 0.14);
+  --brand-glow: transparent;
 
   /* Mapeo para compatibilidad total */
   --amber: var(--brand);
@@ -33,8 +33,8 @@
 
   /* Papel & Superficies (Modo Oscuro Predeterminado - Obsidiana Lujo) */
   --paper: #09090b;
-  --surface: #121215;
-  --border: rgba(225, 29, 72, 0.2);
+  --surface: #121020;
+  --border: rgba(168, 85, 247, 0.25);
   --ink: #fcfcfd;
   --ink-soft: rgba(252, 252, 253, 0.75);
 
@@ -84,10 +84,10 @@
   --moon-soft: rgba(252, 252, 253, 0.75);
   --ink: #fcfcfd;
   --ink-soft: rgba(252, 252, 253, 0.75);
-  --brand: #e11d48;
-  --brand-deep: #be123c;
-  --brand-bright: #f43f5e;
-  --brand-soft: rgba(225, 29, 72, 0.14);
+  --brand: #9333ea;
+  --brand-deep: #7e22ce;
+  --brand-bright: #a855f7;
+  --brand-soft: rgba(147, 51, 234, 0.16);
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
@@ -342,16 +342,16 @@ a:hover { color: var(--amber-bright); }
   --moon-soft: rgba(252, 252, 253, 0.75);
   --ink: #fcfcfd;
   --ink-soft: rgba(252, 252, 253, 0.75);
-  --brand: #e11d48;
-  --brand-deep: #be123c;
-  --brand-bright: #f43f5e;
+  --brand: #9333ea;
+  --brand-deep: #7e22ce;
+  --brand-bright: #a855f7;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
-  background: rgba(18, 18, 21, 0.92);
+  background: rgba(18, 16, 32, 0.92);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(225, 29, 72, 0.35);
+  border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: 999px;
   position: sticky;
   top: 16px;
@@ -359,7 +359,7 @@ a:hover { color: var(--amber-bright); }
   width: calc(100% - 32px);
   max-width: calc(var(--max) - 44px);
   margin: 16px auto 10px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(225, 29, 72, 0.15);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(147, 51, 234, 0.15);
   transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -367,31 +367,31 @@ a:hover { color: var(--amber-bright); }
 }
 
 .site-header:hover {
-  border-color: rgba(244, 63, 94, 0.6);
-  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(225, 29, 72, 0.25);
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(147, 51, 234, 0.25);
 }
 
 :root.light-theme .site-header {
-  --moon: #0f172a;
-  --moon-soft: #475569;
-  --ink: #0f172a;
-  --ink-soft: #475569;
-  --brand: #e11d48;
-  --brand-deep: #be123c;
-  --brand-bright: #f43f5e;
+  --moon: #1e1035;
+  --moon-soft: #5b21b6;
+  --ink: #1e1035;
+  --ink-soft: #5b21b6;
+  --brand: #9333ea;
+  --brand-deep: #7e22ce;
+  --brand-bright: #a855f7;
   --amber: var(--brand);
   --amber-deep: var(--brand-deep);
   --amber-bright: var(--brand-bright);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(225, 29, 72, 0.25);
-  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.12);
+  border: 1px solid #e9d5ff;
+  box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.12);
 }
 
 :root.light-theme .site-header:hover {
-  border-color: rgba(225, 29, 72, 0.4);
-  box-shadow: 0 14px 35px -5px rgba(225, 29, 72, 0.2);
+  border-color: #c084fc;
+  box-shadow: 0 14px 35px -5px rgba(147, 51, 234, 0.2);
 }
 
 .site-header .wrap {
@@ -437,13 +437,13 @@ a:hover { color: var(--amber-bright); }
   left: 50%;
   transform: translateX(-50%) translateY(12px);
   width: 640px;
-  background: rgba(18, 18, 21, 0.98);
+  background: rgba(18, 16, 32, 0.98);
   backdrop-filter: blur(28px) saturate(1.5);
   -webkit-backdrop-filter: blur(28px) saturate(1.5);
-  border: 1px solid rgba(225, 29, 72, 0.4);
+  border: 1px solid rgba(168, 85, 247, 0.4);
   border-radius: 20px;
   padding: 22px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(225, 29, 72, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(147, 51, 234, 0.2);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -459,8 +459,8 @@ a:hover { color: var(--amber-bright); }
 
 :root.light-theme .megamenu-cities {
   background: rgba(255, 255, 255, 0.97);
-  border: 1px solid rgba(225, 29, 72, 0.25);
-  box-shadow: 0 16px 40px rgba(225, 29, 72, 0.15);
+  border: 1px solid #e9d5ff;
+  box-shadow: 0 16px 40px rgba(147, 51, 234, 0.15);
 }
 
 .megamenu-grid {
@@ -482,7 +482,7 @@ a:hover { color: var(--amber-bright); }
   color: var(--amber-bright);
   margin-bottom: 4px;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(225, 29, 72, 0.25);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
 }
 .megamenu-col a {
   font-size: 0.85rem;
@@ -494,17 +494,17 @@ a:hover { color: var(--amber-bright); }
 }
 .megamenu-col a:hover {
   color: #fff;
-  background: rgba(225, 29, 72, 0.18);
+  background: rgba(147, 51, 234, 0.22);
   transform: translateX(4px);
 }
 :root.light-theme .megamenu-col a:hover {
-  color: #be123c;
-  background: rgba(225, 29, 72, 0.08);
+  color: #5b21b6;
+  background: rgba(147, 51, 234, 0.08);
 }
 
 .megamenu-col.col-cta {
-  background: linear-gradient(135deg, rgba(225, 29, 72, 0.15), rgba(18, 18, 21, 0.6));
-  border: 1px solid rgba(225, 29, 72, 0.35);
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(18, 16, 32, 0.6));
+  border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: 14px;
   padding: 12px 14px;
 }

@@ -118,7 +118,7 @@ export const InfiniteMovingCards = ({
               {item.avatar && (
                 <div
                   className="flex h-11 w-11 items-center justify-center rounded-full text-base font-extrabold text-white shrink-0"
-                  style={{ backgroundColor: item.colorBg || "#e11d48" }}
+                  style={{ backgroundColor: item.colorBg || "#9333ea" }}
                 >
                   {item.avatar}
                 </div>
