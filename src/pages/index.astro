@@ -2,48 +2,78 @@
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
-import { HeroParallax } from '@/components/ui/hero-parallax';
-import BentoFeatures from '../components/BentoFeatures.astro';
+import HeroPhotoShowcase from '../components/HeroPhotoShowcase.astro';
+import HeroCentered from '../components/HeroCentered.astro';
 import CalculadoraComida from '../components/CalculadoraComida.astro';
-import CalculadoraEdad from '../components/CalculadoraEdad.astro';
 import FaqSection from '../components/FaqSection.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
 import fluffy from '../data/fluffy.json';
 import faqsData from '../data/faqs.json';
 
 const { site, variedades } = fluffy;
-const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Hola Dinastía Bulldog Fluffy, me gustaría consultar la disponibilidad de cachorros con pedigree AKC/FCI.')}`;
-
-const heroProducts = [
-  { title: "Fluffy Blue Visual", link: "/colores/fluffy-blue/", thumbnail: "/images/variedades/fluffy-blue.jpg" },
-  { title: "Fluffy Visual Isabella", link: "/colores/fluffy-visual-isabella/", thumbnail: "/images/variedades/fluffy-visual-isabella.jpg" },
-  { title: "Fluffy Lilac Platinum", link: "/colores/fluffy-lilac/", thumbnail: "/images/variedades/fluffy-lilac.jpg" },
-  { title: "Fluffy Cocoa Fawn", link: "/colores/fluffy-fluffy-cocoa/", thumbnail: "/images/variedades/fluffy-fluffy-cocoa.jpg" },
-  { title: "Fluffy Blue Merlé", link: "/colores/fluffy-merle/", thumbnail: "/images/variedades/fluffy-merle.jpg" },
-  { title: "Ejemplares de Selección AKC", link: "/sobre-nosotros/", thumbnail: "/images/fluffy-showcase-hero.jpg" },
-  { title: "Envíos VIP Bogotá (BOG)", link: "/bulldog-frances-fluffy-bogota/", thumbnail: "/images/testimonios/testimonio_real_1.jpg" },
-  { title: "Envíos VIP CDMX (MEX)", link: "/bulldog-frances-fluffy-cdmx/", thumbnail: "/images/testimonios/testimonio_real_2.jpg" },
-  { title: "Envíos VIP Medellín (MDE)", link: "/bulldog-frances-fluffy-medellin/", thumbnail: "/images/testimonios/testimonio_real_3.jpg" },
-  { title: "Linajes Puros Certificados", link: "/precios-bulldog-fluffy/", thumbnail: "/images/fluffy-showcase-hero-light.jpg" },
-  { title: "Fluffy Blue Portador", link: "/colores/fluffy-blue/", thumbnail: "/images/variedades/fluffy-blue.jpg" },
-  { title: "Fluffy Isabella Compañía", link: "/colores/fluffy-visual-isabella/", thumbnail: "/images/variedades/fluffy-visual-isabella.jpg" },
-  { title: "Fluffy Lilac Tan", link: "/colores/fluffy-lilac/", thumbnail: "/images/variedades/fluffy-lilac.jpg" },
-  { title: "Fluffy Cocoa Estándar", link: "/colores/fluffy-fluffy-cocoa/", thumbnail: "/images/variedades/fluffy-fluffy-cocoa.jpg" },
-  { title: "Fluffy Isabella Merlé", link: "/colores/fluffy-merle/", thumbnail: "/images/variedades/fluffy-merle.jpg" }
-];
+const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}`;
 ---
 
 <Base
   title="Dinastía Bulldog Fluffy | Criadero de Bulldog Francés Fluffy con Pedigree"
   description="Criadero especializado en Bulldog Francés Fluffy de raza pura. Variedades Fluffy Blue, Visual Isabella, Lilac, Cocoa y Merlé con registro AKC, FCI y garantía genética."
 >
-  {/* HERO PARALLAX REDESIGN */}
-  <HeroParallax client:load products={heroProducts} whatsappHref={waHref} />
+  <!-- HERO SECTION DEFINTIVO (Vista 2 Tipográfica Centrada con Showcase Protagonista) -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <HeroCentered />
+    </div>
+  </section>
 
-  <!-- SECCIÓN BENTO 3D DE CARACTERÍSTICAS -->
-  <BentoFeatures />
+  <script is:inline>
+    function initHeroSwitcher() {
+      const btnV1 = document.getElementById('btn-hero-v1');
+      const btnV2 = document.getElementById('btn-hero-v2');
+      const panelV1 = document.getElementById('hero-vista-1');
+      const panelV2 = document.getElementById('hero-vista-2');
 
-  <section id="ciudades" class="seccion-ciudades scroll-mt">
+      if (!btnV1 || !btnV2 || !panelV1 || !panelV2) return;
+
+      function switchVista(vista) {
+        if (vista === 'v1') {
+          btnV1.classList.add('active');
+          btnV1.setAttribute('aria-selected', 'true');
+          btnV2.classList.remove('active');
+          btnV2.setAttribute('aria-selected', 'false');
+
+          panelV2.style.display = 'none';
+          panelV1.style.display = 'block';
+
+          if (typeof window.gsap !== 'undefined') {
+            window.gsap.fromTo(panelV1, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+          }
+        } else {
+          btnV2.classList.add('active');
+          btnV2.setAttribute('aria-selected', 'true');
+          btnV1.classList.remove('active');
+          btnV1.setAttribute('aria-selected', 'false');
+
+          panelV1.style.display = 'none';
+          panelV2.style.display = 'block';
+
+          if (typeof window.gsap !== 'undefined') {
+            window.gsap.fromTo(panelV2, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+          }
+        }
+      }
+
+      btnV1.addEventListener('click', () => switchVista('v1'));
+      btnV2.addEventListener('click', () => switchVista('v2'));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroSwitcher);
+    } else {
+      initHeroSwitcher();
+    }
+  </script>
+
+  <main class="wrap">
     <!-- SECCIÓN DE CIUDADES DESTACADAS -->
     <section style="margin: 60px 0 40px;">
       <div style="text-align: center; max-width: 720px; margin: 0 auto 36px;">
@@ -117,9 +147,6 @@ const heroProducts = [
     <!-- CALCULADORA DE ALIMENTACIÓN -->
     <CalculadoraComida />
 
-    <!-- CALCULADORA DE EDAD CANINA -->
-    <CalculadoraEdad />
-
     <!-- PREGUNTAS FRECUENTES -->
     <FaqSection title="Preguntas Frecuentes sobre el Bulldog Francés Fluffy" faqs={faqsData.general} />
 
@@ -127,5 +154,5 @@ const heroProducts = [
       title="¿Listo para recibir a tu nuevo Bulldog Francés Fluffy?"
       subtitle="Contáctanos hoy por WhatsApp. Te enviamos fotos y videos en tiempo real de los cachorros disponibles y coordinamos la entrega con niñera aérea."
     />
-  </section>
+  </main>
 </Base>

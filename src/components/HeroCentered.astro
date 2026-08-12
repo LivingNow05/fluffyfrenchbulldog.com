@@ -49,40 +49,38 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}?text=${enco
     </a>
   </div>
 
-  <!-- MARCO PANORÁMICO PROTAGONISTA DE CACHORROS FLUFFY (Adaptativo Dark / Light) -->
-  <div class="hero-showcase-frame animate-on-scroll">
-    <div class="showcase-badge">
-      <span class="pulse-dot-gold"></span>
-      <span>📷 FOTOGRAFÍA REAL DE CRIADERO · EJEMPLARES AKC & FCI</span>
+  <!-- MARCO PROTAGONISTA SHOWCASE DE FOTOGRAFÍA REAL FLUFFY -->
+  <div class="hero-showcase-container">
+    <div class="showcase-badge-floating">
+      <span class="badge-icon">📷</span>
+      <span>Fotografía Real de Criadero · Linajes AKC & FCI</span>
     </div>
     
-    <!-- Imagen para Modo Oscuro -->
-    <img 
-      src="/images/fluffy-showcase-hero.jpg" 
-      alt="Cachorros Bulldog Francés Fluffy de Raza Pura" 
-      class="showcase-img showcase-img-dark" 
-      loading="eager" 
-      width="1200" 
-      height="675" 
-    />
-    
-    <!-- Imagen para Modo Claro -->
-    <img 
-      src="/images/fluffy-showcase-hero-light.jpg" 
-      alt="Cachorros Bulldog Francés Fluffy de Raza Pura" 
-      class="showcase-img showcase-img-light" 
-      loading="eager" 
-      width="1200" 
-      height="675" 
-    />
+    <div class="showcase-image-wrapper">
+      <img
+        src="/images/fluffy-showcase-hero.jpg"
+        alt="Ejemplares Bulldog Francés Fluffy de Colección"
+        class="showcase-img showcase-img-dark"
+        width="1200"
+        height="675"
+        loading="eager"
+      />
+      <img
+        src="/images/fluffy-showcase-hero-light.jpg"
+        alt="Ejemplares Bulldog Francés Fluffy de Colección"
+        class="showcase-img showcase-img-light"
+        width="1200"
+        height="675"
+        loading="eager"
+      />
+    </div>
 
-    <!-- Tags de Variedades de Colección Flotantes -->
     <div class="showcase-varieties-bar">
-      <span class="v-pill">Fluffy Blue</span>
-      <span class="v-pill">Visual Isabella</span>
-      <span class="v-pill">Lilac</span>
-      <span class="v-pill">Cocoa</span>
-      <span class="v-pill">Merlé</span>
+      <span class="variety-chip">✨ Fluffy Blue</span>
+      <span class="variety-chip">✨ Visual Isabella</span>
+      <span class="variety-chip">✨ Fluffy Lilac</span>
+      <span class="variety-chip">✨ Cocoa</span>
+      <span class="variety-chip">✨ Merlé</span>
     </div>
   </div>
 
@@ -337,106 +335,6 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}?text=${enco
     color: #5b21b6 !important;
   }
 
-  /* Showcase Frame Protagonista */
-  .hero-showcase-frame {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 8px 0;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(168, 85, 247, 0.25);
-    background: #18112e;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .hero-showcase-frame:hover {
-    transform: translateY(-4px) scale(1.008);
-    border-color: rgba(168, 85, 247, 0.5);
-    box-shadow: 0 24px 50px rgba(168, 85, 247, 0.2);
-  }
-
-  .showcase-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: 18px;
-  }
-
-  .showcase-img-dark {
-    display: block;
-  }
-  .showcase-img-light {
-    display: none;
-  }
-
-  :root.light-theme .showcase-img-dark {
-    display: none !important;
-  }
-  :root.light-theme .showcase-img-light {
-    display: block !important;
-  }
-
-  :root.light-theme .hero-showcase-frame {
-    background: #ffffff;
-    border: 1px solid #e9d5ff;
-    box-shadow: 0 16px 40px rgba(30, 16, 53, 0.08);
-  }
-
-  .showcase-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 5;
-    background: rgba(19, 16, 36, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #e9d5ff;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  :root.light-theme .showcase-badge {
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid #e9d5ff;
-    color: #1e1035;
-    box-shadow: 0 4px 14px rgba(30, 16, 53, 0.1);
-  }
-
-  .showcase-varieties-bar {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    z-index: 5;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .v-pill {
-    background: rgba(19, 16, 36, 0.8);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    color: #f3e8ff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-
-  :root.light-theme .v-pill {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #c084fc;
-    color: #5b21b6;
-  }
-
   @media (max-width: 840px) {
     .hero-centered-card {
       padding: 32px 20px;
@@ -457,6 +355,133 @@ const waHref = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, '')}?text=${enco
     .btn-whatsapp-hero, .btn-secondary-hero {
       width: 100%;
       justify-content: center;
+    }
+  }
+
+  /* ─── Showcase Protagonista Fotografía Real ─── */
+  .hero-showcase-container {
+    position: relative;
+    width: 100%;
+    max-width: 880px;
+    margin: 8px 0 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #1a1336;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hero-showcase-container:hover {
+    transform: translateY(-4px);
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 24px 60px rgba(168, 85, 247, 0.25);
+  }
+
+  :root.light-theme .hero-showcase-container {
+    background: #fcfaff !important;
+    border-color: #e9d5ff !important;
+    box-shadow: 0 16px 40px rgba(147, 51, 234, 0.12) !important;
+  }
+
+  .showcase-badge-floating {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(15, 10, 32, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #f8fafc;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  :root.light-theme .showcase-badge-floating {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: #e9d5ff !important;
+    color: #1e1035 !important;
+    box-shadow: 0 4px 14px rgba(30, 16, 53, 0.1);
+  }
+
+  .showcase-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-showcase-container:hover .showcase-img {
+    transform: scale(1.03);
+  }
+
+  .showcase-img-dark {
+    display: block !important;
+  }
+  .showcase-img-light {
+    display: none !important;
+  }
+
+  :root.light-theme .showcase-img-dark {
+    display: none !important;
+  }
+  :root.light-theme .showcase-img-light {
+    display: block !important;
+  }
+
+  .showcase-varieties-bar {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    width: calc(100% - 24px);
+    max-width: 720px;
+  }
+
+  .variety-chip {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(23, 15, 48, 0.82);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    color: #f3e8ff;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  :root.light-theme .variety-chip {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: #d8b4fe !important;
+    color: #5b21b6 !important;
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.1);
+  }
+
+  @media (max-width: 640px) {
+    .showcase-badge-floating {
+      top: 10px;
+      left: 10px;
+      font-size: 0.72rem;
+      padding: 5px 10px;
+    }
+    .variety-chip {
+      font-size: 0.7rem;
+      padding: 4px 8px;
     }
   }
 </style>
